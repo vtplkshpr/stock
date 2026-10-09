@@ -1,38 +1,38 @@
-# Cài đặt và sử dụng
+# Installation and Usage
 
-Hướng dẫn này dành cho stock module hiện tại. Module dùng MySQL/MariaDB để lưu dữ liệu và cung cấp CLI terminal để tra cứu doanh nghiệp.
+This guide covers the current stock module. It uses MySQL/MariaDB to store data and provides a terminal CLI for company lookups.
 
-## Yêu cầu
+## Requirements
 
-- Ubuntu hoặc Debian.
-- Python 3.10 trở lên và `venv`.
-- Quyền `sudo` để cài/khởi động database server và tạo database user.
-- Kết nối mạng nếu cần cài MySQL Server hoặc Python connector.
+- Ubuntu or Debian.
+- Python 3.10 or later and `venv`.
+- `sudo` access to install/start the database server and create a database user.
+- An internet connection if MySQL Server or the Python connector must be installed.
 
-Script hỗ trợ MariaDB hoặc MySQL đã cài; nếu không tìm thấy server thì cài `mysql-server`. Trên máy hiện tại, database server đang dùng là MariaDB.
+The script uses an existing MariaDB or MySQL server. If no server is found, it installs `mysql-server`. The current development machine uses MariaDB.
 
-## Cài database
+## Set Up the Database
 
-Từ thư mục module:
+From the module directory:
 
 ```bash
 cd ~/stock/stock
 ./scripts/setup_database.sh
 ```
 
-Script sẽ:
+The script will:
 
-1. Kiểm tra/cài và khởi động MariaDB hoặc MySQL.
-2. Tạo database (mặc định `stock_market`) và user ứng dụng (mặc định `stock_app`).
-3. Sinh mật khẩu ngẫu nhiên nếu `MYSQL_PASSWORD` chưa được cung cấp.
-4. Dùng virtualenv hiện có hoặc tạo một virtualenv cho project, rồi cài `mysql-connector-python`.
-5. Ghi cấu hình kết nối vào `.env` tại thư mục gốc module và khởi tạo các bảng.
+1. Check for, install if needed, and start MariaDB or MySQL.
+2. Create the database (default: `stock_market`) and application user (default: `stock_app`).
+3. Generate a random password if `MYSQL_PASSWORD` is not provided.
+4. Use an existing virtual environment or create one for the project, then install `mysql-connector-python`.
+5. Write connection settings to `.env` in the module root and initialize the tables.
 
-Setup cần quyền quản trị database qua socket, nên có thể yêu cầu mật khẩu `sudo`. Script không cần đăng nhập bằng mật khẩu MySQL của `root`.
+Setup uses administrative access to the database over its local socket and may prompt for your `sudo` password. It does not require logging in as MySQL `root` with a password.
 
-### Cấu hình kết nối
+### Connection Settings
 
-`.env` chứa các biến sau:
+The `.env` file contains settings such as:
 
 ```env
 MYSQL_HOST=localhost
@@ -42,28 +42,28 @@ MYSQL_PASSWORD=<generated-password>
 MYSQL_DATABASE=stock_market
 ```
 
-Đây là ví dụ về tên biến, không phải credentials dùng chung. Setup tạo file với quyền `600`; `.gitignore` loại `.env` khỏi Git. Không commit hoặc chia sẻ file này. Các biến môi trường `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_USER`, `MYSQL_PASSWORD`, `MYSQL_DATABASE` sẽ ghi đè giá trị trong `.env` khi chạy CLI.
+These are example variable names, not shared credentials. Setup creates the file with permission mode `600`; `.gitignore` excludes `.env` from Git. Do not commit or share this file. The `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_USER`, `MYSQL_PASSWORD`, and `MYSQL_DATABASE` environment variables override `.env` values when running the CLI.
 
-## Schema database
+## Database Schema
 
-`scripts/init_database.py` tạo các bảng InnoDB dùng `utf8mb4`:
+`scripts/init_database.py` creates the following InnoDB tables using `utf8mb4`:
 
-| Bảng | Nội dung |
+| Table | Contents |
 | --- | --- |
-| `companies` | Mã cổ phiếu, tên, sàn, ngành và thông tin cơ bản |
-| `stock_prices` | Giá mở/cao/thấp/đóng cửa và khối lượng theo ngày |
-| `stock_holders` | Cổ đông, lượng cổ phần và tỷ lệ sở hữu theo ngày chốt |
-| `finance_reports` | Các chỉ số tài chính, JSON chỉ số bổ sung và đường dẫn tài liệu |
-| `tiers` | Danh mục phân loại doanh nghiệp |
-| `company_tiers` | Liên kết doanh nghiệp với tier |
-| `supply_chain_relations` | Nhà cung cấp, khách hàng, danh mục sản phẩm và tỷ trọng |
-| `company_news` | Tin dạng text và thông tin URL/đường dẫn media |
+| `companies` | Ticker, company name, exchange, industry, and basic information |
+| `stock_prices` | Daily open/high/low/close prices and trading volume |
+| `stock_holders` | Shareholders, shares held, and ownership percentage by snapshot date |
+| `finance_reports` | Financial metrics, additional metrics in JSON, and document paths |
+| `tiers` | Company classification tiers |
+| `company_tiers` | Links companies to tiers |
+| `supply_chain_relations` | Suppliers, customers, product categories, and revenue percentages |
+| `company_news` | Text news and media URLs or storage paths |
 
-Các khóa ngoại liên kết dữ liệu liên quan về `companies`; xóa một công ty sẽ cascade tới dữ liệu con. Script khởi tạo dùng `CREATE TABLE IF NOT EXISTS`, nên có thể chạy lại để tạo bảng còn thiếu mà không xóa dữ liệu hiện có.
+Foreign keys link related records to `companies`; deleting a company cascades to its dependent records. Initialization uses `CREATE TABLE IF NOT EXISTS`, so it can be rerun to create missing tables without deleting existing data.
 
-## Chạy CLI
+## Run the CLI
 
-Setup ưu tiên virtualenv trong `.venv/` hoặc `venv/` của module, sau đó mới tới `../venv/`. Kích hoạt đúng môi trường nếu muốn chạy lệnh `python` ngắn:
+Setup looks for a virtual environment in the module's `.venv/` or `venv/` directory, then in `../venv/`. Activate the environment used by setup to use the short `python` command:
 
 ```bash
 cd ~/stock/stock
@@ -71,63 +71,63 @@ source ../venv/bin/activate
 python scripts/stock_cli.py
 ```
 
-Nếu setup đã dùng virtualenv khác, thay đường dẫn `source` tương ứng, hoặc gọi Python trực tiếp, ví dụ:
+If setup used a different virtual environment, adjust the `source` path or invoke its Python executable directly, for example:
 
 ```bash
 ../venv/bin/python scripts/stock_cli.py
 ```
 
-CLI mở menu chính:
+The CLI main menu provides:
 
-1. **Tìm kiếm doanh nghiệp** theo mã hoặc tên.
-2. **Xem danh sách doanh nghiệp** theo từng trang.
+1. **Search for a company** by ticker or name.
+2. **Browse the company list** one page at a time.
 
-Trong danh sách, nhập số thứ tự để chọn công ty, `n`/`p` để chuyển trang và `b` để quay lại. Hồ sơ công ty có các mục giá cổ phiếu, cổ đông, nhà cung cấp upstream, khách hàng downstream, báo cáo tài chính và tin tức. Các danh sách được truy vấn theo trang; nội dung đầy đủ của tin chỉ được tải khi chọn tin đó.
+In a list, enter a row number to select a company, `n`/`p` to move between pages, or `b` to go back. The company detail menu includes stock prices, shareholders, upstream suppliers, downstream customers, financial reports, and news. Lists are queried one page at a time; full news text is fetched only after selecting an item.
 
-Tìm kiếm nhanh mà không qua menu:
+Search directly without opening the main menu:
 
 ```bash
 python scripts/stock_cli.py --query HPG --page-size 20
 ```
 
-Page size mặc định là 10, nhận từ 1 đến 100. `--help` hiển thị các tham số CLI.
+The default page size is 10; accepted values range from 1 to 100. Use `--help` to see the CLI options.
 
-## Nạp dữ liệu
+## Loading Data
 
-Hiện tại `setup_database.sh` và `init_database.py` chỉ cài database và tạo schema; CLI chỉ tra cứu dữ liệu đã có. Project chưa có collector/importer tự động cho danh sách doanh nghiệp, giá, cổ đông, báo cáo hoặc tin tức. Database mới khởi tạo vì vậy có thể chưa trả về kết quả cho tới khi được nạp dữ liệu bằng quy trình nhập riêng.
+`setup_database.sh` and `init_database.py` install/initialize the database schema; the CLI only reads existing data. The project does not yet include an automated collector or importer for companies, prices, shareholders, reports, or news. A newly initialized database may therefore return no results until data is loaded separately.
 
-Các mức giá và chỉ số tài chính là `DECIMAL`; nếu tài liệu báo cáo không tách được thành số liệu, lưu đường dẫn tài liệu trong `finance_reports.document_storage_path`. Tin có thể lưu nội dung text hoặc media URL/đường dẫn trong `company_news`.
+Stock prices and financial metrics use `DECIMAL` columns. If a financial report cannot be parsed into numeric metrics, its document path can be stored in `finance_reports.document_storage_path`. News can store text content, media URLs, or storage paths in `company_news`.
 
-## Xử lý lỗi
+## Troubleshooting
 
-### Không kết nối được database
+### Cannot connect to the database
 
-Kiểm tra dịch vụ:
+Check the service status:
 
 ```bash
 sudo systemctl status mariadb
 ```
 
-Nếu đang dùng MySQL thay vì MariaDB:
+If you use MySQL instead of MariaDB:
 
 ```bash
 sudo systemctl status mysql
 ```
 
-Xác nhận `.env` tồn tại tại thư mục module và có quyền `600`. Không in hoặc gửi giá trị `MYSQL_PASSWORD` khi chia sẻ log.
+Verify that `.env` exists in the module directory and has permission mode `600`. Do not print or share `MYSQL_PASSWORD` when sharing logs.
 
-### Access denied cho tài khoản database
+### Database access denied
 
-Không đổi cấu hình sang `root` để chạy CLI. Chạy lại `./scripts/setup_database.sh` trong terminal để tạo/cập nhật user `stock_app` qua socket quản trị và ghi credentials mới vào `.env`.
+Do not switch the CLI to the `root` account. Run `./scripts/setup_database.sh` again from a terminal to create/update the `stock_app` user through the administrative socket and write fresh credentials to `.env`.
 
-### Thiếu `mysql.connector`
+### Missing `mysql.connector`
 
-Chạy CLI bằng đúng virtualenv đã được setup dùng, hoặc kích hoạt virtualenv rồi cài connector:
+Run the CLI using the virtual environment created by setup, or activate the correct environment and install the connector:
 
 ```bash
 python -m pip install mysql-connector-python
 ```
 
-### Không tìm thấy doanh nghiệp
+### No companies found
 
-Kiểm tra database đã được nạp dữ liệu chưa. Setup chỉ tạo bảng, không tự tải dữ liệu doanh nghiệp hoặc giá thị trường.
+Check whether data has been loaded into the database. Setup only creates the tables; it does not download company or market data.

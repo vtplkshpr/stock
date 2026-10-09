@@ -43,7 +43,7 @@ class StockModule(BasePlugin):
         self._plugin_info = PluginInfo(
             name="stock",
             version="1.0.0",
-            description="Thu thập thông tin về các doanh nghiệp niêm yết trên sàn chứng khoán Việt Nam.",
+            description="Collect information about companies listed on Vietnamese stock exchanges.",
             author="lkwolfSAI Team",
             status=PluginStatus.DEVELOPMENT,
             dependencies=["click>=8.0.0", "rich>=13.0.0"],
@@ -53,28 +53,28 @@ class StockModule(BasePlugin):
             commands=[
                 {
                     "name": "run",
-                    "description": "Thu thập thông tin doanh nghiệp niêm yết tại Việt Nam",
+                    "description": "Collect information about Vietnamese listed companies",
                     "options": [
                         {
                             "name": "input",
                             "required": True,
-                            "help": "Mã cổ phiếu hoặc tên doanh nghiệp cần tra cứu"
+                            "help": "Ticker symbol or company name to look up"
                         },
                         {
                             "name": "output",
                             "required": False,
-                            "help": "Đường dẫn lưu kết quả"
+                            "help": "Path for saving the results"
                         }
                     ]
                 },
                 {
                     "name": "test",
-                    "description": "Kiểm tra trạng thái module",
+                    "description": "Check the module status",
                     "options": []
                 },
                 {
                     "name": "info",
-                    "description": "Hiển thị thông tin module",
+                    "description": "Display module information",
                     "options": []
                 }
             ]
@@ -169,13 +169,13 @@ class StockModule(BasePlugin):
 @click.group()
 @click.pass_context
 def main_cli(ctx):
-    """CLI for collecting Vietnamese listed-company information."""
+    """CLI for collecting information about Vietnamese listed companies."""
     ctx.ensure_object(dict)
 
 @main_cli.command()
-@click.option('--input', '-i', required=True, help='Input parameter')
-@click.option('--output', '-o', help='Output parameter')
-@click.option('--verbose', '-v', is_flag=True, help='Verbose output')
+@click.option('--input', '-i', required=True, help='Ticker symbol or company name')
+@click.option('--output', '-o', help='Path for saving the results')
+@click.option('--verbose', '-v', is_flag=True, help='Enable verbose output')
 async def run(input, output, verbose):
     """Collect information about a Vietnamese listed company."""
     console.print(Panel(
