@@ -1,100 +1,82 @@
-# 🧩 Module Template
+# Stock
 
-**Standard template for creating new AI modules**
+Module tra cứu thông tin doanh nghiệp niêm yết. Ứng dụng terminal đọc dữ liệu từ MySQL/MariaDB và tải danh sách theo từng trang.
 
-This template provides a standardized structure and boilerplate code for creating new AI-powered modules. It includes all necessary components for a complete, standalone module that can be easily integrated into larger systems.
+## Chức năng
 
-## 📁 Directory Structure
+- Tìm doanh nghiệp theo mã cổ phiếu hoặc tên.
+- Duyệt danh sách công ty đã có trong database.
+- Xem thông tin công ty, giá cổ phiếu, cổ đông, nhà cung cấp, khách hàng, báo cáo tài chính và tin tức.
+- Chuyển trang bằng truy vấn `LIMIT/OFFSET`; không tải toàn bộ danh sách vào bộ nhớ.
+- Với tin tức, nội dung text đầy đủ chỉ được truy vấn sau khi chọn một tin.
 
-```
-module_name/
-├── __init__.py                    # Module initialization
-├── main.py                        # CLI entry point
-├── module_info.py                 # Module metadata and configuration
-├── requirements.txt               # Module-specific dependencies
-├── SETUP.md                       # Setup and usage documentation
-├── README.md                      # Module documentation
-├── config.env.example             # Environment configuration example
-├── core/                          # Core business logic
-│   ├── __init__.py
-│   ├── base_service.py           # Base service class
-│   └── module_service.py         # Main module service
-├── models/                        # Database models
-│   ├── __init__.py
-│   └── module_models.py          # SQLAlchemy models
-├── services/                      # Business logic services
-│   ├── __init__.py
-│   └── module_services.py        # Service implementations
-├── utils/                         # Utility functions
-│   ├── __init__.py
-│   ├── config.py                 # Configuration management
-│   └── helpers.py                # Helper functions
-├── scripts/                       # Management scripts
-│   ├── __init__.py
-│   ├── init_database.py          # Database initialization
-│   ├── test_module.py            # Module testing
-│   └── setup_services.py         # Service setup
-├── tests/                         # Unit tests
-│   ├── __init__.py
-│   ├── test_core.py
-│   ├── test_services.py
-│   └── test_models.py
-└── logs/                          # Module logs (gitignored)
+Database hiện lưu các nhóm dữ liệu sau:
+
+- `companies`: thông tin cơ bản và mã niêm yết.
+- `stock_prices`: giá và khối lượng giao dịch theo ngày.
+- `stock_holders`: cổ đông và tỷ lệ nắm giữ theo ngày chốt.
+- `finance_reports`: chỉ số tài chính, chỉ số bổ sung và đường dẫn tài liệu.
+- `tiers`, `company_tiers`: phân loại doanh nghiệp.
+- `supply_chain_relations`: quan hệ nhà cung cấp và khách hàng.
+- `company_news`: tin text và metadata/path cho media.
+
+Script hiện tạo schema và CLI để đọc dữ liệu; chưa có tác vụ thu thập hoặc nhập dữ liệu thị trường. Các màn hình sẽ rỗng cho tới khi database được nạp dữ liệu.
+
+## Cài đặt nhanh
+
+Yêu cầu Ubuntu/Debian, Python 3, quyền `sudo` và kết nối mạng trong lần cài đầu. Từ thư mục module:
+
+```bash
+cd ~/stock/stock
+./scripts/setup_database.sh
 ```
 
-## 🚀 Quick Start
+Script dùng MariaDB/MySQL đã cài nếu có; nếu chưa có, script cài MySQL Server. Script khởi động dịch vụ, tạo database và user ứng dụng, cài `mysql-connector-python`, rồi tạo các bảng. Thông tin kết nối được lưu trong `.env` tại thư mục này với quyền `600`. File `.env` đã được Git ignore.
 
-1. **Copy this template** to your desired location
-2. **Rename the directory** to your module name
-3. **Update configuration** in `module_info.py` with your module details
-4. **Implement your logic** in `core/`, `services/`, and `models/`
-5. **Update documentation** in `README.md` and `SETUP.md`
-6. **Test your module** using the provided test scripts
-7. **Deploy or integrate** your module as needed
+## Chạy CLI
 
-## 📋 Required Files
+Từ thư mục module, kích hoạt virtualenv mà setup đã tìm thấy hoặc tạo:
 
-### `module_info.py`
-Contains module metadata, configuration schema, and CLI command definitions.
-
-### `main.py`
-Implements `ModuleInterface` and provides CLI integration.
-
-### `core/base_service.py`
-Base service class with common functionality.
-
-### `utils/config.py`
-Configuration management following ecosystem standards.
-
-### `scripts/init_database.py`
-Database initialization script.
-
-### `scripts/test_module.py`
-Module testing and validation script.
-
-## 🔧 Configuration
-
-Each module should have its own configuration namespace to avoid conflicts:
-
-```python
-# utils/config.py
-class ModuleConfig:
-    MODULE_SPECIFIC_SETTING = os.getenv('YOUR_MODULE_SETTING', 'default_value')
+```bash
+source ../venv/bin/activate
+python scripts/stock_cli.py
 ```
 
-## 🧪 Testing
+Nếu virtualenv được tạo trong project, dùng `source .venv/bin/activate` hoặc `source venv/bin/activate` tương ứng.
 
-Follow the testing standards:
+Menu chính:
 
-```python
-# scripts/test_module.py
-async def test_module_functionality():
-    # Test your module
-    pass
+1. **Tìm kiếm doanh nghiệp** theo mã hoặc tên.
+2. **Xem danh sách doanh nghiệp** và duyệt từng trang.
+
+Trong danh sách, nhập `n`/`p` để chuyển tới/trở về một trang, chọn số thứ tự để mở công ty, hoặc `b` để quay lại. Trong hồ sơ công ty, chọn giá cổ phiếu, cổ đông, nhà cung cấp (upstream), khách hàng (downstream), báo cáo tài chính hoặc tin tức.
+
+Có thể mở thẳng giao diện tìm kiếm:
+
+```bash
+python scripts/stock_cli.py --query HPG --page-size 20
 ```
 
-## 📚 Documentation
+`--page-size` nhận giá trị từ 1 đến 100, mặc định là 10. Ở menu chính, nhập `q` để thoát.
 
-- `README.md`: Module overview and usage
-- `SETUP.md`: Detailed setup instructions
-- Inline code documentation following Python standards
+CLI đọc `.env` trong thư mục module. Có thể ghi đè cấu hình bằng `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_USER`, `MYSQL_PASSWORD` và `MYSQL_DATABASE`.
+
+## Cấu trúc chính
+
+```text
+stock/
+├── main.py
+├── module_info_draft.py
+├── scripts/
+│   ├── init_database.py
+│   ├── setup_database.sh
+│   └── stock_cli.py
+├── README.md
+└── SETUP.md
+```
+
+Lệnh chạy giao diện tra cứu là `scripts/stock_cli.py`. `scripts/init_database.py` là script mức thấp, nhận kết nối qua tham số hoặc biến `MYSQL_*` (không tự đọc `.env`); quy trình khởi tạo thông thường nên chạy qua `scripts/setup_database.sh`.
+
+## Tài liệu
+
+- [SETUP.md](SETUP.md): hướng dẫn cài đặt, cấu hình và xử lý lỗi.
