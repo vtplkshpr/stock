@@ -2,6 +2,7 @@
 Main entry point for the Vietnam listed-company information plugin.
 """
 import asyncio
+import importlib.util
 import logging
 import sys
 from pathlib import Path
@@ -35,6 +36,17 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 console = Console()
+
+
+def _run_stock_browser(args: List[str]) -> int:
+    script_path = Path(__file__).parent / "scripts" / "stock_cli.py"
+    spec = importlib.util.spec_from_file_location("stock_cli", script_path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Unable to load stock browser: {script_path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.run(args)
+
 
 class StockModule(BasePlugin):
     """Plugin for collecting information about companies listed in Vietnam."""
@@ -166,11 +178,18 @@ class StockModule(BasePlugin):
         return errors
 
 # CLI Commands
-@click.group()
+@click.group(
+    invoke_without_command=True,
+    context_settings={"ignore_unknown_options": True, "allow_extra_args": True},
+)
 @click.pass_context
 def main_cli(ctx):
     """CLI for collecting information about Vietnamese listed companies."""
     ctx.ensure_object(dict)
+    if ctx.invoked_subcommand is None:
+        exit_code = _run_stock_browser(ctx.args)
+        if exit_code:
+            ctx.exit(exit_code)
 
 @main_cli.command()
 @click.option('--input', '-i', required=True, help='Ticker symbol or company name')
@@ -250,5 +269,4 @@ def info():
     ))
 
 if __name__ == "__main__":
-    # For direct execution
-    asyncio.run(main_cli())
+    main_cli()

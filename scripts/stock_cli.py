@@ -25,11 +25,11 @@ def load_database_config() -> dict[str, str]:
     }
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Tra cứu doanh nghiệp niêm yết trong database stock.")
     parser.add_argument("--query", help="Mã cổ phiếu hoặc tên công ty để tìm ngay khi mở chương trình.")
     parser.add_argument("--page-size", type=int, default=10, help="Số dòng mỗi trang (1-100, mặc định 10).")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     if not 1 <= args.page_size <= 100:
         parser.error("--page-size phải nằm trong khoảng từ 1 đến 100.")
     return args
@@ -347,8 +347,8 @@ def run_company_catalog(connection: Any, page_size: int) -> None:
         company_menu(connection, selected, page_size)
 
 
-def run() -> int:
-    args = parse_args()
+def run(argv: Sequence[str] | None = None) -> int:
+    args = parse_args(argv)
     try:
         import mysql.connector
     except ImportError:
