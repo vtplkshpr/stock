@@ -1,6 +1,7 @@
 """Interactive terminal browser for listed-company data."""
 
 import argparse
+import json
 import os
 import sys
 from pathlib import Path
@@ -159,13 +160,59 @@ def show_company(connection: Any, company_id: int) -> None:
         ("Sàn", "exchange"),
         ("Ngành", "industry"),
         ("Mã số thuế", "tax_code"),
-        ("Website", "website"),
+        ("Vốn điều lệ", "charter_capital"),
+        ("KL CP đang niêm yết", "listed_shares"),
+        ("KL CP đang lưu hành", "outstanding_shares"),
+        ("KL CP niêm yết lần đầu", "initial_listed_shares"),
+        ("Ngày giao dịch đầu tiên", "first_trading_date"),
         ("Ngày thành lập", "established_date"),
         ("Ngày niêm yết", "listed_date"),
-        ("Mô tả", "description"),
+        ("Fax", "fax"),
+        ("Email", "email"),
+        ("Website", "website"),
     ):
-        if company.get(key) is not None:
-            print(f"{label}: {company[key]}")
+        value = company.get(key)
+        if value is not None and value != "":
+            if key.endswith("_shares") and str(value).isdigit():
+                value = f"{int(value):,}"
+            print(f"{label}: {value}")
+
+    for label, key in (
+        ("Địa chỉ trụ sở", "headquarters_addresses"),
+        ("Điện thoại", "phone_numbers"),
+    ):
+        value = company.get(key)
+        if not value:
+            continue
+        try:
+            entries = json.loads(value) if isinstance(value, str) else value
+        except json.JSONDecodeError:
+            entries = []
+        if entries:
+            print(f"{label}:")
+            for entry in entries:
+                if isinstance(entry, list) and len(entry) == 2:
+                    print(f"  - {entry[0]}: {entry[1]}")
+                else:
+                    print(f"  - {entry}")
+
+    history = company.get("company_history")
+    if history:
+        print("Lịch sử:")
+        print(history)
+
+    description = company.get("description")
+    if description:
+        try:
+            source_data = json.loads(description)
+        except (json.JSONDecodeError, TypeError):
+            source_data = description
+        print("Thông tin nguồn:")
+        if isinstance(source_data, dict):
+            for key, value in source_data.items():
+                print(f"  {key}: {value}")
+        else:
+            print(source_data)
 
 
 def browse_prices(connection: Any, company_id: int, ticker: str, page_size: int) -> None:

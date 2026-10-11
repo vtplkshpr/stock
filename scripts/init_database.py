@@ -20,6 +20,16 @@ TABLES = (
         description TEXT NULL,
         established_date DATE NULL,
         listed_date DATE NULL,
+        charter_capital DECIMAL(24, 4) NULL,
+        listed_shares BIGINT UNSIGNED NULL,
+        outstanding_shares BIGINT UNSIGNED NULL,
+        initial_listed_shares BIGINT UNSIGNED NULL,
+        first_trading_date DATE NULL,
+        company_history LONGTEXT NULL,
+        headquarters_addresses JSON NULL,
+        phone_numbers JSON NULL,
+        fax VARCHAR(64) NULL,
+        email VARCHAR(255) NULL,
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         PRIMARY KEY (company_id),
@@ -156,6 +166,20 @@ TABLES = (
 )
 
 
+COMPANY_ADDITIONAL_COLUMNS = {
+    "charter_capital": "DECIMAL(24, 4) NULL",
+    "listed_shares": "BIGINT UNSIGNED NULL",
+    "outstanding_shares": "BIGINT UNSIGNED NULL",
+    "initial_listed_shares": "BIGINT UNSIGNED NULL",
+    "first_trading_date": "DATE NULL",
+    "company_history": "LONGTEXT NULL",
+    "headquarters_addresses": "JSON NULL",
+    "phone_numbers": "JSON NULL",
+    "fax": "VARCHAR(64) NULL",
+    "email": "VARCHAR(255) NULL",
+}
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Create the stock module MySQL schema.")
     parser.add_argument("--host", default=os.getenv("MYSQL_HOST", "localhost"))
@@ -175,6 +199,16 @@ def validate_database_name(database: str) -> str:
     if not re.fullmatch(r"[A-Za-z0-9_]+", database):
         raise ValueError("Database name may contain only letters, digits, and underscores.")
     return database
+
+
+def migrate_companies_table(cursor: Any) -> None:
+    cursor.execute("SHOW COLUMNS FROM companies")
+    existing_columns = {row[0] for row in cursor.fetchall()}
+    for column_name, definition in COMPANY_ADDITIONAL_COLUMNS.items():
+        if column_name not in existing_columns:
+            cursor.execute(
+                f"ALTER TABLE companies ADD COLUMN `{column_name}` {definition}"
+            )
 
 
 def initialize_database(config: argparse.Namespace) -> None:
@@ -206,6 +240,7 @@ def initialize_database(config: argparse.Namespace) -> None:
         cursor = connection.cursor()
         for statement in TABLES:
             cursor.execute(statement)
+        migrate_companies_table(cursor)
         connection.commit()
 
 

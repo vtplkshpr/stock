@@ -15,7 +15,10 @@ DEFAULT_OUTPUT_DIR = MODULE_DIR / "processed_data"
 TABLE_FIELDS = {
     "companies": (
         "ticker", "company_name", "exchange", "industry", "tax_code",
-        "website", "description", "established_date", "listed_date",
+        "charter_capital", "listed_shares", "outstanding_shares",
+        "initial_listed_shares", "first_trading_date", "company_history",
+        "headquarters_addresses", "phone_numbers", "fax", "email", "website",
+        "description", "established_date", "listed_date",
     ),
     "tiers": ("tier_name", "description"),
     "stock_holders": (
@@ -121,6 +124,16 @@ def prepare_csv(output_dir: Path) -> int:
                 if clean(market.get("company fields")) != "-"
                 else "",
                 "tax_code": clean(disclosure.get("Mã số doanh nghiệp")),
+                "charter_capital": "",
+                "listed_shares": "",
+                "outstanding_shares": "",
+                "initial_listed_shares": "",
+                "first_trading_date": "",
+                "company_history": "",
+                "headquarters_addresses": "",
+                "phone_numbers": "",
+                "fax": "",
+                "email": "",
                 "website": "",
                 "description": json.dumps(metadata, ensure_ascii=False) if metadata else "",
                 "established_date": "",
@@ -198,6 +211,27 @@ def import_csv(input_dir: Path) -> dict[str, int]:
                 )
             if table_name == "companies":
                 normalized["ticker"] = normalized["ticker"].upper()
+                for json_column in ("headquarters_addresses", "phone_numbers"):
+                    if normalized[json_column]:
+                        try:
+                            json_value = json.loads(normalized[json_column])
+                        except json.JSONDecodeError as exc:
+                            raise ValueError(
+                                f"{path}:{row_number} {json_column} must contain JSON."
+                            ) from exc
+                        if not isinstance(json_value, list) or any(
+                            not isinstance(item, list)
+                            or len(item) != 2
+                            or not all(isinstance(part, str) for part in item)
+                            for item in json_value
+                        ):
+                            raise ValueError(
+                                f"{path}:{row_number} {json_column} must be an array "
+                                "of two-string arrays."
+                            )
+                        normalized[json_column] = json.dumps(
+                            json_value, ensure_ascii=False
+                        )
             values.append(tuple(normalized[column] or None for column in columns))
         batch[table_name] = (columns, values)
 
@@ -223,7 +257,17 @@ def import_csv(input_dir: Path) -> dict[str, int]:
                     website = COALESCE(VALUES(website), website),
                     description = COALESCE(NULLIF(description, ''), VALUES(description)),
                     established_date = COALESCE(VALUES(established_date), established_date),
-                    listed_date = COALESCE(VALUES(listed_date), listed_date)
+                        listed_date = COALESCE(VALUES(listed_date), listed_date),
+                        charter_capital = COALESCE(VALUES(charter_capital), charter_capital),
+                        listed_shares = COALESCE(VALUES(listed_shares), listed_shares),
+                        outstanding_shares = COALESCE(VALUES(outstanding_shares), outstanding_shares),
+                        initial_listed_shares = COALESCE(VALUES(initial_listed_shares), initial_listed_shares),
+                        first_trading_date = COALESCE(VALUES(first_trading_date), first_trading_date),
+                        company_history = COALESCE(VALUES(company_history), company_history),
+                        headquarters_addresses = COALESCE(VALUES(headquarters_addresses), headquarters_addresses),
+                        phone_numbers = COALESCE(VALUES(phone_numbers), phone_numbers),
+                        fax = COALESCE(VALUES(fax), fax),
+                        email = COALESCE(VALUES(email), email)
             """
         elif table_name == "tiers":
             statement += " ON DUPLICATE KEY UPDATE description = COALESCE(VALUES(description), description)"

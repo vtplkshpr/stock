@@ -50,7 +50,7 @@ These are example variable names, not shared credentials. Setup creates the file
 
 | Table | Contents |
 | --- | --- |
-| `companies` | Ticker, company name, exchange, industry, and basic information |
+| `companies` | Ticker, company name, exchange, industry, tax code, charter capital, share counts, first trading date, history, addresses, contact details, and website |
 | `stock_prices` | Daily open/high/low/close prices and trading volume |
 | `stock_holders` | Shareholders, shares held, and ownership percentage by snapshot date |
 | `finance_reports` | Financial metrics, additional metrics in JSON, and document paths |
@@ -59,7 +59,9 @@ These are example variable names, not shared credentials. Setup creates the file
 | `supply_chain_relations` | Suppliers, customers, product categories, and revenue percentages |
 | `company_news` | Text news and media URLs or storage paths |
 
-Foreign keys link related records to `companies`; deleting a company cascades to its dependent records. Initialization uses `CREATE TABLE IF NOT EXISTS`, so it can be rerun to create missing tables without deleting existing data.
+Foreign keys link related records to `companies`; deleting a company cascades to its dependent records. Initialization uses `CREATE TABLE IF NOT EXISTS` and adds missing company-information columns to existing databases, so it can be rerun without deleting existing data.
+
+`company_history` is long text. `headquarters_addresses` and `phone_numbers` are JSON arrays whose entries each contain two strings. For example, `[["Trụ sở chính", "123 Đường A"], ["Chi nhánh", "456 Đường B"]]` represents multiple addresses. Other new company fields are `charter_capital`, `listed_shares`, `outstanding_shares`, `initial_listed_shares`, `first_trading_date`, `fax`, and `email`; `website` was already part of the schema.
 
 ## Run the CLI
 
@@ -94,7 +96,19 @@ The default page size is 10; accepted values range from 1 to 100. Use `--help` t
 
 ## Loading Data
 
-`setup_database.sh` and `init_database.py` install/initialize the database schema; the CLI only reads existing data. The project does not yet include an automated collector or importer for companies, prices, shareholders, reports, or news. A newly initialized database may therefore return no results until data is loaded separately.
+Prepare table-specific CSV files from `raw_data/` without a database connection:
+
+```bash
+python3 scripts/import_companies.py --prepare-only
+```
+
+To regenerate the CSVs and import them in one step, run:
+
+```bash
+python3 scripts/import_companies.py --prepare
+```
+
+To import already prepared CSVs from `processed_data/`, run `python3 scripts/import_companies.py`. The importer reads `.env` or `MYSQL_*` environment variables. The supplied raw files currently populate `companies.csv`; other per-table files contain only their headers until corresponding data is available. Missing company details remain blank rather than being inferred from unrelated source fields. Addresses and phone numbers must be JSON arrays of two-string arrays, and `company_history` accepts multiline text.
 
 Stock prices and financial metrics use `DECIMAL` columns. If a financial report cannot be parsed into numeric metrics, its document path can be stored in `finance_reports.document_storage_path`. News can store text content, media URLs, or storage paths in `company_news`.
 
