@@ -1,0 +1,194 @@
+{
+ "source_pdf": "financial_reports/SBT/2025/SBT_2025_Q3_separate_20250101-20250331.pdf",
+ "ocr_dir": "ocr_work/out/SBT_2025_Q3_separate_20250101-20250331",
+ "out_dir": "ocr_work/csv/SBT_2025_Q3_separate_20250101-20250331",
+ "meta": {
+  "report_type": "quarterly",
+  "scope": "separate",
+  "fiscal_year": 2025,
+  "quarter": 3,
+  "period_start": "2025-01-01",
+  "period_end": "2025-03-31",
+  "published_at": "2025-04-28",
+  "document": "financial_reports/SBT/2025/SBT_2025_Q3_separate_20250101-20250331.pdf"
+ },
+ "statement_fix": {
+  "cash_flow": {
+   "80@10": "08",
+   "60@10": "09"
+  }
+ },
+ "employees": {
+  "total": 756,
+  "seasonal_employees": 101
+ },
+ "parties": {
+  "Công ty C phn Đu tư Thành Thành Công": [
+   "Công ty Cổ phần Đầu tư Thành Thành Công",
+   "major_shareholder",
+   ""
+  ],
+  "Công ty C phn Thương mi Thành Thành Công": [
+   "Công ty Cổ phần Thương mại Thành Thành Công",
+   "co_owner",
+   ""
+  ],
+  "Công ty Cồ phàn Xut nhp khu Bên Tre": [
+   "Công ty Cổ phần Xuất nhập khẩu Bến Tre",
+   "other",
+   ""
+  ],
+  "Công ty C phn Xut Nhp Khu Tân Đinh": [
+   "Công ty Cổ phần Xuất nhập khẩu Tân Định",
+   "associate",
+   ""
+  ],
+  "Công Ty TNHH Mía Đung TTC Attapeu": [
+   "Công ty TNHH Mía Đường TTC Attapeu",
+   "subsidiary",
+   ""
+  ],
+  "Công Ty C phàn Hàng Tiêu Dùng Biên Hòa": [
+   "Công ty Cổ phần Hàng Tiêu Dùng Biên Hòa",
+   "subsidiary",
+   ""
+  ],
+  "Công ty C phn Năng Lương Thành Thành Công": [
+   "Công ty Cổ phần Năng lượng Thành Thành Công",
+   "group_company",
+   ""
+  ],
+  "Công ty AgriS Ninh Hòa": [
+   "Công ty AgriS Ninh Hòa",
+   "indirect_subsidiary",
+   ""
+  ],
+  "Công ty C Phàn Nông nghip AgriS Gia Lai": [
+   "Công ty Cổ phần Nông nghiệp AgriS Gia Lai",
+   "subsidiary",
+   ""
+  ],
+  "Công Ty TNHH MTV Mía Đung TTC Attapeu": [
+   "Công ty TNHH MTV Mía Đường TTC Attapeu",
+   "indirect_subsidiary",
+   ""
+  ],
+  "Công ty C Phàn Đưòng Nưóc Trong": [
+   "Công ty Cổ phần Đường Nước Trong",
+   "indirect_subsidiary",
+   ""
+  ],
+  "Công Ty C phn Đưòng Biên Hòa - Phan Rang": [
+   "Công ty Cổ phần Đường Biên Hòa - Phan Rang",
+   "indirect_subsidiary",
+   ""
+  ],
+  "Công Ty C Phn Phát Trin Nông Nghip Thành Thành Công": [
+   "Công ty Cổ phần Phát triển Nông nghiệp Thành Thành Công",
+   "subsidiary",
+   ""
+  ],
+  "Công Ty TNHH Nghiên Cu. Ú'ng Dung Mía Đurng Thành Thành Công": [
+   "Công ty TNHH Nghiên cứu, Ứng dụng Mía Đường Thành Thành Công",
+   "indirect_subsidiary",
+   ""
+  ],
+  "Công Ty TNHH MTV Nông Nghip Xanh Thành Čông": [
+   "Công ty TNHH MTV Nông nghiệp Xanh Thành Công",
+   "indirect_subsidiary",
+   ""
+  ],
+  "Công Ty TNHH MTV Thành Công Xanh": [
+   "Công ty TNHH MTV Thành Công Xanh",
+   "indirect_subsidiary",
+   ""
+  ],
+  "ng Ty NHH MV Đu Tu Nông Nghip Thành Công": [
+   "Công ty TNHH MTV Đầu tư Nông nghiệp Thành Công",
+   "indirect_subsidiary",
+   ""
+  ],
+  "Công Ty TNHH MTV Ý Tung Xanh Thành Công": [
+   "Công ty TNHH MTV Ý Tưởng Xanh Thành Công",
+   "indirect_subsidiary",
+   ""
+  ],
+  "Công ty TNHH MTV TM DV SX TTC An Hòa": [
+   "Công ty TNHH MTV TM DV SX TTC An Hòa",
+   "subsidiary",
+   ""
+  ],
+  "Công ty C Phàn Phát Trin Sàn Xuát AgriS (tên cū Công ty TNHH MTV Mía Đuòng Thành Thành Công – Biên Hòa )": [
+   "Công ty Cổ phần Phát triển Sản xuất AgriS",
+   "subsidiary",
+   ""
+  ],
+  "Công ty TNHH Hi Vi": [
+   "Công ty TNHH Hải Vi",
+   "indirect_subsidiary",
+   ""
+  ],
+  "Công Ty C phn Mía Đưng Tây Ninh": [
+   "Công ty Cổ phần Mía Đường Tây Ninh",
+   "indirect_subsidiary",
+   ""
+  ],
+  "Công ty CP In Thanh Niên": [
+   "Công ty Cổ phần In Thanh Niên",
+   "indirect_subsidiary",
+   ""
+  ],
+  "Công ty C phn Bao bì Xanh": [
+   "Công ty Cổ phần Bao bì Xanh",
+   "group_company",
+   ""
+  ],
+  "Công ty C phàn Biên Hòa- Thành Long": [
+   "Công ty Cổ phần Biên Hòa - Thành Long",
+   "indirect_subsidiary",
+   ""
+  ],
+  "Công ty C phn Khu Công Nghip Thành Thành Công": [
+   "Công ty Cổ phần Khu Công nghiệp Thành Thành Công",
+   "group_company",
+   ""
+  ]
+ },
+ "remuneration": [
+  [
+   "Đặng Huỳnh Ức My",
+   "Thù lao HĐQT - Chủ tịch",
+   1155000000
+  ],
+  [
+   "Huỳnh Bích Ngọc",
+   "Thù lao HĐQT - Thành viên",
+   450000000
+  ],
+  [
+   "Trần Tấn Việt",
+   "Thù lao HĐQT - Thành viên",
+   540000000
+  ],
+  [
+   "Trần Trọng Gia Vinh",
+   "Thù lao HĐQT - Thành viên độc lập",
+   735000000
+  ],
+  [
+   "Lê Quang Phúc",
+   "Thù lao HĐQT - Thành viên độc lập",
+   750000000
+  ],
+  [
+   "Thái Văn Chuyện",
+   "Thù lao Tổng Giám đốc",
+   1201995000
+  ],
+  [
+   "Các thành viên quản lý khác (Ban Tổng Giám đốc)",
+   "Thù lao Ban Tổng Giám đốc",
+   1479112778
+  ]
+ ]
+}

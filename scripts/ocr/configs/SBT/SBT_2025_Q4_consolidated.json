@@ -1,0 +1,183 @@
+{
+ "source_pdf": "financial_reports/SBT/2025/SBT_2025_Q4_consolidated_20250401-20250630.pdf",
+ "ocr_dir": "ocr_work/out/SBT_2025_Q4_consolidated_20250401-20250630",
+ "out_dir": "ocr_work/csv/SBT_2025_Q4_consolidated_20250401-20250630",
+ "meta": {
+  "report_type": "quarterly",
+  "scope": "consolidated",
+  "fiscal_year": 2025,
+  "quarter": 4,
+  "period_start": "2025-04-01",
+  "period_end": "2025-06-30",
+  "published_at": "2025-07-30",
+  "document": "financial_reports/SBT/2025/SBT_2025_Q4_consolidated_20250401-20250630.pdf"
+ },
+ "statement_fix": {
+  "cash_flow": {
+   "60@11": "09"
+  }
+ },
+ "set": {
+  "cash_flow": {
+   "25": [
+    -3605440207640,
+    -920157117975
+   ]
+  }
+ },
+ "employees": {
+  "total": 2651,
+  "permanent_employees": 2503,
+  "seasonal_employees": 148
+ },
+ "description_fix": {
+  "Mua thêm c phiu": "Mua thêm cổ phiếu"
+ },
+ "parties": {
+  "Công ty C phn Đu tư Thành Thành Công": [
+   "Công ty Cổ phần Đầu tư Thành Thành Công",
+   "major_shareholder",
+   ""
+  ],
+  "Công ty C phn Thương mi Thành Thành Công": [
+   "Công ty Cổ phần Thương mại Thành Thành Công",
+   "group_company",
+   ""
+  ],
+  "Công ty C phn Xut nhp khu Bn Tre": [
+   "Công ty Cổ phần Xuất nhập khẩu Bến Tre",
+   "associate",
+   ""
+  ],
+  "Công ty C phàn Bao bi Xanh": [
+   "Công ty Cổ phần Bao bì Xanh",
+   "group_company",
+   ""
+  ],
+  "Công ty Cð Phàn Khu Công Nghip Thành Thành Công": [
+   "Công ty Cổ phần Khu Công nghiệp Thành Thành Công",
+   "group_company",
+   ""
+  ],
+  "Công ty Cồ phn Đin Gia Lai": [
+   "Công ty Cổ phần Điện Gia Lai",
+   "group_company",
+   "GEG"
+  ],
+  "Công ty C phàn Toàn Hi Vân": [
+   "Công ty Cổ phần Toàn Hải Vân",
+   "associate",
+   ""
+  ],
+  "Công ty Cồ phn Năng Lưng Thành Thành Công": [
+   "Công ty Cổ phần Năng lượng Thành Thành Công",
+   "group_company",
+   ""
+  ],
+  "Công ty Cphàn Ha tàng Cm Công Nghip Tân Hi": [
+   "Công ty Cổ phần Hạ tầng Cụm Công nghiệp Tân Hội",
+   "other",
+   ""
+  ],
+  "Công ty Cồ phàn Khai thác và Qun lý Khu công nghip Đăng Huynh": [
+   "Công ty Cổ phần Khai thác và Quản lý Khu công nghiệp Đặng Huỳnh",
+   "other",
+   ""
+  ]
+ },
+ "remuneration": [
+  [
+   "Đặng Huỳnh Ức My",
+   "Thù lao HĐQT - Chủ tịch",
+   1155000000
+  ],
+  [
+   "Huỳnh Bích Ngọc",
+   "Thù lao HĐQT - Thành viên",
+   450000000
+  ],
+  [
+   "Trần Tấn Việt",
+   "Thù lao HĐQT - Thành viên",
+   540000000
+  ],
+  [
+   "Trần Trọng Gia Vinh",
+   "Thù lao HĐQT - Thành viên độc lập",
+   735000000
+  ],
+  [
+   "Lê Quang Phúc",
+   "Thù lao HĐQT - Thành viên độc lập",
+   750000000
+  ],
+  [
+   "Thái Văn Chuyện",
+   "Thù lao Tổng Giám đốc",
+   1202065000
+  ],
+  [
+   "Các thành viên quản lý khác (Ban Tổng Giám đốc)",
+   "Thù lao Ban Tổng Giám đốc",
+   1296510000
+  ]
+ ],
+ "leaders": [
+  [
+   "Huỳnh Văn Pháp",
+   "Phó Tổng GĐ",
+   "management",
+   "2025-05-08",
+   "",
+   "current"
+  ],
+  [
+   "Huỳnh Văn Pháp",
+   "Phó Tổng Giám đốc (nhiệm kỳ trước)",
+   "management",
+   "",
+   "2024-07-24",
+   "former"
+  ],
+  [
+   "Đoàn Vũ Uyên Duyên",
+   "Phó Tổng Giám đốc (nhiệm kỳ trước)",
+   "management",
+   "2024-07-17",
+   "2025-06-30",
+   "former"
+  ],
+  [
+   "Nguyễn Thị Lan Phương",
+   "Phó Tổng Giám đốc",
+   "management",
+   "2025-06-30",
+   "",
+   "current"
+  ],
+  [
+   "Trần Quốc Thảo",
+   "Phó TGĐ Thường trực",
+   "management",
+   "",
+   "2024-07-01",
+   "former"
+  ],
+  [
+   "Trần Quốc Thảo",
+   "Phó Tổng Giám đốc",
+   "management",
+   "2024-07-17",
+   "",
+   "current"
+  ],
+  [
+   "Nguyễn Thị Phương Thảo",
+   "Phó Tổng GĐ",
+   "management",
+   "2024-07-29",
+   "",
+   "current"
+  ]
+ ]
+}

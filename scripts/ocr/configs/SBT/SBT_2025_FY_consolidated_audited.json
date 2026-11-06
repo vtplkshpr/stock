@@ -1,0 +1,100 @@
+{
+ "source_pdf": "financial_reports/SBT/2025/SBT_2025_FY_consolidated_audited_20240701-20250630.pdf",
+ "ocr_dir": "ocr_work/out/SBT_2025_FY_consolidated_audited_20240701-20250630",
+ "out_dir": "ocr_work/csv/SBT_2025_FY_consolidated_audited_20240701-20250630",
+ "meta": {
+  "report_type": "annual",
+  "scope": "consolidated",
+  "fiscal_year": 2025,
+  "quarter": null,
+  "period_start": "2024-07-01",
+  "period_end": "2025-06-30",
+  "published_at": "2025-09-27",
+  "audit_status": "audited",
+  "auditor": "Công ty TNHH Ernst & Young Việt Nam",
+  "audit_opinion": "unqualified",
+  "audit_report_date": "2025-09-27",
+  "document": "financial_reports/SBT/2025/SBT_2025_FY_consolidated_audited_20240701-20250630.pdf"
+ },
+ "set": {
+  "income_statement": {
+   "11": [
+    -25497937296723,
+    -25856644161855
+   ]
+  },
+  "balance_sheet": {
+   "255": [
+    178000000000,
+    210180000000
+   ]
+  }
+ },
+ "employees": {
+  "total": 2651
+ },
+ "parties": {
+  "Công ty C phàn Sn xut - Thuong mai Bao bi Thành Thành Công": [
+   "Công ty Cổ phần Bao bì Xanh",
+   "group_company",
+   ""
+  ]
+ },
+ "remuneration": [
+  [
+   "Đặng Huỳnh Ức My",
+   "Thù lao HĐQT - Chủ tịch",
+   4360000000
+  ],
+  [
+   "Huỳnh Bích Ngọc",
+   "Thù lao HĐQT - Thành viên",
+   1200000000
+  ],
+  [
+   "Trần Tấn Việt",
+   "Thù lao HĐQT - Thành viên",
+   1920000000
+  ],
+  [
+   "Đào Duy Thi",
+   "Thù lao HĐQT - Thành viên",
+   600000000
+  ],
+  [
+   "Võ Tòng Xuân",
+   "Thù lao HĐQT - Thành viên",
+   150000000
+  ],
+  [
+   "Trần Trọng Gia Vinh",
+   "Thù lao HĐQT - Thành viên độc lập",
+   2560000000
+  ],
+  [
+   "Lê Quang Phúc",
+   "Thù lao HĐQT - Thành viên độc lập",
+   2000000000
+  ],
+  [
+   "Võ Thúy Anh",
+   "Thù lao HĐQT - Thành viên độc lập",
+   380000000
+  ],
+  [
+   "Thái Văn Chuyện",
+   "Thù lao Tổng Giám đốc",
+   4377000769
+  ],
+  [
+   "Nguyễn Thanh Ngữ",
+   "Thù lao Tổng Giám đốc",
+   250770000
+  ],
+  [
+   "Các thành viên quản lý khác (Ban Tổng Giám đốc)",
+   "Thù lao Ban Tổng Giám đốc",
+   7123969376
+  ]
+ ]
+}

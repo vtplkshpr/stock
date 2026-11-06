@@ -814,3 +814,1215 @@ SBT,annual,separate,2025,,cash_flow,40,Lưu chuyn tin thun t hot,3060931407918.0
 SBT,annual,separate,2025,,cash_flow,50,Lưu chuyển tiền thuần trong kỳ,-594259670763.0000,609692946861.0000,,
 SBT,annual,separate,2025,,cash_flow,60,Tiền và tương đương tiền đầu kỳ,2874916311059.0000,2265223364198.0000,,
 SBT,annual,separate,2025,,cash_flow,70,Tiền và tương đương tiền cuối kỳ,2280656640296.0000,2874916311059.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,100,A. Tài sản ngắn hạn,14978424667210.0000,14258223051150.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,110,I. Tiền và các khoản tương đương tiền,2298918040639.0000,2280656640296.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,111,Tiền,268844092156.0000,370968332332.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,112,Các khoản tương đương tiền,2030073948483.0000,1909688307964.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,120,II. Đầu tư tài chính ngắn hạn,2367216895617.0000,2267275452286.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,121,Chứng khoán kinh doanh,487232869165.0000,487232869165.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,122,Dự phòng giảm giá chứng khoán kinh doanh,-15751361322.0000,-15236361322.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,123,Đầu tư nắm giữ đến ngày đáo hạn,1895735387774.0000,1795278944443.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,130,III. Các khoản phải thu ngắn hạn,9046577327787.0000,8518694235595.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,131,Phải thu ngắn hạn của khách hàng,2365139554720.0000,2227670878738.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,132,Trả trước cho người bán ngắn hạn,4537507427119.0000,4717679261067.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,135,Phải thu về cho vay ngắn hạn,344410000000.0000,301510000000.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,136,Phải thu ngắn hạn khác,1850490861441.0000,1340092347265.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,137,Dự phòng phải thu ngắn hạn khó đòi,-50970515493.0000,-68258251475.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,140,IV. Hàng tồn kho,1227343853681.0000,1165499324149.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,141,Hàng tồn kho,1237620356045.0000,1175775826513.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,149,Dự phòng giảm giá hàng tồn kho,-10276502364.0000,-10276502364.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,150,V. Tài sản ngắn hạn khác,38368549486.0000,26097398824.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,151,Chi phí trả trước ngắn hạn,24302567821.0000,13711688661.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,152,Thuế GTGT được khấu trừ,2507735586.0000,2751623594.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,153,Thuế và các khoản khác phải thu Nhà nước,11558246079.0000,9634086569.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,200,B. Tài sản dài hạn,20452112446326.0000,20639923040656.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,210,I. Các khoản phải thu dài hạn,2477458781902.0000,2616550446658.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,211,Phải thu dài hạn của khách hàng,167955017658.0000,172655324321.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,212,Trả trước cho người bán dài hạn,879606102908.0000,1014097769858.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,215,Phải thu về cho vay dài hạn,,13000000000.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,216,Phải thu dài hạn khác,1429897661336.0000,1416797352479.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,220,II. Tài sản cố định,485808068943.0000,498134891671.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,221,Tài sản cố định hữu hình,353768754047.0000,361766107988.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,222,Nguyên giá (TSCĐ hữu hình),2318726968871.0000,2314440035235.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,223,Giá trị hao mòn lũy kế (TSCĐ hữu hình),-1964958214824.0000,-1952673927247.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,224,Tài sản cố định thuê tài chính,14018441482.0000,14322004423.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,225,Nguyên giá (TSCĐ thuê tài chính),20025323577.0000,20025323577.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,226,Giá trị hao mòn lũy kế (TSCĐ thuê tài chính),-6006882095.0000,-5703319154.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,227,Tài sản cố định vô hình,118020873414.0000,122046779260.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,228,Nguyên giá (TSCĐ vô hình),227224265624.0000,227204665624.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,229,Giá trị hao mòn lũy kế (TSCĐ vô hình),-109203392210.0000,-105157886364.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,230,IlI. Bt đng sn đu tư,123907961428.0000,124971246781.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,231,Nguyên giá (BĐS đầu tư),167991741266.0000,167991741266.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,232,Giá trị hao mòn lũy kế (BĐS đầu tư),-44083779838.0000,-43020494485.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,240,IV. Tài sản dở dang dài hạn,283701804219.0000,200277409835.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,242,Chi phí xây dựng cơ bản dở dang,283701804219.0000,200277409835.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,250,V. Đầu tư tài chính dài hạn,16857609345250.0000,16964719193716.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,251,Đầu tư vào công ty con,15391504328750.0000,15551504328750.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,253,Đầu tư góp vốn vào đơn vị khác,1473295710444.0000,1504874910444.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,254,Dự phòng đầu tư tài chính dài hạn,-37190693944.0000,-131660045478.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,255,Đầu tư nắm giữ đến ngày đáo hạn,30000000000.0000,40000000000.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,260,VI. Tài sản dài hạn khác,223626484584.0000,235269851995.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,261,Chi phí trả trước dài hạn,216282994348.0000,227926361759.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,262,Tài sản thuế thu nhập hoãn lại,7343490236.0000,7343490236.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,270,Tổng cộng tài sản,35430537113536.0000,34898146091806.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,300,C. Nợ phải trả,19274169715703.0000,18732352055071.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,310,I. N ngn hn,12836765800558.0000,12212096874388.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,311,Phải trả người bán ngắn hạn,1137189056204.0000,1470298031096.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,312,Người mua trả tiền trước ngắn hạn,486126803246.0000,565524689643.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,313,Thuế và các khoản phải nộp Nhà nước,8743595366.0000,26692392211.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,314,Phải trả người lao động,5787291292.0000,6079866632.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,315,Chi phí phải trả ngắn hạn,182426417981.0000,209161456265.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,318,Doanh thu chưa thực hiện ngắn hạn,274534393.0000,77814082.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,319,Phải trả ngắn hạn khác,1415547772778.0000,1418404182683.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,320,Vay và nợ thuê tài chính ngắn hạn,9600372871300.0000,8515499482802.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,322,"Quỹ khen thưởng, phúc lợi",297457998.0000,358958974.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,330,II. Nợ dài hạn,6437403915145.0000,6520255180683.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,337,Phải trả dài hạn khác,6193342030.0000,6193342030.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,338,Vay và nợ thuê tài chính dài hạn,6426973610865.0000,6509824876403.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,342,Dự phòng phải trả dài hạn,4236962250.0000,4236962250.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,400,D. Vốn chủ sở hữu,16156367397833.0000,16165794036735.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,410,I. Vốn chủ sở hữu,16156367397833.0000,16165794036735.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,411,1. Vn c phàn,8361563710000.0000,8361563710000.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,411a,Cổ phiếu phổ thông có quyền biểu quyết,8145450380000.0000,8145450380000.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,411b,Cổ phiếu ưu đãi,216113330000.0000,216113330000.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,412,Thặng dư vốn cổ phần,6770104566476.0000,6770104566476.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,418,Quỹ đầu tư phát triển,46130752499.0000,46130752499.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,421,Lợi nhuận sau thuế chưa phân phối,978568368858.0000,987995007760.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,421a,LNST chưa phân phối lũy kế đến cuối kỳ trước,964995007760.0000,248685016346.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,421b,LNST chưa phân phối kỳ này,13573361098.0000,739309991414.0000,,
+SBT,quarterly,separate,2026,1,balance_sheet,440,Tổng cộng nguồn vốn,35430537113536.0000,34898146091806.0000,,
+SBT,quarterly,separate,2026,1,income_statement,01,Doanh thu bán hàng và cung cấp dịch vụ,3140666362652.0000,3745623848761.0000,3140666362652.0000,3745623848761.0000
+SBT,quarterly,separate,2026,1,income_statement,02,Các khoản giảm trừ doanh thu,-1929152237.0000,-251572000.0000,-1929152237.0000,-251572000.0000
+SBT,quarterly,separate,2026,1,income_statement,10,Doanh thu thuần về bán hàng và cung cấp dịch vụ,3138737210415.0000,3745372276761.0000,3138737210415.0000,3745372276761.0000
+SBT,quarterly,separate,2026,1,income_statement,11,Giá vốn hàng bán,-2948800305393.0000,-3408768870108.0000,-2948800305393.0000,-3408768870108.0000
+SBT,quarterly,separate,2026,1,income_statement,20,Lợi nhuận gộp về bán hàng và cung cấp dịch vụ,189936905022.0000,336603406653.0000,189936905022.0000,336603406653.0000
+SBT,quarterly,separate,2026,1,income_statement,21,Doanh thu hoạt động tài chính,238841282834.0000,240345483448.0000,238841282834.0000,240345483448.0000
+SBT,quarterly,separate,2026,1,income_statement,22,Chi phí tài chính,-299127730961.0000,-374568028520.0000,-299127730961.0000,-374568028520.0000
+SBT,quarterly,separate,2026,1,income_statement,23,Trong đó: Chi phí lãi vay,-294355585747.0000,-287142210854.0000,-294355585747.0000,-287142210854.0000
+SBT,quarterly,separate,2026,1,income_statement,25,Chi phí bán hàng,-41158266417.0000,-45785485032.0000,-41158266417.0000,-45785485032.0000
+SBT,quarterly,separate,2026,1,income_statement,26,Chi phí quản lý doanh nghiệp,-67285504518.0000,-85145639142.0000,-67285504518.0000,-85145639142.0000
+SBT,quarterly,separate,2026,1,income_statement,30,10. L'i nhun thun tù hot đng,21206685960.0000,71449737407.0000,21206685960.0000,71449737407.0000
+SBT,quarterly,separate,2026,1,income_statement,31,Thu nhập khác,15649271154.0000,6521680173.0000,15649271154.0000,6521680173.0000
+SBT,quarterly,separate,2026,1,income_statement,32,Chi phí khác,-1934641.0000,-12888603444.0000,-1934641.0000,-12888603444.0000
+SBT,quarterly,separate,2026,1,income_statement,40,Lợi nhuận khác,15647336513.0000,-6366923271.0000,15647336513.0000,-6366923271.0000
+SBT,quarterly,separate,2026,1,income_statement,50,Tổng lợi nhuận kế toán trước thuế,36854022473.0000,65082814136.0000,36854022473.0000,65082814136.0000
+SBT,quarterly,separate,2026,1,income_statement,51,Chi phí thuế TNDN hiện hành,-3670596717.0000,-7809937696.0000,-3670596717.0000,-7809937696.0000
+SBT,quarterly,separate,2026,1,income_statement,60,Lợi nhuận sau thuế TNDN,33183425756.0000,57272876440.0000,33183425756.0000,57272876440.0000
+SBT,quarterly,separate,2026,1,cash_flow,01,Lợi nhuận trước thuế,36854022473.0000,65082814136.0000,36854022473.0000,65082814136.0000
+SBT,quarterly,separate,2026,1,cash_flow,02,Khấu hao TSCĐ và BĐSĐT,17696641717.0000,18291371058.0000,17696641717.0000,18291371058.0000
+SBT,quarterly,separate,2026,1,cash_flow,03,Các khoản dự phòng,-111242087516.0000,137578212.0000,-111242087516.0000,137578212.0000
+SBT,quarterly,separate,2026,1,cash_flow,04,Lãi/lỗ chênh lệch tỷ giá hối đoái do đánh giá lại các khoản mục tiền tệ có gốc ngoại tệ,-17316835955.0000,-29301586667.0000,-17316835955.0000,-29301586667.0000
+SBT,quarterly,separate,2026,1,cash_flow,05,Lãi/lỗ từ hoạt động đầu tư,-207463884113.0000,-197472016394.0000,-207463884113.0000,-197472016394.0000
+SBT,quarterly,separate,2026,1,cash_flow,06,Chi phí lãi vay,294355585747.0000,287142210854.0000,294355585747.0000,287142210854.0000
+SBT,quarterly,separate,2026,1,cash_flow,08,Lợi nhuận từ hoạt động kinh doanh trước thay đổi vốn lưu động,12883442353.0000,143880371199.0000,12883442353.0000,143880371199.0000
+SBT,quarterly,separate,2026,1,cash_flow,09,Tăng/giảm các khoản phải thu,-211074596313.0000,-945863045118.0000,-211074596313.0000,-945863045118.0000
+SBT,quarterly,separate,2026,1,cash_flow,10,Tăng/giảm hàng tồn kho,-61844529532.0000,74040161072.0000,-61844529532.0000,74040161072.0000
+SBT,quarterly,separate,2026,1,cash_flow,11,Tăng/giảm các khoản phải trả,-436409424773.0000,129524469718.0000,-436409424773.0000,129524469718.0000
+SBT,quarterly,separate,2026,1,cash_flow,12,Tăng/giảm chi phí trả trước,1052488251.0000,-2527371272.0000,1052488251.0000,-2527371272.0000
+SBT,quarterly,separate,2026,1,cash_flow,14,Tiền lãi vay đã trả,-335820205901.0000,-325818857393.0000,-335820205901.0000,-325818857393.0000
+SBT,quarterly,separate,2026,1,cash_flow,15,Thuế thu nhập doanh nghiệp đã nộp,-5549577801.0000,-27594095699.0000,-5549577801.0000,-27594095699.0000
+SBT,quarterly,separate,2026,1,cash_flow,17,Tiền chi khác cho hoạt động kinh doanh,-23061500976.0000,-20553692033.0000,-23061500976.0000,-20553692033.0000
+SBT,quarterly,separate,2026,1,cash_flow,20,Lưu chuyển tiền thuần từ hoạt động kinh doanh,-1059823904692.0000,-974912059526.0000,-1059823904692.0000,-974912059526.0000
+SBT,quarterly,separate,2026,1,cash_flow,21,"Tiền chi để mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác",-87730928020.0000,-32619276363.0000,-87730928020.0000,-32619276363.0000
+SBT,quarterly,separate,2026,1,cash_flow,22,"Tiền thu từ thanh lý, nhượng bán TSCĐ và các tài sản dài hạn khác",,5732359727.0000,,5732359727.0000
+SBT,quarterly,separate,2026,1,cash_flow,23,"Tiền chi cho vay, mua các công cụ nợ của đơn vị khác",-207705552961.0000,-124932506182.0000,-207705552961.0000,-124932506182.0000
+SBT,quarterly,separate,2026,1,cash_flow,24,"Tiền thu hồi cho vay, bán lại các công cụ nợ của đơn vị khác",106406510824.0000,120898473987.0000,106406510824.0000,120898473987.0000
+SBT,quarterly,separate,2026,1,cash_flow,26,Tiền thu hồi đầu tư góp vốn vào đơn vị khác,179000000000.0000,6370000000.0000,179000000000.0000,6370000000.0000
+SBT,quarterly,separate,2026,1,cash_flow,27,"Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia",86093152232.0000,8596434378.0000,86093152232.0000,8596434378.0000
+SBT,quarterly,separate,2026,1,cash_flow,30,Luu chuyn tin thun (s dng vào) t hot đng đu tur,76063182075.0000,-15954514453.0000,76063182075.0000,-15954514453.0000
+SBT,quarterly,separate,2026,1,cash_flow,33,Tiền thu từ đi vay,9275630124363.0000,9520611085566.0000,9275630124363.0000,9520611085566.0000
+SBT,quarterly,separate,2026,1,cash_flow,34,Tiền trả nợ gốc vay,-8273608001403.0000,-8611851550002.0000,-8273608001403.0000,-8611851550002.0000
+SBT,quarterly,separate,2026,1,cash_flow,40,Lưu chuyển tiền thuần từ hoạt động tài chính,1002022122960.0000,908759535564.0000,1002022122960.0000,908759535564.0000
+SBT,quarterly,separate,2026,1,cash_flow,50,Lưu chuyển tiền thuần trong kỳ,18261400343.0000,-82107038415.0000,18261400343.0000,-82107038415.0000
+SBT,quarterly,separate,2026,1,cash_flow,60,Tiền và tương đương tiền đầu kỳ,2280656640296.0000,2874916311059.0000,2280656640296.0000,2874916311059.0000
+SBT,quarterly,separate,2026,1,cash_flow,70,Tiền và tương đương tiền cuối kỳ,2298918040639.0000,2792809272644.0000,2298918040639.0000,2792809272644.0000
+SBT,quarterly,consolidated,2026,1,balance_sheet,100,A. Tài sản ngắn hạn,20777848951623.0000,20054307978992.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,110,I. Tiền và các khoản tương đương tiền,3700343431138.0000,3555316479347.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,111,Tiền,597691385133.0000,605284780473.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,112,Các khoản tương đương tiền,3102652046005.0000,2950031698874.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,120,II. Đầu tư tài chính ngắn hạn,3648790512156.0000,3547886320303.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,121,Chứng khoán kinh doanh,778141003340.0000,778141003340.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,122,Dự phòng giảm giá chứng khoán kinh doanh,-15751361322.0000,-15236361322.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,123,Đầu tư nắm giữ đến ngày đáo hạn,2886400870138.0000,2784981678285.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,130,III. Các khoản phải thu ngắn hạn,10150547558870.0000,9196730558854.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,131,Phải thu ngắn hạn của khách hàng,2570201703111.0000,2198857265403.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,132,Trả trước cho người bán ngắn hạn,6182838507017.0000,5567944913065.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,135,Phải thu về cho vay ngắn hạn,325882332837.0000,248160054797.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,136,Phải thu ngắn hạn khác,1202800342795.0000,1329787122545.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,137,Dự phòng phải thu ngắn hạn khó đòi,-131175326890.0000,-148018796956.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,140,IV. Hàng tồn kho,3116511234055.0000,3583201943065.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,141,Hàng tồn kho,3152974482720.0000,3614639890388.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,149,Dự phòng giảm giá hàng tồn kho,-36463248665.0000,-31437947323.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,150,V. Tài sản ngắn hạn khác,161656215404.0000,171172677423.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,151,Chi phí trả trước ngắn hạn,40753492614.0000,22603791789.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,152,Thuế GTGT được khấu trừ,106976206275.0000,137451552697.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,153,Thuế và các khoản khác phải thu Nhà nước,13926516515.0000,11117332937.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,200,B. Tài sản dài hạn,13410168418612.0000,12624789182197.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,210,I. Các khoản phải thu dài hạn,1910700248183.0000,1718428145482.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,211,Phải thu dài hạn của khách hàng,1592992117.0000,1592992117.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,212,Trả trước cho người bán dài hạn,410282178228.0000,243383665259.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,216,Phải thu dài hạn khác,1534141418913.0000,1508767829181.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,219,Dự phòng phải thu dài hạn khó đòi,-35316341075.0000,-35316341075.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,220,II. Tài sản cố định,3515506763827.0000,3719838740764.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,221,Tài sản cố định hữu hình,2556181034711.0000,2561912634350.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,222,Nguyên giá (TSCĐ hữu hình),8998089410878.0000,8949333975321.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,223,Giá trị hao mòn lũy kế (TSCĐ hữu hình),-6441908376167.0000,-6387421340971.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,224,Tài sản cố định thuê tài chính,362899677327.0000,371492655603.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,225,Nguyên giá (TSCĐ thuê tài chính),426377889445.0000,444608711595.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,226,Giá trị hao mòn lũy kế (TSCĐ thuê tài chính),-63478212118.0000,-73116055992.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,227,Tài sản cố định vô hình,596426051789.0000,786433450811.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,228,Nguyên giá (TSCĐ vô hình),958440400995.0000,1162546585225.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,229,Giá trị hao mòn lũy kế (TSCĐ vô hình),-362014349206.0000,-376113134414.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,230,IlI. Bt đng sn đu tur,330658810516.0000,332059308491.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,231,Nguyên giá (BĐS đầu tư),394916859713.0000,394916859713.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,232,Giá trị hao mòn lũy kế (BĐS đầu tư),-64258049197.0000,-62857551222.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,240,IV. Tài sản dở dang dài hạn,580546596483.0000,468536267762.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,242,Chi phí xây dựng cơ bản dở dang,580546596483.0000,468536267762.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,250,V. Đầu tư tài chính dài hạn,5815499749775.0000,5110824023463.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,252,"Đầu tư vào công ty liên doanh, liên kết",5366028082401.0000,4651352356089.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,253,Đầu tư góp vốn vào đơn vị khác,318662361319.0000,336613897241.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,254,Dự phòng đầu tư tài chính dài hạn,-37190693945.0000,-55142229867.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,255,Đầu tư nắm giữ đến ngày đáo hạn,168000000000.0000,178000000000.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,260,VI. Tài sản dài hạn khác,1257256249828.0000,1275102696235.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,261,Chi phí trả trước dài hạn,1199891294212.0000,1208483969554.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,262,Tài sản thuế thu nhập hoãn lại,17673957803.0000,27140873292.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,269,Lợi thế thương mại,39690997813.0000,39477853389.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,270,Tổng cộng tài sản,34188017370235.0000,32679097161189.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,300,C. Nợ phải trả,22510809525921.0000,21828307600392.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,310,I. N ngn hn,15993060638170.0000,15549665514059.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,311,Phải trả người bán ngắn hạn,1161874572823.0000,1375567204302.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,312,Người mua trả tiền trước ngắn hạn,584664130658.0000,573475550855.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,313,Thuế và các khoản phải nộp Nhà nước,123024190600.0000,231637979126.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,314,Phải trả người lao động,10678997251.0000,23631975111.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,315,Chi phí phải trả ngắn hạn,461864542289.0000,471873767633.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,318,Doanh thu chưa thực hiện ngắn hạn,18184091090.0000,142189068.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,319,Phải trả ngắn hạn khác,2616138160339.0000,1984156300529.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,320,Vay và nợ thuê tài chính ngắn hạn,11002801534933.0000,10875196155097.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,321,Dự phòng phải trả ngắn hạn,80661588.0000,80661588.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,322,"Quỹ khen thưởng, phúc lợi",13749756599.0000,13903730750.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,330,II. Nợ dài hạn,6517748887751.0000,6278642086333.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,336,Doanh thu chưa thực hiện dài hạn,2985326.0000,5223173.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,337,Phải trả dài hạn khác,38765088764.0000,38562173466.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,338,Vay và nợ thuê tài chính dài hạn,6300073428811.0000,6037814229487.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,341,Thuế thu nhập hoãn lại phải trả,162145298713.0000,178234793524.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,342,Dự phòng phải trả dài hạn,16762086137.0000,24025666683.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,400,D. Vốn chủ sở hữu,11677207844314.0000,10850789560797.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,410,I. Vốn chủ sở hữu,11677207844314.0000,10850789560797.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,411,1. Vón cò phàn,8361563710000.0000,8361563710000.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,411a,Cổ phiếu phổ thông có quyền biểu quyết,8145450380000.0000,8145450380000.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,411b,Cổ phiếu ưu đãi,216113330000.0000,216113330000.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,412,Thặng dư vốn cổ phần,6770104566476.0000,6770104566476.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,414,Vốn khác của chủ sở hữu,-5502116030924.0000,-5502116030924.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,417,Chênh lệch tỷ giá hối đoái,-32266952258.0000,-55586851363.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,418,Quỹ đầu tư phát triển,67054931893.0000,67054931893.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,421,Lợi nhuận sau thuế chưa phân phối,1201853414858.0000,1046883789037.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,421a,LNST chưa phân phối lũy kế đến cuối kỳ trước,1020383789037.0000,423958718513.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,421b,LNST chưa phân phối kỳ này,181469625821.0000,622925070524.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,429,Lợi ích cổ đông không kiểm soát,811014204269.0000,162885445678.0000,,
+SBT,quarterly,consolidated,2026,1,balance_sheet,440,Tổng cộng nguồn vốn,34188017370235.0000,32679097161189.0000,,
+SBT,quarterly,consolidated,2026,1,income_statement,01,Doanh thu bán hàng và cung cấp dịch vụ,5386645094751.0000,6832179509327.0000,5386645094751.0000,6832179509327.0000
+SBT,quarterly,consolidated,2026,1,income_statement,02,Các khoản giảm trừ doanh thu,-14910916761.0000,-10470016329.0000,-14910916761.0000,-10470016329.0000
+SBT,quarterly,consolidated,2026,1,income_statement,10,Doanh thu thuần về bán hàng và cung cấp dịch vụ,5371734177990.0000,6821709492998.0000,5371734177990.0000,6821709492998.0000
+SBT,quarterly,consolidated,2026,1,income_statement,11,Giá vốn hàng bán,-4872249382154.0000,-5980831365207.0000,-4872249382154.0000,-5980831365207.0000
+SBT,quarterly,consolidated,2026,1,income_statement,20,Lợi nhuận gộp về bán hàng và cung cấp dịch vụ,499484795836.0000,840878127791.0000,499484795836.0000,840878127791.0000
+SBT,quarterly,consolidated,2026,1,income_statement,21,Doanh thu hoạt động tài chính,354659023726.0000,319345635744.0000,354659023726.0000,319345635744.0000
+SBT,quarterly,consolidated,2026,1,income_statement,22,Chi phí tài chính,-417237227834.0000,-531567571517.0000,-417237227834.0000,-531567571517.0000
+SBT,quarterly,consolidated,2026,1,income_statement,23,Trong đó: Chi phí lãi vay,-338929899324.0000,-388755713911.0000,-338929899324.0000,-388755713911.0000
+SBT,quarterly,consolidated,2026,1,income_statement,24,"Phần lãi/lỗ trong công ty liên doanh, liên kết",63851726312.0000,1180294634.0000,63851726312.0000,1180294634.0000
+SBT,quarterly,consolidated,2026,1,income_statement,25,Chi phí bán hàng,-167837659352.0000,-164307770455.0000,-167837659352.0000,-164307770455.0000
+SBT,quarterly,consolidated,2026,1,income_statement,26,Chi phí quản lý doanh nghiệp,-147192216244.0000,-186172700973.0000,-147192216244.0000,-186172700973.0000
+SBT,quarterly,consolidated,2026,1,income_statement,30,Lợi nhuận thuần từ hoạt động kinh doanh,185728442444.0000,279356015224.0000,185728442444.0000,279356015224.0000
+SBT,quarterly,consolidated,2026,1,income_statement,31,Thu nhập khác,22398486914.0000,12582203878.0000,22398486914.0000,12582203878.0000
+SBT,quarterly,consolidated,2026,1,income_statement,32,Chi phí khác,-4754970899.0000,-27044397797.0000,-4754970899.0000,-27044397797.0000
+SBT,quarterly,consolidated,2026,1,income_statement,40,Lợi nhuận khác,17643516015.0000,-14462193919.0000,17643516015.0000,-14462193919.0000
+SBT,quarterly,consolidated,2026,1,income_statement,50,Tổng lợi nhuận kế toán trước thuế,203371958459.0000,264893821305.0000,203371958459.0000,264893821305.0000
+SBT,quarterly,consolidated,2026,1,income_statement,51,Chi phí thuế TNDN hiện hành,-11862053346.0000,-30940077995.0000,-11862053346.0000,-30940077995.0000
+SBT,quarterly,consolidated,2026,1,income_statement,52,Chi phí/thu nhập thuế TNDN hoãn lại,6622576020.0000,-6118627255.0000,6622576020.0000,-6118627255.0000
+SBT,quarterly,consolidated,2026,1,income_statement,60,Lợi nhuận sau thuế TNDN,198132481133.0000,227835116055.0000,198132481133.0000,227835116055.0000
+SBT,quarterly,consolidated,2026,1,income_statement,61,Lợi nhuận sau thuế của công ty mẹ,201079690479.0000,217204989499.0000,201079690479.0000,217204989499.0000
+SBT,quarterly,consolidated,2026,1,income_statement,62,Lợi nhuận sau thuế của cổ đông không kiểm soát,-2947209346.0000,10630126556.0000,-2947209346.0000,10630126556.0000
+SBT,quarterly,consolidated,2026,1,income_statement,70,Lãi cơ bản trên cổ phiếu,205.5100,246.3100,205.5100,246.3100
+SBT,quarterly,consolidated,2026,1,income_statement,71,Lãi suy giảm trên cổ phiếu,205.5100,246.3100,205.5100,246.3100
+SBT,quarterly,consolidated,2026,1,cash_flow,01,Lợi nhuận trước thuế,203371958459.0000,264893821305.0000,203371958459.0000,264893821305.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,02,Khấu hao TSCĐ và BĐSĐT,129418133113.0000,134409345186.0000,129418133113.0000,134409345186.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,03,Các khoản dự phòng,-36518285192.0000,28715510982.0000,-36518285192.0000,28715510982.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,04,Lãi/lỗ chênh lệch tỷ giá hối đoái do đánh giá lại các khoản mục tiền tệ có gốc ngoại tệ,18328734012.0000,-9693160913.0000,18328734012.0000,-9693160913.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,05,Lãi/lỗ từ hoạt động đầu tư,-148804786031.0000,-93354914539.0000,-148804786031.0000,-93354914539.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,06,Chi phí lãi vay,338929899324.0000,388755713911.0000,338929899324.0000,388755713911.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,08,Lợi nhuận từ hoạt động kinh doanh trước thay đổi vốn lưu động,504725653685.0000,713726315932.0000,504725653685.0000,713726315932.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,09,Tăng/giảm các khoản phải thu,-1345319456364.0000,-683714649964.0000,-1345319456364.0000,-683714649964.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,10,Tăng/giảm hàng tồn kho,461665407668.0000,563947921739.0000,461665407668.0000,563947921739.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,11,Tăng/giảm các khoản phải trả,355069468995.0000,-36336618519.0000,355069468995.0000,-36336618519.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,12,Tăng/giảm chi phí trả trước,-9557025483.0000,-37229477241.0000,-9557025483.0000,-37229477241.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,14,Tiền lãi vay đã trả,-320891682218.0000,-390145622892.0000,-320891682218.0000,-390145622892.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,15,Thuế thu nhập doanh nghiệp đã nộp,-98455929720.0000,-89015967659.0000,-98455929720.0000,-89015967659.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,17,Tiền chi khác cho hoạt động kinh doanh,-26653974151.0000,-24817565003.0000,-26653974151.0000,-24817565003.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,20,Lưu chuyển tiền thuần từ hoạt động kinh doanh,-479417537588.0000,16414336393.0000,-479417537588.0000,16414336393.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,21,"Tiền chi để mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác",-159485471145.0000,-225981006260.0000,-159485471145.0000,-225981006260.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,22,"Tiền thu từ thanh lý, nhượng bán TSCĐ và các tài sản dài hạn khác",2956807534.0000,1156329457.0000,2956807534.0000,1156329457.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,23,"Tiền chi cho vay, mua các công cụ nợ của đơn vị khác",-91419191853.0000,-331900607601.0000,-91419191853.0000,-331900607601.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,24,"Tiền thu hồi cho vay, bán lại các công cụ nợ của đơn vị khác",,236604994686.0000,,236604994686.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,25,Tiền chi đầu tư góp vốn vào đơn vị khác,-694336800000.0000,-280453193646.0000,-694336800000.0000,-280453193646.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,26,Tiền thu hồi đầu tư góp vốn vào đơn vị khác,559506913858.0000,,559506913858.0000,
+SBT,quarterly,consolidated,2026,1,cash_flow,27,"Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia",16953338095.0000,106038456980.0000,16953338095.0000,106038456980.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,30,Lưu chuyển tiền thuần từ hoạt động đầu tư,-365824403511.0000,-494535026384.0000,-365824403511.0000,-494535026384.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,32,Tin thu tr c đöng không kim soát góp vôn vào các cóng ty con,651000000000.0000,,651000000000.0000,
+SBT,quarterly,consolidated,2026,1,cash_flow,33,Tiền thu từ đi vay,9737186992132.0000,10838045418202.0000,9737186992132.0000,10838045418202.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,34,Tiền trả nợ gốc vay,-9323236250813.0000,-10160015023272.0000,-9323236250813.0000,-10160015023272.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,35,Tiền trả nợ gốc thuê tài chính,-20758072077.0000,-16603828262.0000,-20758072077.0000,-16603828262.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,40,Lưu chuyển tiền thuần từ hoạt động tài chính,1044192669242.0000,661426566668.0000,1044192669242.0000,661426566668.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,50,Lưu chuyển tiền thuần trong kỳ,198950728143.0000,183305876677.0000,198950728143.0000,183305876677.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,60,Tiền và tương đương tiền đầu kỳ,3555316479347.0000,4630062131344.0000,3555316479347.0000,4630062131344.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,61,Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ,-53923776352.0000,-7315758718.0000,-53923776352.0000,-7315758718.0000
+SBT,quarterly,consolidated,2026,1,cash_flow,70,Tiền và tương đương tiền cuối kỳ,3700343431138.0000,4806052249303.0000,3700343431138.0000,4806052249303.0000
+SBT,quarterly,consolidated,2026,2,balance_sheet,100,A. Tài sản ngắn hạn,22222618437253.0000,20054307978992.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,110,I. Tiền và các khoản tương đương tiền,3050585709615.0000,3555316479347.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,111,Tiền,834672115045.0000,605284780473.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,112,Các khoản tương đương tiền,2215913594570.0000,2950031698874.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,120,II. Đầu tư tài chính ngắn hạn,5232942978854.0000,3547886320303.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,121,Chứng khoán kinh doanh,778141003340.0000,778141003340.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,122,Dự phòng giảm giá chứng khoán kinh doanh,-16904011322.0000,-15236361322.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,123,Đầu tư nắm giữ đến ngày đáo hạn,4471705986836.0000,2784981678285.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,130,III. Các khoản phải thu ngắn hạn,10737096646477.0000,9196730558854.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,131,Phải thu ngắn hạn của khách hàng,2862195456724.0000,2198857265403.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,132,Trả trước cho người bán ngắn hạn,6538121524530.0000,5567944913065.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,135,Phải thu về cho vay ngắn hạn,228783564657.0000,248160054797.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,136,Phải thu ngắn hạn khác,1238978916178.0000,1329787122545.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,137,Dự phòng phải thu ngắn hạn khó đòi,-130982815612.0000,-148018796956.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,140,IV. Hàng tồn kho,3032812037899.0000,3583201943065.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,141,Hàng tồn kho,3064956068136.0000,3614639890388.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,149,Dự phòng giảm giá hàng tồn kho,-32144030237.0000,-31437947323.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,150,V. Tài sản ngắn hạn khác,169181064408.0000,171172677423.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,151,Chi phí trả trước ngắn hạn,47878284987.0000,22603791789.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,152,Thuế GTGT được khấu trừ,108374072724.0000,137451552697.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,153,Thuế và các khoản khác phải thu Nhà nước,12928706697.0000,11117332937.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,200,B. Tài sản dài hạn,13653006491767.0000,12624789182197.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,210,I. Các khoản phải thu dài hạn,1960361180246.0000,1718428145482.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,211,Phải thu dài hạn của khách hàng,1592992117.0000,1592992117.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,212,Trả trước cho người bán dài hạn,427096895545.0000,243383665259.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,216,Phải thu dài hạn khác,1539776618840.0000,1508767829181.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,219,Dự phòng phải thu dài hạn khó đòi,-8105326256.0000,-35316341075.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,220,II. Tài sản cố định,3438182422974.0000,3719838740764.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,221,Tài sản cố định hữu hình,2513541083735.0000,2561912634350.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,222,Nguyên giá (TSCĐ hữu hình),9065669290968.0000,8949333975321.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,223,Giá trị hao mòn lũy kế (TSCĐ hữu hình),-6552128207233.0000,-6387421340971.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,224,Tài sản cố định thuê tài chính,340465160120.0000,371492655603.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,225,Nguyên giá (TSCĐ thuê tài chính),379263339587.0000,444608711595.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,226,Giá trị hao mòn lũy kế (TSCĐ thuê tài chính),-38798179467.0000,-73116055992.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,227,Tài sản cố định vô hình,584176179119.0000,786433450811.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,228,Nguyên giá (TSCĐ vô hình),958420858901.0000,1162546585225.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,229,Giá trị hao mòn lũy kế (TSCĐ vô hình),-374244679782.0000,-376113134414.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,230,IlI. Bt đng sn đu tu,316162450071.0000,332059308491.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,231,Nguyên giá (BĐS đầu tư),370544835532.0000,394916859713.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,232,Giá trị hao mòn lũy kế (BĐS đầu tư),-54382385461.0000,-62857551222.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,240,IV. Tài sản dở dang dài hạn,746328779806.0000,468536267762.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,242,Chi phí xây dựng cơ bản dở dang,746328779806.0000,468536267762.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,250,V. Đầu tư tài chính dài hạn,5947760846348.0000,5110824023463.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,252,"Đầu tư vào công ty liên doanh, liên kết",5447289178974.0000,4651352356089.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,253,Đầu tư góp vốn vào đơn vị khác,282206083819.0000,336613897241.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,254,Dự phòng đầu tư tài chính dài hạn,-734416445.0000,-55142229867.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,255,Đầu tư nắm giữ đến ngày đáo hạn,219000000000.0000,178000000000.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,260,VI. Tài sản dài hạn khác,1244210812322.0000,1275102696235.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,261,Chi phí trả trước dài hạn,1196466629813.0000,1208483969554.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,262,Tài sản thuế thu nhập hoãn lại,12459241975.0000,27140873292.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,269,Lợi thế thương mại,35284940534.0000,39477853389.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,270,Tổng cộng tài sản,35875624929020.0000,32679097161189.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,300,C. Nợ phải trả,23656140665463.0000,21828307600392.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,310,I. N ngn hn,18189259807573.0000,15549665514059.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,311,Phải trả người bán ngắn hạn,640024497243.0000,1375567204302.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,312,Người mua trả tiền trước ngắn hạn,624232389739.0000,573475550855.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,313,Thuế và các khoản phải nộp Nhà nước,72851964372.0000,231637979126.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,314,Phải trả người lao động,12121451517.0000,23631975111.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,315,Chi phí phải trả ngắn hạn,451822235373.0000,471873767633.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,318,Doanh thu chưa thực hiện ngắn hạn,17503245463.0000,142189068.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,319,Phải trả ngắn hạn khác,3162369631357.0000,1984156300529.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,320,Vay và nợ thuê tài chính ngắn hạn,13196004902009.0000,10875196155097.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,321,Dự phòng phải trả ngắn hạn,80661588.0000,80661588.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,322,"Quỹ khen thưởng, phúc lợi",12248828912.0000,13903730750.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,330,II. Nợ dài hạn,5466880857890.0000,6278642086333.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,336,Doanh thu chưa thực hiện dài hạn,747479.0000,5223173.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,337,Phải trả dài hạn khác,6180404440.0000,38562173466.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,338,Vay và nợ thuê tài chính dài hạn,5285147056469.0000,6037814229487.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,341,Thuế thu nhập hoãn lại phải trả,160145917896.0000,178234793524.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,342,Dự phòng phải trả dài hạn,15406731606.0000,24025666683.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,400,D. Vốn chủ sở hữu,12219484263557.0000,10850789560797.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,410,I. Vốn chủ sở hữu,12219484263557.0000,10850789560797.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,411,1. Vón cò phàn,8767239220000.0000,8361563710000.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,411a,Cổ phiếu phổ thông có quyền biểu quyết,8551125890000.0000,8145450380000.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,411b,Cổ phiếu ưu đãi,216113330000.0000,216113330000.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,412,Thặng dư vốn cổ phần,6770104566476.0000,6770104566476.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,414,4. Vn khác ca ch s hu,-5502116030924.0000,-5502116030924.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,417,Chênh lệch tỷ giá hối đoái,-45199238766.0000,-55586851363.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,418,Quỹ đầu tư phát triển,67054931893.0000,67054931893.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,421,Lợi nhuận sau thuế chưa phân phối,1343664588970.0000,1046883789037.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,421a,LNST chưa phân phối lũy kế đến cuối kỳ trước,997749656398.0000,423958718513.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,421b,LNST chưa phân phối kỳ này,345914932572.0000,622925070524.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,429,Lợi ích cổ đông không kiểm soát,818736225908.0000,162885445678.0000,,
+SBT,quarterly,consolidated,2026,2,balance_sheet,440,Tổng cộng nguồn vốn,35875624929020.0000,32679097161189.0000,,
+SBT,quarterly,consolidated,2026,2,income_statement,01,Doanh thu bán hàng và cung cấp dịch vụ,6749737645761.0000,7551147889582.0000,12136382740512.0000,14383327398909.0000
+SBT,quarterly,consolidated,2026,2,income_statement,02,Các khoản giảm trừ doanh thu,-16156182198.0000,-13704804492.0000,-31067098959.0000,-24174820821.0000
+SBT,quarterly,consolidated,2026,2,income_statement,10,Doanh thu thuần về bán hàng và cung cấp dịch vụ,6733581463563.0000,7537443085090.0000,12105315641553.0000,14359152578088.0000
+SBT,quarterly,consolidated,2026,2,income_statement,11,Giá vốn hàng bán,-6210741439366.0000,-6706015981806.0000,-11082990821520.0000,-12686847347013.0000
+SBT,quarterly,consolidated,2026,2,income_statement,20,Lợi nhuận gộp về bán hàng và cung cấp dịch vụ,522840024197.0000,831427103284.0000,1022324820033.0000,1672305231075.0000
+SBT,quarterly,consolidated,2026,2,income_statement,21,Doanh thu hoạt động tài chính,301059623018.0000,389036312713.0000,655718646744.0000,708381948457.0000
+SBT,quarterly,consolidated,2026,2,income_statement,22,Chi phí tài chính,-451123752098.0000,-470873422873.0000,-868360979932.0000,-1002440994390.0000
+SBT,quarterly,consolidated,2026,2,income_statement,23,Trong đó: Chi phí lãi vay,-353844922198.0000,-394232097174.0000,-692774821522.0000,-782987811085.0000
+SBT,quarterly,consolidated,2026,2,income_statement,24,"Phần lãi/lỗ trong công ty liên doanh, liên kết",81261096573.0000,-48580808167.0000,145112822885.0000,-47400513533.0000
+SBT,quarterly,consolidated,2026,2,income_statement,25,Chi phí bán hàng,-180080343455.0000,-190078275353.0000,-347918002807.0000,-354386045808.0000
+SBT,quarterly,consolidated,2026,2,income_statement,26,Chi phí quản lý doanh nghiệp,-168747412505.0000,-196344416692.0000,-315939628749.0000,-382517117665.0000
+SBT,quarterly,consolidated,2026,2,income_statement,30,Lợi nhuận thuần từ hoạt động kinh doanh,105209235730.0000,314586492912.0000,290937678174.0000,593942508136.0000
+SBT,quarterly,consolidated,2026,2,income_statement,31,Thu nhập khác,105873946581.0000,19876031995.0000,128272433495.0000,32458235873.0000
+SBT,quarterly,consolidated,2026,2,income_statement,32,Chi phí khác,-6339885403.0000,-57169589128.0000,-11094856302.0000,-84213986925.0000
+SBT,quarterly,consolidated,2026,2,income_statement,40,Lợi nhuận khác,99534061178.0000,-37293557133.0000,117177577193.0000,-51755751052.0000
+SBT,quarterly,consolidated,2026,2,income_statement,50,Tổng lợi nhuận kế toán trước thuế,204743296908.0000,277292935779.0000,408115255367.0000,542186757084.0000
+SBT,quarterly,consolidated,2026,2,income_statement,51,Chi phí thuế TNDN hiện hành,-9750568849.0000,-30374617753.0000,-21612622195.0000,-61314695748.0000
+SBT,quarterly,consolidated,2026,2,income_statement,52,Chi phí/thu nhập thuế TNDN hoãn lại,-3215335011.0000,-9641109625.0000,3407241009.0000,-15759736880.0000
+SBT,quarterly,consolidated,2026,2,income_statement,60,Lợi nhuận sau thuế TNDN,191777393048.0000,237277208401.0000,389909874181.0000,465112324456.0000
+SBT,quarterly,consolidated,2026,2,income_statement,61,Lợi nhuận sau thuế của công ty mẹ,184055371409.0000,217952801100.0000,385135061888.0000,435157790599.0000
+SBT,quarterly,consolidated,2026,2,income_statement,62,Lợi nhuận sau thuế của cổ đông không kiểm soát,7722021639.0000,19324407301.0000,4774812293.0000,29954533857.0000
+SBT,quarterly,consolidated,2026,2,income_statement,70,Lãi cơ bản trên cổ phiếu,171.9900,247.2500,363.5300,493.5500
+SBT,quarterly,consolidated,2026,2,income_statement,71,Lãi suy giảm trên cổ phiếu,167.1600,247.2500,353.3200,493.5500
+SBT,quarterly,consolidated,2026,2,cash_flow,01,Lợi nhuận trước thuế,,,408115255367.0000,542186757084.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,02,Khấu hao TSCĐ và BĐSĐT,,,246890156378.0000,263361152704.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,03,Các khoản dự phòng,,,-104900011748.0000,18314324630.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,04,Lãi/lỗ chênh lệch tỷ giá hối đoái do đánh giá lại các khoản mục tiền tệ có gốc ngoại tệ,,,-6839534554.0000,38693728447.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,05,Lãi/lỗ từ hoạt động đầu tư,,,-341696421724.0000,-100531479707.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,06,Chi phí lãi vay,,,692774821522.0000,782987811085.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,08,Lợi nhuận từ hoạt động kinh doanh trước thay đổi vốn lưu động,,,894344265241.0000,1545012294243.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,09,Tăng/giảm các khoản phải thu,,,-2156745542899.0000,-14801627209.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,10,Tăng/giảm hàng tồn kho,,,549683822252.0000,721211965621.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,11,Tăng/giảm các khoản phải trả,,,414723166177.0000,-563378757593.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,12,Tăng/giảm chi phí trả trước,,,-13257153457.0000,-94514576025.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,13,Tăng/giảm chứng khoán kinh doanh,,,,34051000000.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,14,Tiền lãi vay đã trả,,,-667539441399.0000,-902084633227.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,15,Thuế thu nhập doanh nghiệp đã nộp,,,-98143732402.0000,-104538804748.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,17,Tiền chi khác cho hoạt động kinh doanh,,,-50789034477.0000,-66263283804.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,20,Lưu chuyển tiền thuần từ hoạt động kinh doanh,,,-1127723650964.0000,554693577258.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,21,"Tiền chi để mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác",,,-445374241583.0000,-278830270895.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,22,"Tiền thu từ thanh lý, nhượng bán TSCĐ và các tài sản dài hạn khác",,,65194255141.0000,2463439224.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,23,"Tiền chi cho vay, mua các công cụ nợ của đơn vị khác",,,-1727724308551.0000,-7964493267.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,24,"Tiền thu hồi cho vay, bán lại các công cụ nợ của đơn vị khác",,,98896490140.0000,519604994686.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,25,Tiền chi đầu tư góp vốn vào đơn vị khác,,,-694336800000.0000,-2968165707640.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,26,Tiền thu hồi đầu tư góp vốn vào đơn vị khác,,,638864632858.0000,1420077991097.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,27,"Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia",,,101015473545.0000,200442413780.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,30,Lưu chuyển tiền thuần từ hoạt động đầu tư,,,-1963464498450.0000,-1112371633015.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,31,"Tiền thu từ phát hành cổ phiếu, nhận vốn góp của chủ sở hữu",,,405675510000.0000,
+SBT,quarterly,consolidated,2026,2,cash_flow,32,Tièn thu tù c đông không kim soát góp vn vào các công ty con,,,651000000000.0000,
+SBT,quarterly,consolidated,2026,2,cash_flow,33,Tiền thu từ đi vay,,,19208727137700.0000,22929777758413.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,34,Tiền trả nợ gốc vay,,,-17586444522115.0000,-21757693168435.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,35,Tiền trả nợ gốc thuê tài chính,,,-47301507137.0000,-55699039176.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,40,Lưu chuyển tiền thuần từ hoạt động tài chính,,,2631656618448.0000,1116385550802.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,50,Lưu chuyển tiền thuần trong kỳ,,,-459531530966.0000,558707495044.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,60,Tiền và tương đương tiền đầu kỳ,,,3555316479347.0000,4630062131344.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,61,Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ,,,-45199238766.0000,-7405201620.0000
+SBT,quarterly,consolidated,2026,2,cash_flow,70,Tiền và tương đương tiền cuối kỳ,,,3050585709615.0000,5181364424769.0000
+SBT,quarterly,separate,2026,3,balance_sheet,100,A. Tài sản ngắn hạn,17201934657984.0000,14258223051150.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,110,I. Tin và các khon tưrong đurong tin,2537364388825.0000,2280656640296.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,111,Tiền,410523745949.0000,370968332332.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,112,2. Các khon tưrơng đưrơng tin,2126840642876.0000,1909688307964.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,120,II. Đầu tư tài chính ngắn hạn,3090628879278.0000,2267275452286.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,121,Chứng khoán kinh doanh,616970294369.0000,487232869165.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,122,Dự phòng giảm giá chứng khoán kinh doanh,-15271561322.0000,-15236361322.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,123,Đầu tư nắm giữ đến ngày đáo hạn,2488930146231.0000,1795278944443.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,130,III. Các khoản phải thu ngắn hạn,9803306198199.0000,8518694235595.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,131,Phải thu ngắn hạn của khách hàng,3521012714289.0000,2227670878738.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,132,Trả trước cho người bán ngắn hạn,3904349040403.0000,4717679261067.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,135,Phải thu về cho vay ngắn hạn,563110000000.0000,301510000000.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,136,Phải thu ngắn hạn khác,1865804959000.0000,1340092347265.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,137,Dự phòng phải thu ngắn hạn khó đòi,-50970515493.0000,-68258251475.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,140,IV. Hàng tồn kho,1735222212053.0000,1165499324149.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,141,Hàng tồn kho,1745498714417.0000,1175775826513.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,149,Dự phòng giảm giá hàng tồn kho,-10276502364.0000,-10276502364.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,150,V. Tài sản ngắn hạn khác,35412979629.0000,26097398824.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,151,Chi phí trả trước ngắn hạn,24245472382.0000,13711688661.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,152,2. Thu GTGT đưc khu tr,2139475828.0000,2751623594.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,153,Thuế và các khoản khác phải thu Nhà nước,9028031419.0000,9634086569.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,200,B. Tài sản dài hạn,20920166719259.0000,20639923040656.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,210,I. Các khoản phải thu dài hạn,2866734862493.0000,2616550446658.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,211,Phải thu dài hạn của khách hàng,167432761362.0000,172655324321.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,212,Trả trước cho người bán dài hạn,1073884536878.0000,1014097769858.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,215,Phải thu về cho vay dài hạn,,13000000000.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,216,Phải thu dài hạn khác,1625417564253.0000,1416797352479.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,220,II. Tài sản cố định,505960884866.0000,498134891671.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,221,Tài sản cố định hữu hình,380720908349.0000,361766107988.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,222,Nguyên giá (TSCĐ hữu hình),2372913518393.0000,2314440035235.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,223,Giá trị hao mòn lũy kế (TSCĐ hữu hình),-1992192610044.0000,-1952673927247.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,224,Tài sản cố định thuê tài chính,15222846192.0000,14322004423.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,225,Nguyên giá (TSCĐ thuê tài chính),15473944396.0000,20025323577.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,226,Giá trị hao mòn lũy kế (TSCĐ thuê tài chính),-251098204.0000,-5703319154.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,227,Tài sản cố định vô hình,110017130325.0000,122046779260.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,228,Nguyên giá (TSCĐ vô hình),227224265624.0000,227204665624.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,229,Giá trị hao mòn lũy kế (TSCĐ vô hình),-117207135299.0000,-105157886364.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,230,IlI. Bt đng sn đu tưr,121804505621.0000,124971246781.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,231,Nguyên giá (BĐS đầu tư),167991741266.0000,167991741266.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,232,Giá trị hao mòn lũy kế (BĐS đầu tư),-46187235645.0000,-43020494485.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,240,IV. Tài sản dở dang dài hạn,323904071899.0000,200277409835.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,242,Chi phí xây dựng cơ bản dở dang,323904071899.0000,200277409835.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,250,V. Đầu tư tài chính dài hạn,16857609345250.0000,16964719193716.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,251,Đầu tư vào công ty con,15391504328750.0000,15551504328750.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,253,Đầu tư góp vốn vào đơn vị khác,1436839432944.0000,1504874910444.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,254,Dự phòng đầu tư tài chính dài hạn,-734416444.0000,-131660045478.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,255,Đầu tư nắm giữ đến ngày đáo hạn,30000000000.0000,40000000000.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,260,VI. Tài sản dài hạn khác,244153049130.0000,235269851995.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,261,Chi phí trả trước dài hạn,236809558894.0000,227926361759.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,262,Tài sản thuế thu nhập hoãn lại,7343490236.0000,7343490236.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,270,Tổng cộng tài sản,38122101377243.0000,34898146091806.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,300,C. Nợ phải trả,21296294469891.0000,18732352055071.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,310,I. N ngn hn,15095864845448.0000,12212096874388.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,311,Phải trả người bán ngắn hạn,2137458091865.0000,1470298031096.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,312,Người mua trả tiền trước ngắn hạn,495556051456.0000,565524689643.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,313,Thuế và các khoản phải nộp Nhà nước,15524780514.0000,26692392211.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,314,Phải trả người lao động,6459926917.0000,6079866632.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,315,Chi phí phải trả ngắn hạn,228726056862.0000,209161456265.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,318,Doanh thu chưa thực hiện ngắn hạn,156849207.0000,77814082.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,319,Phải trả ngắn hạn khác,2227108683463.0000,1418404182683.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,320,Vay và nợ thuê tài chính ngắn hạn,9984098127278.0000,8515499482802.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,322,"Quỹ khen thưởng, phúc lợi",776277886.0000,358958974.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,330,II. Nợ dài hạn,6200429624443.0000,6520255180683.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,337,Phải trả dài hạn khác,4933571710.0000,6193342030.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,338,Vay và nợ thuê tài chính dài hạn,6191259090483.0000,6509824876403.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,342,Dự phòng phải trả dài hạn,4236962250.0000,4236962250.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,400,D. Vốn chủ sở hữu,16825806907352.0000,16165794036735.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,410,I. Vốn chủ sở hữu,16825806907352.0000,16165794036735.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,411,1. Vôn c phàn,8767239220000.0000,8361563710000.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,411a,Cổ phiếu phổ thông có quyền biểu quyết,8551125890000.0000,8145450380000.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,411b,Cổ phiếu ưu đãi,216113330000.0000,216113330000.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,412,Thặng dư vốn cổ phần,6770104566476.0000,6770104566476.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,418,Quỹ đầu tư phát triển,46130752499.0000,46130752499.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,421,Lợi nhuận sau thuế chưa phân phối,1242332368377.0000,987995007760.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,421a,LNST chưa phân phối lũy kế đến cuối kỳ trước,916580875121.0000,248685016346.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,421b,LNST chưa phân phối kỳ này,325751493256.0000,739309991414.0000,,
+SBT,quarterly,separate,2026,3,balance_sheet,440,Tổng cộng nguồn vốn,38122101377243.0000,34898146091806.0000,,
+SBT,quarterly,separate,2026,3,income_statement,01,Doanh thu bán hàng và cung cấp dịch vụ,4936828342176.0000,5028138929881.0000,12882439686179.0000,13439826740965.0000
+SBT,quarterly,separate,2026,3,income_statement,02,Các khoản giảm trừ doanh thu,-734824221.0000,-1790166295.0000,-2622129354.0000,-2242328944.0000
+SBT,quarterly,separate,2026,3,income_statement,10,Doanh thu thuần về bán hàng và cung cấp dịch vụ,4936093517955.0000,5026348763586.0000,12879817556825.0000,13437584412021.0000
+SBT,quarterly,separate,2026,3,income_statement,11,Giá vốn hàng bán,-4576631558845.0000,-4590600117796.0000,-12048718355759.0000,-12252593831237.0000
+SBT,quarterly,separate,2026,3,income_statement,20,Lợi nhuận gộp về bán hàng và cung cấp dịch vụ,359461959110.0000,435748645790.0000,831099201066.0000,1184990580784.0000
+SBT,quarterly,separate,2026,3,income_statement,21,Doanh thu hoạt động tài chính,222275525116.0000,183425362730.0000,1187804422726.0000,1212957226407.0000
+SBT,quarterly,separate,2026,3,income_statement,22,Chi phí tài chính,-384457399248.0000,-353536467813.0000,-1179591491098.0000,-1125851025503.0000
+SBT,quarterly,separate,2026,3,income_statement,23,Trong đó: Chi phí lãi vay,-297749213703.0000,-315013852840.0000,-964695458051.0000,-996259921415.0000
+SBT,quarterly,separate,2026,3,income_statement,25,Chi phí bán hàng,-76927091398.0000,-65853468149.0000,-180824189927.0000,-172999539599.0000
+SBT,quarterly,separate,2026,3,income_statement,26,Chi phí quản lý doanh nghiệp,-102859903229.0000,-97255921105.0000,-278672070338.0000,-295157403318.0000
+SBT,quarterly,separate,2026,3,income_statement,30,Lợi nhuận thuần từ hoạt động kinh doanh,17493090351.0000,102528151453.0000,379815872429.0000,803939838771.0000
+SBT,quarterly,separate,2026,3,income_statement,31,Thu nhập khác,1788433417.0000,1877462889.0000,22772887038.0000,14376747640.0000
+SBT,quarterly,separate,2026,3,income_statement,32,Chi phí khác,-1505295995.0000,-962105346.0000,-1753939100.0000,-16762657400.0000
+SBT,quarterly,separate,2026,3,income_statement,40,Lợi nhuận khác,283137422.0000,915357543.0000,21018947938.0000,-2385909760.0000
+SBT,quarterly,separate,2026,3,income_statement,50,Tổng lợi nhuận kế toán trước thuế,17776227773.0000,103443508996.0000,400834820367.0000,801553929011.0000
+SBT,quarterly,separate,2026,3,income_statement,51,Chi phí thuế TNDN hiện hành,-1777622777.0000,-10344350900.0000,-16679438891.0000,-30576971016.0000
+SBT,quarterly,separate,2026,3,income_statement,60,Lợi nhuận sau thuế TNDN,15998604996.0000,93099158096.0000,,770976957995.0000
+SBT,quarterly,separate,2026,3,cash_flow,01,Lợi nhuận trước thuế,,,400834820367.0000,801553929011.0000
+SBT,quarterly,separate,2026,3,cash_flow,02,Khấu hao TSCĐ và BĐSĐT,,,60081752112.0000,57835919961.0000
+SBT,quarterly,separate,2026,3,cash_flow,03,Các khoản dự phòng,,,-130890429034.0000,-29558558549.0000
+SBT,quarterly,separate,2026,3,cash_flow,04,Lãi/lỗ chênh lệch tỷ giá hối đoái do đánh giá lại các khoản mục tiền tệ có gốc ngoại tệ,,,-10581726544.0000,5271459580.0000
+SBT,quarterly,separate,2026,3,cash_flow,05,Lãi/lỗ từ hoạt động đầu tư,,,-1099683479030.0000,-968198363646.0000
+SBT,quarterly,separate,2026,3,cash_flow,06,Chi phí lãi vay,,,976967904998.0000,996259921415.0000
+SBT,quarterly,separate,2026,3,cash_flow,08,Lợi nhuận từ hoạt động kinh doanh trước thay đổi vốn lưu động,,,196728842869.0000,863164307772.0000
+SBT,quarterly,separate,2026,3,cash_flow,09,Tăng/giảm các khoản phải thu,,,-805877078993.0000,-1031322281913.0000
+SBT,quarterly,separate,2026,3,cash_flow,10,Tăng/giảm hàng tồn kho,,,-569722887904.0000,-34024267756.0000
+SBT,quarterly,separate,2026,3,cash_flow,11,Tăng/giảm các khoản phải trả,,,1414713005993.0000,-1748422109905.0000
+SBT,quarterly,separate,2026,3,cash_flow,12,Tăng/giảm chi phí trả trước,,,-19416980856.0000,-27524070950.0000
+SBT,quarterly,separate,2026,3,cash_flow,13,Tăng/giảm chứng khoán kinh doanh,,,-129737425204.0000,34051000000.0000
+SBT,quarterly,separate,2026,3,cash_flow,14,Tiền lãi vay đã trả,,,-1124454480707.0000,-344203056876.0000
+SBT,quarterly,separate,2026,3,cash_flow,15,Thuế thu nhập doanh nghiệp đã nộp,,,-5549577801.0000,-29124127895.0000
+SBT,quarterly,separate,2026,3,cash_flow,17,Tiền chi khác cho hoạt động kinh doanh,,,-70996813726.0000,-70171963904.0000
+SBT,quarterly,separate,2026,3,cash_flow,20,Lưu chuyển tiền thuần từ hoạt động kinh doanh,,,-1114313396329.0000,-2387576571427.0000
+SBT,quarterly,separate,2026,3,cash_flow,21,"Tiền chi để mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác",,,-232490267373.0000,-87583160087.0000
+SBT,quarterly,separate,2026,3,cash_flow,22,"Tiền thu từ thanh lý, nhượng bán TSCĐ và các tài sản dài hạn khác",,,44122601162.0000,413024644.0000
+SBT,quarterly,separate,2026,3,cash_flow,23,"Tiền chi cho vay, mua các công cụ nợ của đơn vị khác",,,-2113166507807.0000,-809783848470.0000
+SBT,quarterly,separate,2026,3,cash_flow,24,"Tiền thu hồi cho vay, bán lại các công cụ nợ của đơn vị khác",,,1167072707213.0000,1115400000000.0000
+SBT,quarterly,separate,2026,3,cash_flow,25,Tiền chi đầu tư góp vốn vào đơn vị khác,,,,-2145245016500.0000
+SBT,quarterly,separate,2026,3,cash_flow,26,Tiền thu hồi đầu tư góp vốn vào đơn vị khác,,,631457719000.0000,543500000000.0000
+SBT,quarterly,separate,2026,3,cash_flow,27,"Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia",,,318316524107.0000,528588379796.0000
+SBT,quarterly,separate,2026,3,cash_flow,30,Lưu chuyển tiền thuần từ hoạt động đầu tư,,,-184687223698.0000,-854710620617.0000
+SBT,quarterly,separate,2026,3,cash_flow,31,"Tiền thu từ phát hành cổ phiếu, nhận vốn góp của chủ sở hữu",,,405675510000.0000,
+SBT,quarterly,separate,2026,3,cash_flow,33,Tiền thu từ đi vay,,,23835665753400.0000,23385954762434.0000
+SBT,quarterly,separate,2026,3,cash_flow,34,Tiền trả nợ gốc vay,,,-22685632894844.0000,-19998289288457.0000
+SBT,quarterly,separate,2026,3,cash_flow,36,"Cổ tức, lợi nhuận đã trả cho chủ sở hữu",,,,-73917783730.0000
+SBT,quarterly,separate,2026,3,cash_flow,40,Lưu chuyển tiền thuần từ hoạt động tài chính,,,1555708368556.0000,3313747690247.0000
+SBT,quarterly,separate,2026,3,cash_flow,50,Lu chuyn tin và tưong đương tin thun trong k,,,256707748529.0000,71460498203.0000
+SBT,quarterly,separate,2026,3,cash_flow,60,Tiền và tương đương tiền đầu kỳ,,,2280656640296.0000,2874916311059.0000
+SBT,quarterly,separate,2026,3,cash_flow,70,Tiền và tương đương tiền cuối kỳ,,,2537364388825.0000,2946376809262.0000
+SBT,quarterly,consolidated,2026,3,balance_sheet,100,A. Tài sản ngắn hạn,24796523665678.0000,20054307978992.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,110,I. Tiền và các khoản tương đương tiền,3603709628343.0000,3555316479347.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,111,Tiền,1227575191710.0000,605284780473.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,112,Các khoản tương đương tiền,2376134436633.0000,2950031698874.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,120,II. Đầu tư tài chính ngắn hạn,5429261999894.0000,3547886320303.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,121,Chứng khoán kinh doanh,799162093469.0000,778141003340.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,122,Dự phòng giảm giá chứng khoán kinh doanh,-15271561322.0000,-15236361322.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,123,Đầu tư nắm giữ đến ngày đáo hạn,4645371467747.0000,2784981678285.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,130,III. Các khoản phải thu ngắn hạn,11296837144449.0000,9196730558854.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,131,Phải thu ngắn hạn của khách hàng,3674633883721.0000,2198857265403.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,132,Trả trước cho người bán ngắn hạn,6105997778182.0000,5567944913065.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,135,Phải thu về cho vay ngắn hạn,229074000000.0000,248160054797.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,136,Phải thu ngắn hạn khác,1427766776523.0000,1329787122545.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,137,Dự phòng phải thu ngắn hạn khó đòi,-140635293977.0000,-148018796956.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,140,IV. Hàng tồn kho,4275560087297.0000,3583201943065.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,141,Hàng tồn kho,4302357084539.0000,3614639890388.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,149,Dự phòng giảm giá hàng tồn kho,-26796997242.0000,-31437947323.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,150,V. Tài sản ngắn hạn khác,191154805695.0000,171172677423.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,151,Chi phí trả trước ngắn hạn,40458683250.0000,22603791789.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,152,2. Thu GTGT đưc khu tr,139613215661.0000,137451552697.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,153,Thuế và các khoản khác phải thu Nhà nước,11082906784.0000,11117332937.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,200,B. Tài sản dài hạn,13875906844383.0000,12624789182197.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,210,I. Các khoản phải thu dài hạn,1911032953454.0000,1718428145482.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,211,Phải thu dài hạn của khách hàng,1592992117.0000,1592992117.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,212,Trả trước cho người bán dài hạn,364075803440.0000,243383665259.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,216,Phải thu dài hạn khác,1552737097239.0000,1508767829181.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,219,Dự phòng phải thu dài hạn khó đòi,-7372939342.0000,-35316341075.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,220,II. Tài sản cố định,3416810232005.0000,3719838740764.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,221,Tài sản cố định hữu hình,2507580099821.0000,2561912634350.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,222,Nguyên giá (TSCĐ hữu hình),8947037356267.0000,8949333975321.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,223,Giá trị hao mòn lũy kế (TSCĐ hữu hình),-6439457256446.0000,-6387421340971.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,224,Tài sản cố định thuê tài chính,342522579716.0000,371492655603.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,225,Nguyên giá (TSCĐ thuê tài chính),390161530038.0000,444608711595.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,226,Giá trị hao mòn lũy kế (TSCĐ thuê tài chính),-47638950322.0000,-73116055992.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,227,Tài sản cố định vô hình,566707552468.0000,786433450811.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,228,Nguyên giá (TSCĐ vô hình),958105378051.0000,1162546585225.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,229,Giá trị hao mòn lũy kế (TSCĐ vô hình),-391397825583.0000,-376113134414.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,230,IlI. Bt đng sn đu tư,315043282809.0000,332059308491.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,231,Nguyên giá (BĐS đầu tư),370544835532.0000,394916859713.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,232,Giá trị hao mòn lũy kế (BĐS đầu tư),-55501552723.0000,-62857551222.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,240,IV. Tài sản dở dang dài hạn,837530985638.0000,468536267762.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,242,Chi phí xây dựng cơ bản dở dang,837530985638.0000,468536267762.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,250,V. Đầu tư tài chính dài hạn,6135250875828.0000,5110824023463.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,252,"Đầu tư vào công ty liên doanh, liên kết",5624779208454.0000,4651352356089.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,253,Đầu tư góp vốn vào đơn vị khác,282206083819.0000,336613897241.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,254,Dự phòng đầu tư tài chính dài hạn,-734416445.0000,-55142229867.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,255,Đầu tư nắm giữ đến ngày đáo hạn,229000000000.0000,178000000000.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,260,VI. Tài sản dài hạn khác,1260238514649.0000,1275102696235.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,261,Chi phí trả trước dài hạn,1207602075424.0000,1208483969554.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,262,Tài sản thuế thu nhập hoãn lại,21639686153.0000,27140873292.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,269,Lợi thế thương mại,30996753072.0000,39477853389.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,270,Tổng cộng tài sản,38672430510061.0000,32679097161189.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,300,C. Nợ phải trả,26263482194031.0000,21828307600392.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,310,I. N ngn hn,19648434896958.0000,15549665514059.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,311,Phải trả người bán ngắn hạn,1601934762675.0000,1375567204302.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,312,Người mua trả tiền trước ngắn hạn,905947370366.0000,573475550855.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,313,Thuế và các khoản phải nộp Nhà nước,117134954679.0000,231637979126.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,314,Phải trả người lao động,14933080792.0000,23631975111.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,315,Chi phí phải trả ngắn hạn,633542907296.0000,471873767633.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,318,Doanh thu chưa thực hiện ngắn hạn,906270002.0000,142189068.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,319,Phải trả ngắn hạn khác,3467561210053.0000,1984156300529.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,320,Vay và nợ thuê tài chính ngắn hạn,12876513566362.0000,10875196155097.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,321,Dự phòng phải trả ngắn hạn,80661588.0000,80661588.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,322,"Quỹ khen thưởng, phúc lợi",29880113145.0000,13903730750.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,330,II. Nợ dài hạn,6615047297073.0000,6278642086333.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,336,Doanh thu chưa thực hiện dài hạn,-744419.0000,5223173.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,337,Phải trả dài hạn khác,37560100163.0000,38562173466.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,338,Vay và nợ thuê tài chính dài hạn,6405942654429.0000,6037814229487.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,341,Thuế thu nhập hoãn lại phải trả,156577659444.0000,178234793524.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,342,Dự phòng phải trả dài hạn,14967627456.0000,24025666683.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,400,D. Vốn chủ sở hữu,12408948316030.0000,10850789560797.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,410,I. Vốn chủ sở hữu,12408948316030.0000,10850789560797.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,411,1. Vn cồ phàn,8767239220000.0000,8361563710000.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,411a,Cổ phiếu phổ thông có quyền biểu quyết,8551125890000.0000,8145450380000.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,411b,Cổ phiếu ưu đãi,216113330000.0000,216113330000.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,412,Thặng dư vốn cổ phần,6770104566476.0000,6770104566476.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,414,4. Vn khác ca ch s hu,-5502116030924.0000,-5502116030924.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,417,Chênh lệch tỷ giá hối đoái,5812194790.0000,-55586851363.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,418,Quỹ đầu tư phát triển,67054931893.0000,67054931893.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,421,Lợi nhuận sau thuế chưa phân phối,1498012428310.0000,1046883789037.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,421a,LNST chưa phân phối lũy kế đến cuối kỳ trước,936319656398.0000,423958718513.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,421b,LNST chưa phân phối kỳ này,561692771912.0000,622925070524.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,429,Lợi ích cổ đông không kiểm soát,802841005485.0000,162885445678.0000,,
+SBT,quarterly,consolidated,2026,3,balance_sheet,440,Tổng cộng nguồn vốn,38672430510061.0000,32679097161189.0000,,
+SBT,quarterly,consolidated,2026,3,income_statement,01,Doanh thu bán hàng và cung cấp dịch vụ,8253468331934.0000,7303758191034.0000,20389813484694.0000,21687085589943.0000
+SBT,quarterly,consolidated,2026,3,income_statement,02,Các khoản giảm trừ doanh thu,-22463105028.0000,-14475999307.0000,-53424870883.0000,-38650820128.0000
+SBT,quarterly,consolidated,2026,3,income_statement,10,Doanh thu thuần về bán hàng và cung cấp dịch vụ,8231005226906.0000,7289282191727.0000,20336388613811.0000,21648434769815.0000
+SBT,quarterly,consolidated,2026,3,income_statement,11,Giá vốn hàng bán,-7460395446451.0000,-6547766505718.0000,-18544058075368.0000,-19234613852731.0000
+SBT,quarterly,consolidated,2026,3,income_statement,20,Lợi nhuận gộp về bán hàng và cung cấp dịch vụ,770609780455.0000,741515686009.0000,1792330538443.0000,2413820917084.0000
+SBT,quarterly,consolidated,2026,3,income_statement,21,Doanh thu hoạt động tài chính,372364555012.0000,265783972048.0000,1000718253792.0000,974165920505.0000
+SBT,quarterly,consolidated,2026,3,income_statement,22,Chi phí tài chính,-518999507099.0000,-392684723195.0000,-1372157847227.0000,-1395125717585.0000
+SBT,quarterly,consolidated,2026,3,income_statement,23,Trong đó: Chi phí lãi vay,-381840136063.0000,-357037806691.0000,-1076765799926.0000,-1140025617776.0000
+SBT,quarterly,consolidated,2026,3,income_statement,24,"Phần lãi/lỗ trong công ty liên doanh, liên kết",92952335596.0000,-27037653304.0000,238065158481.0000,-74438166837.0000
+SBT,quarterly,consolidated,2026,3,income_statement,25,Chi phí bán hàng,-277748933434.0000,-180582693620.0000,-635627983230.0000,-534968739428.0000
+SBT,quarterly,consolidated,2026,3,income_statement,26,Chi phí quản lý doanh nghiệp,-200575408342.0000,-167374813882.0000,-516073026295.0000,-549891931547.0000
+SBT,quarterly,consolidated,2026,3,income_statement,30,Lợi nhuận thuần từ hoạt động kinh doanh,238602822188.0000,239619774056.0000,507255093964.0000,833562282192.0000
+SBT,quarterly,consolidated,2026,3,income_statement,31,Thu nhập khác,12134411268.0000,10486719352.0000,160773697413.0000,42944955225.0000
+SBT,quarterly,consolidated,2026,3,income_statement,32,Chi phí khác,-6788387752.0000,-19251806855.0000,-18975550561.0000,-103465793780.0000
+SBT,quarterly,consolidated,2026,3,income_statement,40,Lợi nhuận khác,5346023516.0000,-8765087503.0000,141798146852.0000,-60520838555.0000
+SBT,quarterly,consolidated,2026,3,income_statement,50,Tổng lợi nhuận kế toán trước thuế,243948845704.0000,230854686553.0000,649053240816.0000,773041443637.0000
+SBT,quarterly,consolidated,2026,3,income_statement,51,Chi phí thuế TNDN hiện hành,-12226502060.0000,-29386114635.0000,-52879755179.0000,-90700810383.0000
+SBT,quarterly,consolidated,2026,3,income_statement,52,Chi phí/thu nhập thuế TNDN hoãn lại,13225080129.0000,13361329476.0000,15500055973.0000,-2398407404.0000
+SBT,quarterly,consolidated,2026,3,income_statement,60,Lợi nhuận sau thuế TNDN,244947423773.0000,214829901394.0000,611673541610.0000,679942225850.0000
+SBT,quarterly,consolidated,2026,3,income_statement,61,Lợi nhuận sau thuế của công ty mẹ,246421454384.0000,216674232046.0000,608372759928.0000,651832022645.0000
+SBT,quarterly,consolidated,2026,3,income_statement,62,Lợi nhuận sau thuế của cổ đông không kiểm soát,-1474030611.0000,-1844330652.0000,3300781682.0000,28110203205.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,01,Lợi nhuận trước thuế,,,649053240816.0000,773041443637.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,02,Khấu hao TSCĐ và BĐSĐT,,,397768535814.0000,393225576861.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,03,Các khoản dự phòng,,,-103398507442.0000,-18124531434.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,04,Lãi/lỗ chênh lệch tỷ giá hối đoái do đánh giá lại các khoản mục tiền tệ có gốc ngoại tệ,,,35930560366.0000,5384903445.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,05,Lãi/lỗ từ hoạt động đầu tư,,,-1061716403790.0000,-134324514718.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,06,Chi phí lãi vay,,,1076765799926.0000,1140025617776.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,08,Lợi nhuận từ hoạt động kinh doanh trước thay đổi vốn lưu động,,,994403225690.0000,2159228495567.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,09,Tăng/giảm các khoản phải thu,,,-2329893492377.0000,699257878995.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,10,Tăng/giảm hàng tồn kho,,,-687717194151.0000,-407977571337.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,11,Tăng/giảm các khoản phải trả,,,2154080531308.0000,-1427746361151.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,12,Tăng/giảm chi phí trả trước,,,-16972997331.0000,-42920457286.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,13,Tăng/giảm chứng khoán kinh doanh,,,-21021090129.0000,34051000000.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,14,Tiền lãi vay đã trả,,,-1030452766282.0000,-1251330542231.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,15,Thuế thu nhập doanh nghiệp đã nộp,,,-98679877858.0000,-159139751852.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,17,Tiền chi khác cho hoạt động kinh doanh,,,-82863850040.0000,-109108090784.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,20,Lưu chuyển tiền thuần từ hoạt động kinh doanh,,,-1119117511170.0000,-505685400079.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,21,"Tiền chi để mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác",,,-733511192349.0000,-272886491165.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,22,"Tiền thu từ thanh lý, nhượng bán TSCĐ và các tài sản dài hạn khác",,,110213423280.0000,16584492170.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,23,"Tiền chi cho vay, mua các công cụ nợ của đơn vị khác",,,-1911389789462.0000,-138934225697.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,24,"Tiền thu hồi cho vay, bán lại các công cụ nợ của đơn vị khác",,,121606054797.0000,566519494686.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,25,Tiền chi đầu tư góp vốn vào đơn vị khác,,,-778874493884.0000,-2967457606400.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,26,Tiền thu hồi đầu tư góp vốn vào đơn vị khác,,,758865788608.0000,1417754500000.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,27,"Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia",,,204597888545.0000,303697206260.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,30,Lưu chuyển tiền thuần từ hoạt động đầu tư,,,-2228492320465.0000,-1074722630146.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,31,"Tiền thu từ phát hành cổ phiếu, nhận vốn góp của chủ sở hữu",,,405675510000.0000,
+SBT,quarterly,consolidated,2026,3,cash_flow,32,Tin thu tù c đông không kim soát góp vn vào các công ty con,,,651000000000.0000,497100000.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,33,Tiền thu từ đi vay,,,27973486933518.0000,28486941765433.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,34,Tiền trả nợ gốc vay,,,-25568753690072.0000,-26471712820542.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,35,Tiền trả nợ gốc thuê tài chính,,,-71217967605.0000,-71021383758.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,36,"Cổ tức, lợi nhuận đã trả cho chủ sở hữu",,,,-73917783730.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,40,Lưu chuyển tiền thuần từ hoạt động tài chính,,,3390190785841.0000,1870786877403.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,50,Lưu chuyển tiền thuần trong kỳ,,,42580954206.0000,290378847178.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,60,Tiền và tương đương tiền đầu kỳ,,,3555316479347.0000,4630062131344.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,61,Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ,,,5812194790.0000,-16073411272.0000
+SBT,quarterly,consolidated,2026,3,cash_flow,70,Tiền và tương đương tiền cuối kỳ,,,3603709628343.0000,4904367567250.0000
+SBT,quarterly,consolidated,2026,4,balance_sheet,100,A. Tài sản ngắn hạn,24253525288010.0000,20054307978992.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,110,I. Tiền và các khoản tương đương tiền,2042118120052.0000,3555316479347.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,111,Tiền,1160256984276.0000,605284780473.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,112,Các khoản tương đương tiền,881861135776.0000,2950031698874.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,120,II. Đầu tư tài chính ngắn hạn,7027179447972.0000,3547886320303.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,121,Chứng khoán kinh doanh,778179921714.0000,778141003340.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,122,Dự phòng giảm giá chứng khoán kinh doanh,-15095111322.0000,-15236361322.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,123,Đầu tư nắm giữ đến ngày đáo hạn,6264094637580.0000,2784981678285.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,130,III. Các khoản phải thu ngắn hạn,10903367731253.0000,9196730558854.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,131,Phải thu ngắn hạn của khách hàng,2662347857634.0000,2198857265403.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,132,Trả trước cho người bán ngắn hạn,6917857965470.0000,5567944913065.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,135,Phải thu về cho vay ngắn hạn,140690000000.0000,248160054797.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,136,Phải thu ngắn hạn khác,1316528475968.0000,1329787122545.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,137,Dự phòng phải thu ngắn hạn khó đòi,-134056567819.0000,-148018796956.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,140,IV. Hàng tồn kho,4031022533888.0000,3583201943065.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,141,Hàng tồn kho,4059481381360.0000,3614639890388.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,149,Dự phòng giảm giá hàng tồn kho,-28458847472.0000,-31437947323.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,150,V. Tài sản ngắn hạn khác,249837454845.0000,171172677423.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,151,Chi phí trả trước ngắn hạn,52565661925.0000,22603791789.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,152,2. Thu GTGT đưc khu tr,182085767059.0000,137451552697.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,153,Thuế và các khoản khác phải thu Nhà nước,15186025861.0000,11117332937.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,200,B. Tài sản dài hạn,14070248710459.0000,12624789182197.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,210,I. Các khoản phải thu dài hạn,2091655901481.0000,1718428145482.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,211,Phải thu dài hạn của khách hàng,796496058.0000,1592992117.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,212,Trả trước cho người bán dài hạn,365446242329.0000,243383665259.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,216,Phải thu dài hạn khác,1734412959002.0000,1508767829181.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,219,Dự phòng phải thu dài hạn khó đòi,-8999795908.0000,-35316341075.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,220,II. Tài sản cố định,3463554761351.0000,3719838740764.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,221,Tài sản cố định hữu hình,2565229649429.0000,2561912634350.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,222,Nguyên giá (TSCĐ hữu hình),9089991473671.0000,8949333975321.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,223,Giá trị hao mòn lũy kế (TSCĐ hữu hình),-6524761824242.0000,-6387421340971.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,224,Tài sản cố định thuê tài chính,333531073902.0000,371492655603.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,225,Nguyên giá (TSCĐ thuê tài chính),390161530038.0000,444608711595.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,226,Giá trị hao mòn lũy kế (TSCĐ thuê tài chính),-56630456136.0000,-73116055992.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,227,Tài sản cố định vô hình,564794038020.0000,786433450811.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,228,Nguyên giá (TSCĐ vô hình),967057930900.0000,1162546585225.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,229,Giá trị hao mòn lũy kế (TSCĐ vô hình),-402263892880.0000,-376113134414.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,230,IlI. Bt đng sn đu tư,313937157799.0000,332059308491.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,231,Nguyên giá (BĐS đầu tư),370544835532.0000,394916859713.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,232,Giá trị hao mòn lũy kế (BĐS đầu tư),-56607677733.0000,-62857551222.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,240,IV. Tài sản dở dang dài hạn,904361793876.0000,468536267762.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,242,Chi phí xây dựng cơ bản dở dang,904361793876.0000,468536267762.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,250,V. Đầu tư tài chính dài hạn,6045912260778.0000,5110824023463.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,252,"Đầu tư vào công ty liên doanh, liên kết",5742570405948.0000,4651352356089.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,253,Đầu tư góp vốn vào đơn vị khác,81076271275.0000,336613897241.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,254,Dự phòng đầu tư tài chính dài hạn,-734416445.0000,-55142229867.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,255,Đầu tư nắm giữ đến ngày đáo hạn,223000000000.0000,178000000000.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,260,VI. Tài sản dài hạn khác,1250826835174.0000,1275102696235.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,261,Chi phí trả trước dài hạn,1198800604453.0000,1208483969554.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,262,Tài sản thuế thu nhập hoãn lại,24911630376.0000,27140873292.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,269,Lợi thế thương mại,27114600345.0000,39477853389.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,270,Tổng cộng tài sản,38323773998469.0000,32679097161189.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,300,C. Nợ phải trả,25882423068050.0000,21828307600392.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,310,I. N ngn hn,19731079952491.0000,15549665514059.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,311,Phải trả người bán ngắn hạn,1155059370830.0000,1375567204302.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,312,Người mua trả tiền trước ngắn hạn,1635677810160.0000,573475550855.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,313,Thuế và các khoản phải nộp Nhà nước,148670578845.0000,231637979126.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,314,Phải trả người lao động,36628218363.0000,23631975111.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,315,Chi phí phải trả ngắn hạn,610254361960.0000,471873767633.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,318,Doanh thu chưa thực hiện ngắn hạn,681400701.0000,142189068.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,319,Phải trả ngắn hạn khác,4189375424780.0000,1984156300529.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,320,Vay và nợ thuê tài chính ngắn hạn,11875629676700.0000,10875196155097.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,321,Dự phòng phải trả ngắn hạn,80661588.0000,80661588.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,322,"Quỹ khen thưởng, phúc lợi",79022448564.0000,13903730750.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,330,II. Nợ dài hạn,6151343115559.0000,6278642086333.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,336,Doanh thu chưa thực hiện dài hạn,,5223173.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,337,Phải trả dài hạn khác,16865295678.0000,38562173466.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,338,Vay và nợ thuê tài chính dài hạn,4988409562227.0000,6037814229487.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,339,Trái phiếu chuyển đổi,976389323027.0000,,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,341,Thuế thu nhập hoãn lại phải trả,154743489671.0000,178234793524.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,342,Dự phòng phải trả dài hạn,14935444956.0000,24025666683.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,400,D. Vốn chủ sở hữu,12441350930419.0000,10850789560797.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,410,I. Vốn chủ sở hữu,12441350930419.0000,10850789560797.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,411,1. Vôn cồ phàn,9280263750000.0000,8361563710000.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,412,Thặng dư vốn cổ phần,6770104566476.0000,6770104566476.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,413,Quyền chọn chuyển đổi trái phiếu,12263476973.0000,,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,414,Vốn khác của chủ sở hữu,-5502116030924.0000,-5502116030924.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,417,Chênh lệch tỷ giá hối đoái,-15687708212.0000,-55586851363.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,418,Quỹ đầu tư phát triển,67054931893.0000,67054931893.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,421,Lợi nhuận sau thuế chưa phân phối,1210890129307.0000,1046883789037.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,429,Lợi ích cổ đông không kiểm soát,618577814906.0000,162885445678.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,440,Tổng cộng nguồn vốn,38323773998469.0000,32679097161189.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,411a,- C phiu ph thông có quyn biu quyt,9064150420000.0000,8145450380000.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,411b,Cổ phiếu ưu đãi,216113330000.0000,216113330000.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,421a,LNST chưa phân phối lũy kế đến cuối kỳ trước,418106147412.0000,423958718513.0000,,
+SBT,quarterly,consolidated,2026,4,balance_sheet,421b,LNST chưa phân phối kỳ này,792783981895.0000,622925070524.0000,,
+SBT,quarterly,consolidated,2026,4,income_statement,01,Doanh thu bán hàng và cung cấp dịch vụ,6572716436915.0000,6857925129157.0000,26962529921609.0000,28545010719100.0000
+SBT,quarterly,consolidated,2026,4,income_statement,02,Các khoản giảm trừ doanh thu,-17261092970.0000,-24193487531.0000,-70685963853.0000,-62844307659.0000
+SBT,quarterly,consolidated,2026,4,income_statement,10,Doanh thu thuần về bán hàng và cung cấp dịch vụ,6555455343945.0000,6833731641626.0000,26891843957756.0000,28482166411441.0000
+SBT,quarterly,consolidated,2026,4,income_statement,11,Giá vốn hàng bán,-5667730269349.0000,-6263323443992.0000,-24211788344717.0000,-25497937296723.0000
+SBT,quarterly,consolidated,2026,4,income_statement,20,Lợi nhuận gộp về bán hàng và cung cấp dịch vụ,887725074596.0000,570408197634.0000,2680055613039.0000,2984229114718.0000
+SBT,quarterly,consolidated,2026,4,income_statement,21,Doanh thu hoạt động tài chính,459481814678.0000,295785105298.0000,1460200068470.0000,1269951025803.0000
+SBT,quarterly,consolidated,2026,4,income_statement,22,Chi phí tài chính,-635591899235.0000,-423567350402.0000,-2007749746462.0000,-1818693067987.0000
+SBT,quarterly,consolidated,2026,4,income_statement,23,Trong đó: Chi phí lãi vay,-469107583545.0000,-381827327196.0000,-1545873383471.0000,-1521852944972.0000
+SBT,quarterly,consolidated,2026,4,income_statement,24,"Phần lãi/lỗ trong công ty liên doanh, liên kết",63269834757.0000,108176641729.0000,301334993238.0000,33738474892.0000
+SBT,quarterly,consolidated,2026,4,income_statement,25,Chi phí bán hàng,-337646208461.0000,-182596013828.0000,-973274191691.0000,-717564753256.0000
+SBT,quarterly,consolidated,2026,4,income_statement,26,Chi phí quản lý doanh nghiệp,-221428741394.0000,-192258607017.0000,-737501767689.0000,-742150538564.0000
+SBT,quarterly,consolidated,2026,4,income_statement,30,Lợi nhuận thuần từ hoạt động kinh doanh,215809874941.0000,175947973414.0000,723064968905.0000,1009510255606.0000
+SBT,quarterly,consolidated,2026,4,income_statement,31,Thu nhập khác,57659604325.0000,49369098154.0000,218433301738.0000,92314053379.0000
+SBT,quarterly,consolidated,2026,4,income_statement,32,Chi phí khác,-14708534673.0000,-48289770425.0000,-33684085234.0000,-151755564205.0000
+SBT,quarterly,consolidated,2026,4,income_statement,40,Lợi nhuận khác,42951069652.0000,1079327729.0000,184749216504.0000,-59441510826.0000
+SBT,quarterly,consolidated,2026,4,income_statement,50,Tổng lợi nhuận kế toán trước thuế,258760944593.0000,177027301143.0000,907814185409.0000,950068744780.0000
+SBT,quarterly,consolidated,2026,4,income_statement,51,Chi phí thuế TNDN hiện hành,-31491460207.0000,-25305895148.0000,-84371215386.0000,-116006705531.0000
+SBT,quarterly,consolidated,2026,4,income_statement,52,Chi phí/thu nhập thuế TNDN hoãn lại,1188187093.0000,2823977279.0000,16688243066.0000,425569875.0000
+SBT,quarterly,consolidated,2026,4,income_statement,60,Lợi nhuận sau thuế TNDN,228457671479.0000,154545383274.0000,840131213089.0000,834487609124.0000
+SBT,quarterly,consolidated,2026,4,income_statement,61,Lợi nhuận sau thuế của công ty mẹ,229420696562.0000,160663198545.0000,837793456490.0000,812495221190.0000
+SBT,quarterly,consolidated,2026,4,income_statement,62,Lợi nhuận sau thuế của cổ đông không kiểm soát,-963025083.0000,-6117815271.0000,2337756599.0000,21992387934.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,01,Lợi nhuận trước thuế,,,907814185409.0000,950068744780.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,02,Khấu hao TSCĐ và BĐSĐT,,,520619224000.0000,534637599999.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,03,Các khoản dự phòng,,,-106897159304.0000,-48805607990.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,04,Lãi/lỗ chênh lệch tỷ giá hối đoái do đánh giá lại các khoản mục tiền tệ có gốc ngoại tệ,,,79324690546.0000,2959971917.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,05,Lãi/lỗ từ hoạt động đầu tư,,,-1419668591559.0000,-306923319130.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,06,Chi phí lãi vay,,,1545873383471.0000,1521852944972.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,08,Lợi nhuận từ hoạt động kinh doanh trước thay đổi vốn lưu động,,,1527065732563.0000,2653790334548.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,09,Tăng/giảm các khoản phải thu,,,-2680242984285.0000,77980938206.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,10,Tăng/giảm hàng tồn kho,,,-444841490972.0000,379168249238.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,11,Tăng/giảm các khoản phải trả,,,2849436352039.0000,-1715136814406.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,12,Tăng/giảm chi phí trả trước,,,-20278505035.0000,-71323746820.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,13,Tăng/giảm chứng khoán kinh doanh,,,-38918374.0000,34051000000.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,14,Tiền lãi vay đã trả,,,-1414609705823.0000,-1699255034131.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,15,Thuế thu nhập doanh nghiệp đã nộp,,,-116228856054.0000,-125651363699.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,17,Tiền chi khác cho hoạt động kinh doanh,,,-33091007321.0000,-139512731104.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,20,Lưu chuyển tiền thuần từ hoạt động kinh doanh,,,-332829383262.0000,-605889168168.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,21,"Tiền chi để mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác",,,-974172355378.0000,-633592838164.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,22,"Tiền thu từ thanh lý, nhượng bán TSCĐ và các tài sản dài hạn khác",,,234201993578.0000,40174756700.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,23,"Tiền chi cho vay, mua các công cụ nợ của đơn vị khác",,,-3416642904498.0000,-48071233516.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,24,"Tiền thu hồi cho vay, bán lại các công cụ nợ của đơn vị khác",,,,566519494686.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,25,Tiền chi đầu tư góp vốn vào đơn vị khác,,,-2176457785838.0000,-3597525187640.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,26,Tiền thu hồi đầu tư góp vốn vào đơn vị khác,,,2421083593874.0000,1867187767039.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,27,"Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia",,,923401272808.0000,377634442024.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,30,Lưu chuyển tiền thuần từ hoạt động đầu tư,,,-2988586185454.0000,-1427672798871.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,31,"Tiền thu từ phát hành cổ phiếu, nhận vốn góp của chủ sở hữu",,,417938986973.0000,497100000.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,32,Tin thu t c đông không kim soát góp vn vào các công ty con,,,651000000000.0000,
+SBT,quarterly,consolidated,2026,4,cash_flow,33,Tiền thu từ đi vay,,,34318652934661.0000,35925120540942.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,34,Tiền trả nợ gốc vay,,,-33381923337119.0000,-34759291432335.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,35,Tiền trả nợ gốc thuê tài chính,,,-88636110718.0000,-78005586507.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,36,"Cổ tức, lợi nhuận đã trả cho chủ sở hữu",,,-93127556164.0000,-73917455695.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,40,Lưu chuyển tiền thuần từ hoạt động tài chính,,,1823904917633.0000,1014403166405.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,50,Lu chuyn tin và tưong đưong tin thun trong k,,,-1497510651083.0000,-1019158800634.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,60,Tiền và tương đương tiền đầu kỳ,,,3555316479347.0000,4630062131344.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,61,Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ,,,-15687708212.0000,-55586851363.0000
+SBT,quarterly,consolidated,2026,4,cash_flow,70,Tiền và tương đương tiền cuối kỳ,,,2042118120052.0000,3555316479347.0000
+SBT,quarterly,separate,2026,4,balance_sheet,100,A. Tài sản ngắn hạn,17329560838443.0000,14258223051150.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,110,I. Tiền và các khoản tương đương tiền,1250995106293.0000,2280656640296.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,111,Tiền,580077347913.0000,370968332332.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,112,Các khoản tương đương tiền,670917758380.0000,1909688307964.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,120,II. Đầu tư tài chính ngắn hạn,4674563213436.0000,2267275452286.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,121,Chứng khoán kinh doanh,616970294369.0000,487232869165.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,122,Dự phòng giảm giá chứng khoán kinh doanh,-15095111322.0000,-15236361322.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,123,Đầu tư nắm giữ đến ngày đáo hạn,4072688030389.0000,1795278944443.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,130,III. Các khoản phải thu ngắn hạn,9738264653998.0000,8518694235595.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,131,Phải thu ngắn hạn của khách hàng,3010061215193.0000,2227670878738.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,132,Trả trước cho người bán ngắn hạn,4789106991664.0000,4717679261067.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,135,Phải thu về cho vay ngắn hạn,482590000000.0000,301510000000.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,136,Phải thu ngắn hạn khác,1502543699153.0000,1340092347265.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,137,Dự phòng phải thu ngắn hạn khó đòi,-46037252012.0000,-68258251475.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,140,IV. Hàng tồn kho,1617418782336.0000,1165499324149.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,141,Hàng tồn kho,1628271566978.0000,1175775826513.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,149,Dự phòng giảm giá hàng tồn kho,-10852784642.0000,-10276502364.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,150,V. Tài sản ngắn hạn khác,48319082380.0000,26097398824.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,151,Chi phí trả trước ngắn hạn,27270565933.0000,13711688661.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,152,2. Thu GTGT đuc khu tr,6951917266.0000,2751623594.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,153,Thuế và các khoản khác phải thu Nhà nước,14096599181.0000,9634086569.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,200,B. Tài sản dài hạn,20688264629784.0000,20639923040656.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,210,I. Các khoản phải thu dài hạn,2624664435632.0000,2616550446658.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,211,Phải thu dài hạn của khách hàng,167329781248.0000,172655324321.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,212,Trả trước cho người bán dài hạn,1001894058878.0000,1014097769858.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,215,Phải thu về cho vay dài hạn,,13000000000.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,216,Phải thu dài hạn khác,1455440595506.0000,1416797352479.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,220,II. Tài sản cố định,577741391316.0000,498134891671.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,221,Tài sản cố định hữu hình,447199390789.0000,361766107988.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,222,Nguyên giá (TSCĐ hữu hình),2446477525856.0000,2314440035235.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,223,Giá trị hao mòn lũy kế (TSCĐ hữu hình),-1999278135067.0000,-1952673927247.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,224,Tài sản cố định thuê tài chính,14937124761.0000,14322004423.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,225,Nguyên giá (TSCĐ thuê tài chính),15473944396.0000,20025323577.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,226,Giá trị hao mòn lũy kế (TSCĐ thuê tài chính),-536819635.0000,-5703319154.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,227,Tài sản cố định vô hình,115604875766.0000,122046779260.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,228,Nguyên giá (TSCĐ vô hình),236011508239.0000,227204665624.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,229,Giá trị hao mòn lũy kế (TSCĐ vô hình),-120406632473.0000,-105157886364.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,230,IlI. Bt đng sn đu tu,120752777713.0000,124971246781.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,231,Nguyên giá (BĐS đầu tư),167991741266.0000,167991741266.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,232,Giá trị hao mòn lũy kế (BĐS đầu tư),-47238963553.0000,-43020494485.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,240,IV. Tài sản dở dang dài hạn,261083155650.0000,200277409835.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,242,Chi phí xây dựng cơ bản dở dang,261083155650.0000,200277409835.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,250,V. Đầu tư tài chính dài hạn,16857609345250.0000,16964719193716.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,251,Đầu tư vào công ty con,15391504328750.0000,15551504328750.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,253,Đầu tư góp vốn vào đơn vị khác,1436839432944.0000,1504874910444.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,254,Dự phòng đầu tư tài chính dài hạn,-734416444.0000,-131660045478.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,255,Đầu tư nắm giữ đến ngày đáo hạn,30000000000.0000,40000000000.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,260,VI. Tài sản dài hạn khác,246413524223.0000,235269851995.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,261,Chi phí trả trước dài hạn,239070033987.0000,227926361759.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,262,Tài sản thuế thu nhập hoãn lại,7343490236.0000,7343490236.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,270,Tổng cộng tài sản,38017825468227.0000,34898146091806.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,300,C. Nợ phải trả,21128315582833.0000,18732352055071.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,310,I. N ngn hn,15135071871918.0000,12212096874388.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,311,Phải trả người bán ngắn hạn,1426438212005.0000,1470298031096.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,312,Người mua trả tiền trước ngắn hạn,1608444387092.0000,565524689643.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,313,Thuế và các khoản phải nộp Nhà nước,6173526749.0000,26692392211.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,314,Phải trả người lao động,9214241152.0000,6079866632.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,315,Chi phí phải trả ngắn hạn,219317617813.0000,209161456265.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,318,Doanh thu chưa thực hiện ngắn hạn,58018024.0000,77814082.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,319,Phải trả ngắn hạn khác,2432687736057.0000,1418404182683.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,320,Vay và nợ thuê tài chính ngắn hạn,9381420845957.0000,8515499482802.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,322,"Quỹ khen thưởng, phúc lợi",51317287069.0000,358958974.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,330,II. Nợ dài hạn,5993243710915.0000,6520255180683.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,337,Phải trả dài hạn khác,4933571710.0000,6193342030.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,338,Vay và nợ thuê tài chính dài hạn,5007683853928.0000,6509824876403.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,339,Trái phiếu chuyển đổi,976389323027.0000,,,
+SBT,quarterly,separate,2026,4,balance_sheet,342,Dự phòng phải trả dài hạn,4236962250.0000,4236962250.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,400,D. Vốn chủ sở hữu,16889509885394.0000,16165794036735.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,410,I. Vốn chủ sở hữu,16889509885394.0000,16165794036735.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,411,1. Vn cò phàn,9280263750000.0000,8361563710000.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,411a,Cổ phiếu phổ thông có quyền biểu quyết,9064150420000.0000,8145450380000.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,411b,Cổ phiếu ưu đãi,216113330000.0000,216113330000.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,412,Thặng dư vốn cổ phần,6770104566476.0000,6770104566476.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,413,Quyền chọn chuyển đổi trái phiếu,12263476973.0000,,,
+SBT,quarterly,separate,2026,4,balance_sheet,418,Quỹ đầu tư phát triển,46130752499.0000,46130752499.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,421,Lợi nhuận sau thuế chưa phân phối,780747339446.0000,987995007760.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,421a,LNST chưa phân phối lũy kế đến cuối kỳ trước,403556345121.0000,248685016346.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,421b,LNST chưa phân phối kỳ này,377190994325.0000,739309991414.0000,,
+SBT,quarterly,separate,2026,4,balance_sheet,440,Tổng cộng nguồn vốn,38017825468227.0000,34898146091806.0000,,
+SBT,quarterly,separate,2026,4,income_statement,01,Doanh thu bán hàng và cung cấp dịch vụ,2923138836160.0000,4235980003385.0000,15805578522339.0000,17675806744350.0000
+SBT,quarterly,separate,2026,4,income_statement,02,Các khoản giảm trừ doanh thu,-3031860000.0000,-1831890381.0000,-5653989354.0000,-4074219325.0000
+SBT,quarterly,separate,2026,4,income_statement,10,Doanh thu thuần về bán hàng và cung cấp dịch vụ,2920106976160.0000,4234148113004.0000,15799924532985.0000,17671732525025.0000
+SBT,quarterly,separate,2026,4,income_statement,11,Giá vốn hàng bán,-2601373275345.0000,-4074041423501.0000,-14650091631104.0000,-16326635254738.0000
+SBT,quarterly,separate,2026,4,income_statement,20,Lợi nhuận gộp về bán hàng và cung cấp dịch vụ,318733700815.0000,160106689503.0000,1149832901881.0000,1345097270287.0000
+SBT,quarterly,separate,2026,4,income_statement,21,Doanh thu hoạt động tài chính,412021800126.0000,380303695910.0000,1599826222852.0000,1587418636304.0000
+SBT,quarterly,separate,2026,4,income_statement,22,Chi phí tài chính,-518596736781.0000,-363609054805.0000,-1698188227879.0000,-1483617794295.0000
+SBT,quarterly,separate,2026,4,income_statement,23,Trong đó: Chi phí lãi vay,-394636344718.0000,-328966086638.0000,-1371604249716.0000,-1325226008053.0000
+SBT,quarterly,separate,2026,4,income_statement,25,Chi phí bán hàng,-90804558152.0000,-62639701412.0000,-271628748079.0000,-235639241011.0000
+SBT,quarterly,separate,2026,4,income_statement,26,Chi phí quản lý doanh nghiệp,-103956686550.0000,-77624163977.0000,-382628756888.0000,-372781567295.0000
+SBT,quarterly,separate,2026,4,income_statement,30,Lợi nhuận thuần từ hoạt động kinh doanh,17397519458.0000,36537465219.0000,397213391887.0000,840477303990.0000
+SBT,quarterly,separate,2026,4,income_statement,31,Thu nhập khác,19033811127.0000,18440230928.0000,41806698165.0000,27135612641.0000
+SBT,quarterly,separate,2026,4,income_statement,32,Chi phí khác,-539024790.0000,-25976922898.0000,-2292963890.0000,-37058214371.0000
+SBT,quarterly,separate,2026,4,income_statement,40,Lợi nhuận khác,18494786337.0000,-7536691970.0000,39513734275.0000,-9922601730.0000
+SBT,quarterly,separate,2026,4,income_statement,50,Tổng lợi nhuận kế toán trước thuế,35892305795.0000,29000773249.0000,436727126162.0000,830554702260.0000
+SBT,quarterly,separate,2026,4,income_statement,51,Chi phí thuế TNDN hiện hành,15547195274.0000,17422915743.0000,-1132243617.0000,-13154055273.0000
+SBT,quarterly,separate,2026,4,income_statement,52,Chi phí/thu nhập thuế TNDN hoãn lại,,-289855572.0000,,-289855572.0000
+SBT,quarterly,separate,2026,4,income_statement,60,Lợi nhuận sau thuế TNDN,51439501069.0000,46133833420.0000,435594882545.0000,817110791415.0000
+SBT,quarterly,separate,2026,4,cash_flow,01,Lợi nhuận trước thuế,,,436727126162.0000,830554702260.0000
+SBT,quarterly,separate,2026,4,cash_flow,02,Khấu hao TSCĐ và BĐSĐT,,,77324471008.0000,76294917030.0000
+SBT,quarterly,separate,2026,4,cash_flow,03,Các khoản dự phòng,,,-152711596219.0000,-53612154360.0000
+SBT,quarterly,separate,2026,4,cash_flow,04,Lãi/lỗ chênh lệch tỷ giá hối đoái do đánh giá lại các khoản mục tiền tệ có gốc ngoại tệ,,,69547488740.0000,14504620439.0000
+SBT,quarterly,separate,2026,4,cash_flow,05,Lãi/lỗ từ hoạt động đầu tư,,,-1487989006218.0000,-1430904913910.0000
+SBT,quarterly,separate,2026,4,cash_flow,06,Chi phí lãi vay,,,1371604249716.0000,1325226008053.0000
+SBT,quarterly,separate,2026,4,cash_flow,08,Lợi nhuận từ hoạt động kinh doanh trước thay đổi vốn lưu động,,,314502733189.0000,762063179512.0000
+SBT,quarterly,separate,2026,4,cash_flow,09,Tăng/giảm các khoản phải thu,,,-2280372012189.0000,24027959724.0000
+SBT,quarterly,separate,2026,4,cash_flow,10,Tăng/giảm hàng tồn kho,,,-452495740465.0000,416929708879.0000
+SBT,quarterly,separate,2026,4,cash_flow,11,Tăng/giảm các khoản phải trả,,,2243096517725.0000,-2609248042971.0000
+SBT,quarterly,separate,2026,4,cash_flow,12,Tăng/giảm chi phí trả trước,,,-24702549500.0000,-27299860466.0000
+SBT,quarterly,separate,2026,4,cash_flow,13,Tăng/giảm chứng khoán kinh doanh,,,-129737425204.0000,34051000000.0000
+SBT,quarterly,separate,2026,4,cash_flow,14,Tiền lãi vay đã trả,,,-1547458417984.0000,-1203514218967.0000
+SBT,quarterly,separate,2026,4,cash_flow,15,Thuế thu nhập doanh nghiệp đã nộp,,,-5549577801.0000,-29124127895.0000
+SBT,quarterly,separate,2026,4,cash_flow,17,Tiền chi khác cho hoạt động kinh doanh,,,-20455804543.0000,-93081765526.0000
+SBT,quarterly,separate,2026,4,cash_flow,20,Lưu chuyển tiền thuần từ hoạt động kinh doanh,,,-1903172276772.0000,-2725196167710.0000
+SBT,quarterly,separate,2026,4,cash_flow,21,"Tiền chi để mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác",,,-245985233213.0000,-127543343250.0000
+SBT,quarterly,separate,2026,4,cash_flow,22,"Tiền thu từ thanh lý, nhượng bán TSCĐ và các tài sản dài hạn khác",,,32926316297.0000,11874853784.0000
+SBT,quarterly,separate,2026,4,cash_flow,23,"Tiền chi cho vay, mua các công cụ nợ của đơn vị khác",,,-4374804389318.0000,-5773863383862.0000
+SBT,quarterly,separate,2026,4,cash_flow,24,"Tiền thu hồi cho vay, bán lại các công cụ nợ của đơn vị khác",,,3509230588724.0000,5612090903520.0000
+SBT,quarterly,separate,2026,4,cash_flow,25,Tiền chi đầu tư góp vốn vào đơn vị khác,,,,-2516773566500.0000
+SBT,quarterly,separate,2026,4,cash_flow,26,Tiền thu hồi đầu tư góp vốn vào đơn vị khác,,,631457719000.0000,752831450000.0000
+SBT,quarterly,separate,2026,4,cash_flow,27,"Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia",,,678970458133.0000,1111388175337.0000
+SBT,quarterly,separate,2026,4,cash_flow,30,Lưu chuyn tin thun (s dng vào) tù hot đng đu tur,,,231795459623.0000,-929994910971.0000
+SBT,quarterly,separate,2026,4,cash_flow,31,"Tiền thu từ phát hành cổ phiếu, nhận vốn góp của chủ sở hữu",,,417938986973.0000,
+SBT,quarterly,separate,2026,4,cash_flow,33,Tiền thu từ đi vay,,,26903648711587.0000,29887914808124.0000
+SBT,quarterly,separate,2026,4,cash_flow,34,Tiền trả nợ gốc vay,,,-26581655379543.0000,-26748817119809.0000
+SBT,quarterly,separate,2026,4,cash_flow,35,Tiền trả nợ gốc thuê tài chính,,,-5089479707.0000,-4248824702.0000
+SBT,quarterly,separate,2026,4,cash_flow,36,C túrc đă trà,,,-93127556164.0000,-73917455695.0000
+SBT,quarterly,separate,2026,4,cash_flow,40,Lưu chuyển tiền thuần từ hoạt động tài chính,,,641715283146.0000,3060931407918.0000
+SBT,quarterly,separate,2026,4,cash_flow,50,Lưu chuyển tiền thuần trong kỳ,,,-1029661534003.0000,-594259670763.0000
+SBT,quarterly,separate,2026,4,cash_flow,60,Tiền và tương đương tiền đầu kỳ,,,2280656640296.0000,2874916311059.0000
+SBT,quarterly,separate,2026,4,cash_flow,70,Tiền và tương đương tiền cuối kỳ,,,1250995106293.0000,2280656640296.0000
+SBT,quarterly,consolidated,2027,1,balance_sheet,100,A. Tài sản ngắn hạn,29402191504715.0000,23637089417648.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,110,I. Tiền và các khoản tương đương tiền,3081450884067.0000,1823238249948.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,111,Tiền,1147509421976.0000,983643117506.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,112,Các khoản tương đương tiền,1933941462091.0000,839595132442.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,120,II. Đầu tư tài chính ngắn hạn,7662581162307.0000,7238941508426.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,121,Chứng khoán kinh doanh,532668283790.0000,778179921714.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,122,Dự phòng giảm giá chứng khoán kinh doanh,-15095111322.0000,-15095111322.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,123,Đầu tư nắm giữ đến ngày đáo hạn,7145007989839.0000,6475856698034.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,130,III. Các khoản phải thu ngắn hạn,15112877010817.0000,10030328179685.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,131,Phải thu ngắn hạn của khách hàng,5666754687836.0000,2502887036689.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,132,Trả trước cho người bán ngắn hạn,8205637611474.0000,6459001064755.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,135,Phải thu ngắn hạn khác,1373381943026.0000,1203297895313.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,136,Dự phòng phải thu ngắn hạn khó đòi,-132931443939.0000,-134857817072.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,137,Tài sản thiếu chờ xử lý,34212420.0000,,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,140,IV. Hàng tồn kho,3047253736341.0000,4144300262556.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,141,Hàng tồn kho,3075920473942.0000,4173116002788.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,142,Dự phòng giảm giá hàng tồn kho,-28666737601.0000,-28815740232.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,150,V. Tài sản sinh học ngắn hạn,5574230707.0000,7223210003.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,152,Cây trồng theo mùa vụ hoặc lấy sản phẩm một lần ngắn hạn,5574230707.0000,7223210003.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,160,VI. Tài sản ngắn hạn khác,492454480476.0000,393058007030.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,161,Chi phí chờ phân bổ ngắn hạn,38883651353.0000,24960887924.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,162,Thuế GTGT được khấu trừ,149692789834.0000,178047276961.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,163,Thuế và các khoản khác phải thu Nhà nước,11294822452.0000,10129705832.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,165,Tài sản ngắn hạn khác,292583216837.0000,179920136313.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,200,B. Tài sản dài hạn,11399642637664.0000,14140431891334.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,210,I. Các khoản phải thu dài hạn,521814755353.0000,539772580442.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,211,Phải thu dài hạn của khách hàng,796496058.0000,796496058.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,212,Trả trước cho người bán dài hạn,410997375755.0000,414707774135.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,215,Phải thu dài hạn khác,119020679448.0000,133268106157.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,216,Dự phòng phải thu dài hạn khó đòi,-8999795908.0000,-8999795908.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,220,II. Tài sản cố định,3471907085286.0000,3504635020866.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,221,Tài sản cố định hữu hình,2596526015706.0000,2606309908944.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,222,Nguyên giá (TSCĐ hữu hình),9228952932949.0000,9133085056468.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,223,Giá trị hao mòn lũy kế (TSCĐ hữu hình),-6632426917243.0000,-6526775147524.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,224,Tài sản cố định thuê tài chính,324450070995.0000,333531073902.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,225,Nguyên giá (TSCĐ thuê tài chính),390161530038.0000,390161530038.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,226,Giá trị hao mòn lũy kế (TSCĐ thuê tài chính),-65711459043.0000,-56630456136.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,227,Tài sản cố định vô hình,550930998585.0000,564794038020.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,228,Nguyên giá (TSCĐ vô hình),959448713840.0000,957233476911.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,229,Giá trị hao mòn lũy kế (TSCĐ vô hình),-408517715255.0000,-392439438891.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,230,III. Tài sản sinh học dài hạn,16433211738.0000,16589268374.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,231,Súc vật nuôi cho sản phẩm định kỳ,11192179868.0000,11963963428.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,233,Súc vật nuôi cho sản phẩm định kỳ đến giai đoạn trưởng thành,11192179868.0000,11963963428.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,234,Nguyên giá (súc vật nuôi),16078356299.0000,16078356299.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,235,Giá trị khấu hao lũy kế (súc vật nuôi),-4886176431.0000,-4114392871.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,236,Súc vật nuôi lấy sản phẩm một lần dài hạn,5241031870.0000,4625304946.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,240,IV. Bt đng sn đu tư,289202837570.0000,313937157797.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,241,Nguyên giá (BĐS đầu tư),370544835532.0000,370492121879.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,242,Giá trị hao mòn lũy kế (BĐS đầu tư),-81341997962.0000,-56554964082.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,250,V. Tài sản dở dang dài hạn,946820593989.0000,880735321085.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,252,Chi phí xây dựng cơ bản dở dang,946820593989.0000,880735321085.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,260,VI. Đầu tư tài chính dài hạn,4950878964595.0000,7643605972759.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,262,"Đầu tư vào công ty liên doanh, liên kết",3239117252305.0000,5741650130772.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,263,Đầu tư góp vốn vào đơn vị khác,1467363937627.0000,1677024806377.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,264,Dự phòng đầu tư tài chính dài hạn,-734416445.0000,-734416445.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,265,Đầu tư nắm giữ đến ngày đáo hạn,245132191108.0000,225665452055.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,270,VII. Tài sản dài hạn khác,1202585189133.0000,1241156570011.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,271,Chi phí chờ phân bổ dài hạn,1166283286607.0000,1189935073082.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,272,Tài sản thuế thu nhập hoãn lại,13272472276.0000,24106896585.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,279,Lợi thế thương mại,23029430250.0000,27114600344.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,280,Tổng cộng tài sản,40801834142379.0000,37777521308982.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,300,C. Nợ phải trả,28198149223235.0000,25317099398555.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,310,I. N ngn hn,22438444553519.0000,19215013073799.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,311,Phải trả người bán ngắn hạn,1766655711308.0000,1164418691785.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,312,Người mua trả tiền trước ngắn hạn,410435098181.0000,1162646322497.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,313,"Phải trả cổ tức, lợi nhuận",21398245045.0000,21398245045.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,314,Thuế và các khoản phải nộp ngân sách Nhà nước,153709939752.0000,141431926306.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,315,Phải trả người lao động,21589209896.0000,36628218362.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,316,Chi phí phải trả ngắn hạn,499794448624.0000,582048037308.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,319,Doanh thu chưa thực hiện ngắn hạn,51946931497.0000,681400701.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,320,Phải trả ngắn hạn khác,5486831481972.0000,4122548463105.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,321,Vay và nợ thuê tài chính ngắn hạn,13970765714718.0000,11904108685004.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,322,Dự phòng phải trả ngắn hạn,80661588.0000,80661588.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,323,"Quỹ khen thưởng, phúc lợi",55237110938.0000,79022422098.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,330,II. Nợ dài hạn,5759704669716.0000,6102086324756.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,338,Phải trả dài hạn khác,7203397710.0000,6543874760.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,339,Vay và nợ thuê tài chính dài hạn,4598525059126.0000,4937569238066.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,340,Trái phiếu chuyển đổi,987130300000.0000,988652800000.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,342,Thuế thu nhập hoãn lại phải trả,152850641587.0000,155325140637.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,343,Dự phòng phải trả dài hạn,13995271293.0000,13995271293.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,400,D. Vốn chủ sở hữu,12603684919144.0000,12460421910427.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,410,I. Vốn chủ sở hữu,12603684919144.0000,12460421910427.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,411,1. Vôn cò phàn,9562454880000.0000,9280263750000.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,411a,- C phiu ph thông có quyn biu quyt,9346341550000.0000,9064150420000.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,411b,Cổ phiếu ưu đãi,216113330000.0000,216113330000.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,412,Thặng dư vốn cổ phần,6963425036476.0000,6770104566476.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,414,Vốn khác của chủ sở hữu,-5472074089358.0000,-5472074089358.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,417,Chênh lệch tỷ giá hối đoái,39053194747.0000,26697360508.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,418,Quỹ đầu tư phát triển,67054931893.0000,67054931893.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,420,Lợi nhuận sau thuế chưa phân phối,1284351558400.0000,1133684992666.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,420a,LNST chưa phân phối lũy kế đến cuối kỳ trước,1128684992666.0000,350010817654.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,420b,LNST chưa phân phối kỳ này,155666565734.0000,783674175012.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,429,Lợi ích cổ đông không kiểm soát,159419406986.0000,654690398242.0000,,
+SBT,quarterly,consolidated,2027,1,balance_sheet,440,Tổng cộng nguồn vốn,40801834142379.0000,37777521308982.0000,,
+SBT,quarterly,consolidated,2027,1,income_statement,01,Doanh thu bán hàng và cung cấp dịch vụ,7628073601636.0000,5386645094751.0000,7628073601636.0000,5386645094751.0000
+SBT,quarterly,consolidated,2027,1,income_statement,02,Các khoản giảm trừ doanh thu,-11922410196.0000,-14910916761.0000,-11922410196.0000,-14910916761.0000
+SBT,quarterly,consolidated,2027,1,income_statement,10,Doanh thu thuần về bán hàng và cung cấp dịch vụ,7616151191440.0000,5371734177990.0000,7616151191440.0000,5371734177990.0000
+SBT,quarterly,consolidated,2027,1,income_statement,11,Giá vốn hàng bán,-7140719828057.0000,-4872249382154.0000,-7140719828057.0000,-4872249382154.0000
+SBT,quarterly,consolidated,2027,1,income_statement,20,Lợi nhuận gộp về bán hàng và cung cấp dịch vụ,475431363383.0000,499484795836.0000,475431363383.0000,499484795836.0000
+SBT,quarterly,consolidated,2027,1,income_statement,22,Doanh thu hoạt động tài chính,701374449535.0000,354659023726.0000,701374449535.0000,354659023726.0000
+SBT,quarterly,consolidated,2027,1,income_statement,23,Chi phí tài chính,-643169519598.0000,-417237227834.0000,-643169519598.0000,-417237227834.0000
+SBT,quarterly,consolidated,2027,1,income_statement,24,Trong đó: Chi phí lãi vay,-487282757231.0000,-338929899324.0000,-487282757231.0000,-338929899324.0000
+SBT,quarterly,consolidated,2027,1,income_statement,25,Chi phí bán hàng,-241505517076.0000,-167837659352.0000,-241505517076.0000,-167837659352.0000
+SBT,quarterly,consolidated,2027,1,income_statement,26,Chi phí quản lý doanh nghiệp,-178955941025.0000,-147192216244.0000,-178955941025.0000,-147192216244.0000
+SBT,quarterly,consolidated,2027,1,income_statement,27,"Phần lãi/lỗ trong công ty liên doanh, liên kết",83684382467.0000,63851726312.0000,83684382467.0000,63851726312.0000
+SBT,quarterly,consolidated,2027,1,income_statement,30,Lợi nhuận thuần từ hoạt động kinh doanh,196859217686.0000,185728442444.0000,196859217686.0000,185728442444.0000
+SBT,quarterly,consolidated,2027,1,income_statement,31,Thu nhập khác,14983995455.0000,22398486914.0000,14983995455.0000,22398486914.0000
+SBT,quarterly,consolidated,2027,1,income_statement,32,Chi phí khác,-6496303703.0000,-4754970899.0000,-6496303703.0000,-4754970899.0000
+SBT,quarterly,consolidated,2027,1,income_statement,40,Lợi nhuận khác,8487691752.0000,17643516015.0000,8487691752.0000,17643516015.0000
+SBT,quarterly,consolidated,2027,1,income_statement,50,Tổng lợi nhuận kế toán trước thuế,205346909438.0000,203371958459.0000,205346909438.0000,203371958459.0000
+SBT,quarterly,consolidated,2027,1,income_statement,51,Chi phí thuế TNDN hiện hành,-42087178948.0000,-11862053346.0000,-42087178948.0000,-11862053346.0000
+SBT,quarterly,consolidated,2027,1,income_statement,52,Chi phí/thu nhập thuế TNDN hoãn lại,-8359440090.0000,6622576020.0000,-8359440090.0000,6622576020.0000
+SBT,quarterly,consolidated,2027,1,income_statement,60,Lợi nhuận sau thuế TNDN,154900290400.0000,198132481133.0000,154900290400.0000,198132481133.0000
+SBT,quarterly,consolidated,2027,1,income_statement,61,Lợi nhuận sau thuế của công ty mẹ,155666565734.0000,201079690479.0000,155666565734.0000,201079690479.0000
+SBT,quarterly,consolidated,2027,1,income_statement,62,Lợi nhuận sau thuế của cổ đông không kiểm soát,-766275334.0000,-2947209346.0000,-766275334.0000,-2947209346.0000
+SBT,quarterly,consolidated,2027,1,income_statement,70,Lãi cơ bản trên cổ phiếu,154.8900,205.5100,154.8900,205.5100
+SBT,quarterly,consolidated,2027,1,income_statement,71,Lãi suy giảm trên cổ phiếu,154.8900,205.5100,154.8900,205.5100
+SBT,quarterly,consolidated,2027,1,cash_flow,01,Lợi nhuận trước thuế,205346909438.0000,203371958459.0000,205346909438.0000,203371958459.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,02,Khấu hao TSCĐ và BĐSĐT,176658028926.0000,129418133113.0000,176658028926.0000,129418133113.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,03,Các khoản dự phòng,-2075375764.0000,-36518285192.0000,-2075375764.0000,-36518285192.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,04,Lãi/lỗ chênh lệch tỷ giá hối đoái do đánh giá lại các khoản mục tiền tệ có gốc ngoại tệ,-5545225123.0000,18328734012.0000,-5545225123.0000,18328734012.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,05,Lãi/lỗ từ hoạt động đầu tư,-473435171533.0000,-148804786031.0000,-473435171533.0000,-148804786031.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,06,Chi phí lãi vay,487282757231.0000,338929899324.0000,487282757231.0000,338929899324.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,08,Lợi nhuận từ hoạt động kinh doanh trước thay đổi vốn lưu động,388231923175.0000,504725653685.0000,388231923175.0000,504725653685.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,09,Tăng/giảm các khoản phải thu,-2714394449582.0000,-1345319456364.0000,-2714394449582.0000,-1345319456364.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,10,Tăng/giảm hàng tồn kho,1098228781218.0000,461665407668.0000,1098228781218.0000,461665407668.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,11,Tăng/giảm các khoản phải trả,1289648045007.0000,355069468995.0000,1289648045007.0000,355069468995.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,12,Tăng/giảm chi phí trả trước,9729023046.0000,-9557025483.0000,9729023046.0000,-9557025483.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,13,Tăng/giảm chứng khoán kinh doanh,245511637924.0000,,245511637924.0000,
+SBT,quarterly,consolidated,2027,1,cash_flow,14,Tiền lãi vay đã trả,-618270270216.0000,-320891682218.0000,-618270270216.0000,-320891682218.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,15,Thuế thu nhập doanh nghiệp đã nộp,-54929744949.0000,-98455929720.0000,-54929744949.0000,-98455929720.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,17,Tiền chi khác cho hoạt động kinh doanh,-28785311160.0000,-26653974151.0000,-28785311160.0000,-26653974151.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,20,Lưu chuyển tiền thuần từ hoạt động kinh doanh,-385030365537.0000,-479417537588.0000,-385030365537.0000,-479417537588.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,21,"Tiền chi để mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác",-184891672630.0000,-159485471145.0000,-184891672630.0000,-159485471145.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,22,"Tiền thu từ thanh lý, nhượng bán TSCĐ và các tài sản dài hạn khác",7207924386.0000,2956807534.0000,7207924386.0000,2956807534.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,23,"Tiền chi cho vay, mua các công cụ nợ của đơn vị khác",-688618030858.0000,-91419191853.0000,-688618030858.0000,-91419191853.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,25,Tiền chi đầu tư góp vốn vào đơn vị khác,,-694336800000.0000,,-694336800000.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,26,Tiền thu hồi đầu tư góp vốn vào đơn vị khác,134611488160.0000,559506913858.0000,134611488160.0000,559506913858.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,27,"Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia",124212153438.0000,16953338095.0000,124212153438.0000,16953338095.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,30,Lưu chuyn tin thun s dng vào hot đng đu tu,-607478137504.0000,-365824403511.0000,-607478137504.0000,-365824403511.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,32,Tin thu t c đông không kim soát góp vn vào các công ty con,,651000000000.0000,,651000000000.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,33,Tiền thu từ đi vay,9097156332986.0000,9737186992132.0000,9097156332986.0000,9737186992132.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,34,Tiền trả nợ gốc vay,-6867294365846.0000,-9323236250813.0000,-6867294365846.0000,-9323236250813.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,35,Tiền trả nợ gốc thuê tài chính,-18194024727.0000,-20758072077.0000,-18194024727.0000,-20758072077.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,40,Lưu chuyển tiền thuần từ hoạt động tài chính,2211667942413.0000,1044192669242.0000,2211667942413.0000,1044192669242.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,50,Lưu chuyển tiền thuần trong kỳ,1219159439372.0000,198950728143.0000,1219159439372.0000,198950728143.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,60,Tiền và tương đương tiền đầu kỳ,1823238249948.0000,3555316479347.0000,1823238249948.0000,3555316479347.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,61,Ảnh hưởng của thay đổi tỷ giá hối đoái quy đổi ngoại tệ,39053194747.0000,-53923776352.0000,39053194747.0000,-53923776352.0000
+SBT,quarterly,consolidated,2027,1,cash_flow,70,Tiền và tương đương tiền cuối kỳ,3081450884067.0000,3700343431138.0000,3081450884067.0000,3700343431138.0000
+SBT,quarterly,separate,2027,1,balance_sheet,100,A. Tài sản ngắn hạn,20315350007325.0000,16836071975992.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,110,I. Tin và các khon tưrong đurong tin,1639387945491.0000,1074343969980.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,111,Tiền,325069274763.0000,403426211600.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,112,Các khoản tương đương tiền,1314318670728.0000,670917758380.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,120,II. Đầu tư tài chính ngắn hạn,5009263462283.0000,5262830468256.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,121,Chứng khoán kinh doanh,371458656445.0000,616970294369.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,122,Dự phòng giảm giá chứng khoán kinh doanh,-15095111322.0000,-15095111322.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,123,Đầu tư nắm giữ đến ngày đáo hạn,4652899917160.0000,4660955285209.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,130,III. Các khoản phải thu ngắn hạn,12065980428306.0000,8682649913848.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,131,Phải thu ngắn hạn của khách hàng,3689103455368.0000,3010061215193.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,132,Trả trước cho người bán ngắn hạn,6548655765411.0000,4389876455664.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,135,Phải thu ngắn hạn khác,1875345165463.0000,1329836200927.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,136,Dự phòng phải thu ngắn hạn khó đòi,-47123957936.0000,-47123957936.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,140,IV. Hàng tồn kho,1288812139619.0000,1617418782336.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,141,Hàng tồn kho,1299664924261.0000,1628271566978.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,142,Dự phòng giảm giá hàng tồn kho,-10852784642.0000,-10852784642.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,160,VI. Tài sản ngắn hạn khác,311906031626.0000,198828841572.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,161,Chi phí chờ phân bổ ngắn hạn,17273144814.0000,6197838353.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,162,Thuế GTGT được khấu trừ,21590014817.0000,6951917266.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,163,Thuế và các khoản khác phải thu Nhà nước,9686639821.0000,9027949640.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,165,Tài sản ngắn hạn khác,263356232174.0000,176651136313.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,200,B. Tài sản dài hạn,20353999232512.0000,20681639391246.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,210,I. Các khoản phải thu dài hạn,983727159797.0000,1307442303810.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,211,Phải thu dài hạn của khách hàng,166219067154.0000,167329781248.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,212,Trả trước cho người bán dài hạn,691302540638.0000,1001894058878.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,215,Phải thu dài hạn khác,126205552005.0000,138218463684.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,220,II. Tài sản cố định,560011146961.0000,577741391316.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,221,Tài sản cố định hữu hình,433906417309.0000,447199390789.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,222,Nguyên giá (TSCĐ hữu hình),2447903525856.0000,2446477525856.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,223,Giá trị hao mòn lũy kế (TSCĐ hữu hình),-2013997108547.0000,-1999278135067.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,224,Tài sản cố định thuê tài chính,14648263532.0000,14937124761.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,225,Nguyên giá (TSCĐ thuê tài chính),15473944396.0000,15473944396.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,226,Giá trị hao mòn lũy kế (TSCĐ thuê tài chính),-825680864.0000,-536819635.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,227,Tài sản cố định vô hình,111456466120.0000,115604875766.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,228,Nguyên giá (TSCĐ vô hình),236011508239.0000,236011508239.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,229,Giá trị hao mòn lũy kế (TSCĐ vô hình),-124555042119.0000,-120406632473.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,240,Ill. Bt đng sn đu tư,119689492360.0000,120752777713.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,241,Nguyên giá (BĐS đầu tư),167991741266.0000,167991741266.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,242,Giá trị hao mòn lũy kế (BĐS đầu tư),-48302248906.0000,-47238963553.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,250,V. Tài sản dở dang dài hạn,280155741469.0000,262549526950.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,252,Chi phí xây dựng cơ bản dở dang,280155741469.0000,262549526950.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,260,VI. Đầu tư tài chính dài hạn,18176382249360.0000,18175774797305.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,261,Đầu tư vào công ty con,15391504328750.0000,15391504328750.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,263,Đầu tư góp vốn vào đơn vị khác,2752339432944.0000,2752339432944.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,264,Dự phòng đầu tư tài chính dài hạn,-734416444.0000,-734416444.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,265,Đầu tư nắm giữ đến ngày đáo hạn,33272904110.0000,32665452055.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,270,VII. Tài sản dài hạn khác,234033442565.0000,237378594152.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,271,Chi phí chờ phân bổ dài hạn,226632324101.0000,229977475688.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,272,Tài sản thuế thu nhập hoãn lại,7401118464.0000,7401118464.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,280,Tổng cộng tài sản,40669349239837.0000,37517711367238.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,300,C. Nợ phải trả,23263709294007.0000,20616075527859.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,310,I. N ngn hn,17512837961550.0000,14662079311082.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,311,Phải trả người bán ngắn hạn,1799953396018.0000,1427385391362.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,312,Người mua trả tiền trước ngắn hạn,363043911889.0000,1139213851092.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,313,"3. Phi tr c túc, li nhun",19879973945.0000,19879973945.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,314,Thuế và các khoản phải nộp ngân sách Nhà nước,3948871986.0000,3481246135.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,315,Phải trả người lao động,11007729599.0000,9214241151.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,316,Chi phí phải trả ngắn hạn,210598096144.0000,221248063813.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,319,Doanh thu chưa thực hiện ngắn hạn,1121872042.0000,58018024.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,320,Phải trả ngắn hạn khác,3445545445893.0000,2380381384230.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,321,Vay và nợ thuê tài chính ngắn hạn,11628918628739.0000,9409899854261.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,323,"Quỹ khen thưởng, phúc lợi",28820035295.0000,51317287069.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,330,II. Nợ dài hạn,5750871332457.0000,5953996216777.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,338,Phải trả dài hạn khác,4922447710.0000,4262924760.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,339,Vay và nợ thuê tài chính dài hạn,4754581622497.0000,4956843529767.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,340,Trái phiếu chuyển đổi,987130300000.0000,988652800000.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,343,Dự phòng phải trả dài hạn,4236962250.0000,4236962250.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,400,D. Vốn chủ sở hữu,17405639945830.0000,16901635839379.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,410,I. Vốn chủ sở hữu,17405639945830.0000,16901635839379.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,411,1. Vôn c phàn,9562454880000.0000,9280263750000.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,412,Thặng dư vốn cổ phần,6963425036476.0000,6770104566476.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,418,Quỹ đầu tư phát triển,46130752499.0000,46130752499.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,420,Lợi nhuận sau thuế chưa phân phối,833629276855.0000,805136770404.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,440,Tổng cộng nguồn vốn,40669349239837.0000,37517711367238.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,411a,- C phiu ph thông có quyn biu quyt,9346341550000.0000,9064150420000.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,411b,Cổ phiếu ưu đãi,216113330000.0000,216113330000.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,420a,LNST chưa phân phối lũy kế đến cuối kỳ trước,805136770404.0000,403556345121.0000,,
+SBT,quarterly,separate,2027,1,balance_sheet,420b,LNST chưa phân phối kỳ này,28492506451.0000,401580425283.0000,,
+SBT,quarterly,separate,2027,1,income_statement,01,Doanh thu bán hàng và cung cấp dịch vụ,4604243181529.0000,3140666362652.0000,4604243181529.0000,3140666362652.0000
+SBT,quarterly,separate,2027,1,income_statement,02,Các khoản giảm trừ doanh thu,-456499000.0000,-1929152237.0000,-456499000.0000,-1929152237.0000
+SBT,quarterly,separate,2027,1,income_statement,10,Doanh thu thuần về bán hàng và cung cấp dịch vụ,4603786682529.0000,3138737210415.0000,4603786682529.0000,3138737210415.0000
+SBT,quarterly,separate,2027,1,income_statement,11,Giá vốn hàng bán,-4535135526112.0000,-2948800305393.0000,-4535135526112.0000,-2948800305393.0000
+SBT,quarterly,separate,2027,1,income_statement,20,Lợi nhuận gộp về bán hàng và cung cấp dịch vụ,68651156417.0000,189936905022.0000,68651156417.0000,189936905022.0000
+SBT,quarterly,separate,2027,1,income_statement,22,Doanh thu hoạt động tài chính,647269603056.0000,238841282834.0000,647269603056.0000,238841282834.0000
+SBT,quarterly,separate,2027,1,income_statement,23,Chi phí tài chính,-527040049326.0000,-299127730961.0000,-527040049326.0000,-299127730961.0000
+SBT,quarterly,separate,2027,1,income_statement,24,Trong đó: Chi phí lãi vay,-386097890942.0000,-294355585747.0000,-386097890942.0000,-294355585747.0000
+SBT,quarterly,separate,2027,1,income_statement,25,Chi phí bán hàng,-75110172927.0000,-41158266417.0000,-75110172927.0000,-41158266417.0000
+SBT,quarterly,separate,2027,1,income_statement,26,Chi phí quản lý doanh nghiệp,-90771512270.0000,-67285504518.0000,-90771512270.0000,-67285504518.0000
+SBT,quarterly,separate,2027,1,income_statement,30,Lợi nhuận thuần từ hoạt động kinh doanh,22999024950.0000,21206685960.0000,22999024950.0000,21206685960.0000
+SBT,quarterly,separate,2027,1,income_statement,31,Thu nhập khác,9025084999.0000,15649271154.0000,9025084999.0000,15649271154.0000
+SBT,quarterly,separate,2027,1,income_statement,32,Chi phí khác,-365769448.0000,-1934641.0000,-365769448.0000,-1934641.0000
+SBT,quarterly,separate,2027,1,income_statement,40,Lợi nhuận khác,8659315551.0000,15647336513.0000,8659315551.0000,15647336513.0000
+SBT,quarterly,separate,2027,1,income_statement,50,Tổng lợi nhuận kế toán trước thuế,31658340501.0000,36854022473.0000,31658340501.0000,36854022473.0000
+SBT,quarterly,separate,2027,1,income_statement,51,Chi phí thuế TNDN hiện hành,-3165834050.0000,-3670596717.0000,-3165834050.0000,-3670596717.0000
+SBT,quarterly,separate,2027,1,income_statement,60,Lợi nhuận sau thuế TNDN,28492506451.0000,33183425756.0000,28492506451.0000,33183425756.0000
+SBT,quarterly,separate,2027,1,cash_flow,01,Lợi nhuận trước thuế,31658340501.0000,36854022473.0000,31658340501.0000,36854022473.0000
+SBT,quarterly,separate,2027,1,cash_flow,02,Khấu hao TSCĐ và BĐSĐT,20219529708.0000,17696641717.0000,20219529708.0000,17696641717.0000
+SBT,quarterly,separate,2027,1,cash_flow,03,Các khoản dự phòng,,-111242087516.0000,,-111242087516.0000
+SBT,quarterly,separate,2027,1,cash_flow,04,Lãi/lỗ chênh lệch tỷ giá hối đoái do đánh giá lại các khoản mục tiền tệ có gốc ngoại tệ,-8496486510.0000,-17316835955.0000,-8496486510.0000,-17316835955.0000
+SBT,quarterly,separate,2027,1,cash_flow,05,Lãi/lỗ từ hoạt động đầu tư,-617369329137.0000,-207463884113.0000,-617369329137.0000,-207463884113.0000
+SBT,quarterly,separate,2027,1,cash_flow,06,Chi phí lãi vay,386097890942.0000,294355585747.0000,386097890942.0000,294355585747.0000
+SBT,quarterly,separate,2027,1,cash_flow,08,Lợi nhuận từ hoạt động kinh doanh trước thay đổi vốn lưu động,-187890054496.0000,12883442353.0000,-187890054496.0000,12883442353.0000
+SBT,quarterly,separate,2027,1,cash_flow,09,Tăng/giảm các khoản phải thu,-2608700361390.0000,-211074596313.0000,-2608700361390.0000,-211074596313.0000
+SBT,quarterly,separate,2027,1,cash_flow,10,Tăng/giảm hàng tồn kho,328606642717.0000,-61844529532.0000,328606642717.0000,-61844529532.0000
+SBT,quarterly,separate,2027,1,cash_flow,11,Tăng/giảm các khoản phải trả,656604516313.0000,-436409424773.0000,656604516313.0000,-436409424773.0000
+SBT,quarterly,separate,2027,1,cash_flow,12,Tăng/giảm chi phí trả trước,-7730154874.0000,1052488251.0000,-7730154874.0000,1052488251.0000
+SBT,quarterly,separate,2027,1,cash_flow,13,Tăng/giảm chứng khoán kinh doanh,245511637924.0000,,245511637924.0000,
+SBT,quarterly,separate,2027,1,cash_flow,14,Tiền lãi vay đã trả,-382475104081.0000,-335820205901.0000,-382475104081.0000,-335820205901.0000
+SBT,quarterly,separate,2027,1,cash_flow,15,Thuế thu nhập doanh nghiệp đã nộp,,-5549577801.0000,,-5549577801.0000
+SBT,quarterly,separate,2027,1,cash_flow,17,Tiền chi khác cho hoạt động kinh doanh,-22497251774.0000,-23061500976.0000,-22497251774.0000,-23061500976.0000
+SBT,quarterly,separate,2027,1,cash_flow,20,Lưu chuyển tiền thuần từ hoạt động kinh doanh,-1978570129661.0000,-1059823904692.0000,-1978570129661.0000,-1059823904692.0000
+SBT,quarterly,separate,2027,1,cash_flow,21,"Tiền chi để mua sắm, xây dựng TSCĐ và các tài sản dài hạn khác",-19032214519.0000,-87730928020.0000,-19032214519.0000,-87730928020.0000
+SBT,quarterly,separate,2027,1,cash_flow,23,"Tiền chi cho vay, mua các công cụ nợ của đơn vị khác",-470596712204.0000,-207705552961.0000,-470596712204.0000,-207705552961.0000
+SBT,quarterly,separate,2027,1,cash_flow,24,"Tiền thu hồi cho vay, bán lại các công cụ nợ của đơn vị khác",478652080253.0000,106406510824.0000,478652080253.0000,106406510824.0000
+SBT,quarterly,separate,2027,1,cash_flow,26,Tiền thu hồi đầu tư góp vốn vào đơn vị khác,,179000000000.0000,,179000000000.0000
+SBT,quarterly,separate,2027,1,cash_flow,27,"Tiền thu lãi cho vay, cổ tức và lợi nhuận được chia",63844984434.0000,86093152232.0000,63844984434.0000,86093152232.0000
+SBT,quarterly,separate,2027,1,cash_flow,30,Luu chuyn tin thun (s dng vào) tư hot đng đu tu,52868137964.0000,76063182075.0000,52868137964.0000,76063182075.0000
+SBT,quarterly,separate,2027,1,cash_flow,33,Tiền thu từ đi vay,7867004724649.0000,9275630124363.0000,7867004724649.0000,9275630124363.0000
+SBT,quarterly,separate,2027,1,cash_flow,34,Tiền trả nợ gốc vay,-5376258757441.0000,-8273608001403.0000,-5376258757441.0000,-8273608001403.0000
+SBT,quarterly,separate,2027,1,cash_flow,40,Lưu chuyển tiền thuần từ hoạt động tài chính,2490745967208.0000,1002022122960.0000,2490745967208.0000,1002022122960.0000
+SBT,quarterly,separate,2027,1,cash_flow,50,Lưu chuyển tiền thuần trong kỳ,565043975511.0000,18261400343.0000,565043975511.0000,18261400343.0000
+SBT,quarterly,separate,2027,1,cash_flow,60,Tiền và tương đương tiền đầu kỳ,1074343969980.0000,2280656640296.0000,1074343969980.0000,2280656640296.0000
+SBT,quarterly,separate,2027,1,cash_flow,70,Tiền và tương đương tiền cuối kỳ,1639387945491.0000,2298918040639.0000,1639387945491.0000,2298918040639.0000

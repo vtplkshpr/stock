@@ -121,7 +121,7 @@ Report files (PDF) are kept locally under `financial_reports/<TICKER>/<fiscal_ye
 financial_reports/SBT/2027/SBT_2027_Q1_separate_20260701-20260930.pdf
 ```
 
-`fiscal_year` is the calendar year in which the fiscal year ends, matching how companies title their reports. SBT's fiscal year runs from 1 July to 30 June, so its July–September 2026 report is Q1 of fiscal year 2027; `period_start` and `period_end` always hold the exact dates. Store the file path relative to the project root in `finance_reports.document_storage_path` (and in `related_party_transactions.document_storage_path` for figures taken from it). The path appears in the financial-report and supplier/customer lists.
+`fiscal_year` is the calendar year in which the fiscal year ends, matching how companies title their reports. SBT's fiscal year runs from 1 July to 30 June, so its July–September 2026 report is Q1 of fiscal year 2027; `period_start` and `period_end` always hold the exact dates. Scanned reports can be turned into import CSVs with the OCR tools in `scripts/ocr/` (see its README). Store the file path relative to the project root in `finance_reports.document_storage_path` (and in `related_party_transactions.document_storage_path` for figures taken from it). The path appears in the financial-report and supplier/customer lists.
 
 ## Back Up and Restore Data
 
@@ -186,6 +186,7 @@ stock/
 │   ├── data_import.py
 │   └── stock_cli.py
 ├── scripts/
+│   ├── ocr/            # scanned financial reports -> import CSVs (see scripts/ocr/README.md)
 │   ├── import_companies.py
 │   ├── init_database.py
 │   └── setup_database.sh

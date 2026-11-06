@@ -6,3 +6,4 @@ __pycache__/
 # Financial report files (large PDFs) stay local; copy them to other machines manually
 financial_reports/
 sbt/
+ocr_work/

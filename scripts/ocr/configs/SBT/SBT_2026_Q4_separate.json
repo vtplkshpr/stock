@@ -1,0 +1,57 @@
+{
+ "source_pdf": "financial_reports/SBT/2026/SBT_2026_Q4_separate_20260401-20260630.pdf",
+ "ocr_dir": "ocr_work/out/SBT_2026_Q4_separate_20260401-20260630",
+ "out_dir": "ocr_work/csv/SBT_2026_Q4_separate_20260401-20260630",
+ "meta": {
+  "report_type": "quarterly",
+  "scope": "separate",
+  "fiscal_year": 2026,
+  "quarter": 4,
+  "period_start": "2026-04-01",
+  "period_end": "2026-06-30",
+  "published_at": "2026-07-30",
+  "document": "financial_reports/SBT/2026/SBT_2026_Q4_separate_20260401-20260630.pdf"
+ },
+ "employees": {
+  "total": 1019,
+  "seasonal_employees": 329
+ },
+ "parties": {},
+ "remuneration": [
+  [
+   "Đặng Huỳnh Ức My",
+   "Thù lao HĐQT - Chủ tịch",
+   1155000000
+  ],
+  [
+   "Huỳnh Bích Ngọc",
+   "Thù lao HĐQT - Thành viên",
+   450000000
+  ],
+  [
+   "Trần Tấn Việt",
+   "Thù lao HĐQT - Thành viên",
+   540000000
+  ],
+  [
+   "Trần Trọng Gia Vinh",
+   "Thù lao HĐQT - Thành viên độc lập",
+   735000000
+  ],
+  [
+   "Lê Quang Phúc",
+   "Thù lao HĐQT - Thành viên độc lập",
+   750000000
+  ],
+  [
+   "Thái Văn Chuyện",
+   "Thù lao Tổng Giám đốc",
+   1205135000
+  ],
+  [
+   "Các thành viên quản lý khác (Ban Tổng Giám đốc)",
+   "Thù lao Ban Tổng Giám đốc",
+   5027168518
+  ]
+ ]
+}

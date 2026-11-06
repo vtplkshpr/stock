@@ -4,13 +4,13 @@
     "companies": 1993,
     "stock_prices": 0,
     "stock_holders": 43,
-    "finance_reports": 7,
-    "finance_report_items": 815,
+    "finance_reports": 15,
+    "finance_report_items": 2027,
     "supply_chain_relations": 0,
     "company_news": 0,
     "company_leaders": 35,
     "company_investments": 29,
-    "related_party_transactions": 440,
+    "related_party_transactions": 792,
     "company_tiers": 0
   }
 }

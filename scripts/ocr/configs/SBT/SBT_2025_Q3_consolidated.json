@@ -1,0 +1,242 @@
+{
+ "source_pdf": "financial_reports/SBT/2025/SBT_2025_Q3_consolidated_20250101-20250331.pdf",
+ "ocr_dir": "ocr_work/out/SBT_2025_Q3_consolidated_20250101-20250331",
+ "out_dir": "ocr_work/csv/SBT_2025_Q3_consolidated_20250101-20250331",
+ "meta": {
+  "report_type": "quarterly",
+  "scope": "consolidated",
+  "fiscal_year": 2025,
+  "quarter": 3,
+  "period_start": "2025-01-01",
+  "period_end": "2025-03-31",
+  "published_at": "2025-04-28",
+  "document": "financial_reports/SBT/2025/SBT_2025_Q3_consolidated_20250101-20250331.pdf"
+ },
+ "statement_fix": {
+  "cash_flow": {
+   "60@11": "09"
+  }
+ },
+ "employees": {
+  "total": 2504,
+  "permanent_employees": 2105,
+  "seasonal_employees": 399
+ },
+ "parties": {
+  "Công ty C phn Đu tu Thành Thành Công": [
+   "Công ty Cổ phần Đầu tư Thành Thành Công",
+   "major_shareholder",
+   ""
+  ],
+  "Công ty C phàn Thương mi ThànhThành Công": [
+   "Công ty Cổ phần Thương mại Thành Thành Công",
+   "group_company",
+   ""
+  ],
+  "Công ty C phàn Xut nhp khu Bn Tre": [
+   "Công ty Cổ phần Xuất nhập khẩu Bến Tre",
+   "associate",
+   ""
+  ],
+  "Công ty C phàn Bao bì Xanh": [
+   "Công ty Cổ phần Bao bì Xanh",
+   "group_company",
+   ""
+  ],
+  "Công ty C phàn Đin Gia Lai": [
+   "Công ty Cổ phần Điện Gia Lai",
+   "group_company",
+   "GEG"
+  ],
+  "Công ty C phn Xut Nhp Khu Tân Đinh": [
+   "Công ty Cổ phần Xuất nhập khẩu Tân Định",
+   "associate",
+   ""
+  ],
+  "Công ty C phàn Toàn Hi Vân": [
+   "Công ty Cổ phần Toàn Hải Vân",
+   "associate",
+   ""
+  ],
+  "Công ty Cồ phàn Năng Lưng Thành Thành Công": [
+   "Công ty Cổ phần Năng lượng Thành Thành Công",
+   "group_company",
+   ""
+  ]
+ },
+ "remuneration": [
+  [
+   "Đặng Huỳnh Ức My",
+   "Thù lao HĐQT - Chủ tịch",
+   1155000000
+  ],
+  [
+   "Huỳnh Bích Ngọc",
+   "Thù lao HĐQT - Thành viên",
+   450000000
+  ],
+  [
+   "Trần Tấn Việt",
+   "Thù lao HĐQT - Thành viên",
+   540000000
+  ],
+  [
+   "Trần Trọng Gia Vinh",
+   "Thù lao HĐQT - Thành viên độc lập",
+   735000000
+  ],
+  [
+   "Lê Quang Phúc",
+   "Thù lao HĐQT - Thành viên độc lập",
+   750000000
+  ],
+  [
+   "Thái Văn Chuyện",
+   "Thù lao Tổng Giám đốc",
+   1201995000
+  ],
+  [
+   "Các thành viên quản lý khác (Ban Tổng Giám đốc)",
+   "Thù lao Ban Tổng Giám đốc",
+   1479112778
+  ]
+ ],
+ "leaders": [
+  [
+   "Đặng Huỳnh Ức My",
+   "Chủ tịch HĐQT",
+   "board",
+   "2024-07-13",
+   "",
+   "current"
+  ],
+  [
+   "Huỳnh Bích Ngọc",
+   "Chủ tịch HĐQT (nhiệm kỳ trước)",
+   "board",
+   "",
+   "2024-07-13",
+   "former"
+  ],
+  [
+   "Huỳnh Bích Ngọc",
+   "Thành viên HĐQT",
+   "board",
+   "2024-10-24",
+   "",
+   "current"
+  ],
+  [
+   "Lê Quang Phúc",
+   "Thành viên HĐQT độc lập",
+   "board",
+   "2024-10-24",
+   "",
+   "current"
+  ],
+  [
+   "Võ Tòng Xuân",
+   "Thành viên HĐQT",
+   "board",
+   "",
+   "2024-08-19",
+   "former"
+  ],
+  [
+   "Võ Thúy Anh",
+   "Thành viên HĐQT độc lập",
+   "board",
+   "",
+   "2024-10-24",
+   "former"
+  ],
+  [
+   "Đào Duy Thi",
+   "Thành viên HĐQT",
+   "board",
+   "",
+   "2024-10-24",
+   "former"
+  ],
+  [
+   "Lê Quang Phúc",
+   "Chủ tịch Ủy ban Kiểm toán",
+   "audit_committee",
+   "2024-11-21",
+   "",
+   "current"
+  ],
+  [
+   "Võ Thúy Anh",
+   "Chủ tịch Ủy ban Kiểm toán",
+   "audit_committee",
+   "",
+   "2024-10-24",
+   "former"
+  ],
+  [
+   "Đào Duy Thi",
+   "Phó Chủ tịch Ủy ban Kiểm toán",
+   "audit_committee",
+   "",
+   "2024-10-24",
+   "former"
+  ],
+  [
+   "Thái Văn Chuyện",
+   "Tổng Giám đốc",
+   "management",
+   "2024-07-29",
+   "",
+   "current"
+  ],
+  [
+   "Nguyễn Thanh Ngữ",
+   "Tổng Giám đốc",
+   "management",
+   "",
+   "2024-07-29",
+   "former"
+  ],
+  [
+   "Lâm Thị Cẩm Lệ",
+   "Phó Tổng Giám đốc",
+   "management",
+   "",
+   "2025-01-24",
+   "former"
+  ],
+  [
+   "Nguyễn Thị Phương Thảo",
+   "Giám đốc Tài chính",
+   "management",
+   "",
+   "2024-07-29",
+   "former"
+  ],
+  [
+   "Nguyễn Quốc Việt",
+   "Phó Tổng Giám đốc",
+   "management",
+   "",
+   "2024-07-10",
+   "former"
+  ],
+  [
+   "Trang Thanh Trúc",
+   "Giám đốc Đối ngoại",
+   "management",
+   "",
+   "2024-08-06",
+   "former"
+  ],
+  [
+   "Võ Hồng Tuyển",
+   "Giám đốc Chi nhánh",
+   "management",
+   "",
+   "2024-09-05",
+   "former"
+  ]
+ ]
+}

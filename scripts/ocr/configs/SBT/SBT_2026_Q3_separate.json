@@ -1,0 +1,80 @@
+{
+ "source_pdf": "financial_reports/SBT/2026/SBT_2026_Q3_separate_20260101-20260331.pdf",
+ "ocr_dir": "ocr_work/out/SBT_2026_Q3_separate_20260101-20260331",
+ "out_dir": "ocr_work/csv/SBT_2026_Q3_separate_20260101-20260331",
+ "meta": {
+  "report_type": "quarterly",
+  "scope": "separate",
+  "fiscal_year": 2026,
+  "quarter": 3,
+  "period_start": "2026-01-01",
+  "period_end": "2026-03-31",
+  "published_at": "2026-04-24",
+  "document": "financial_reports/SBT/2026/SBT_2026_Q3_separate_20260101-20260331.pdf"
+ },
+ "set": {
+  "income_statement": {
+   "50": [
+    17776227773,
+    103443508996,
+    400834820367,
+    801553929011
+   ]
+  }
+ },
+ "employees": {
+  "total": 933,
+  "seasonal_employees": 243
+ },
+ "description_fix": {
+  "liêu": "Mua hàng hóa, nguyên liệu"
+ },
+ "parties": {},
+ "remuneration": [
+  [
+   "Đặng Huỳnh Ức My",
+   "Thù lao HĐQT - Chủ tịch",
+   1155000000
+  ],
+  [
+   "Huỳnh Bích Ngọc",
+   "Thù lao HĐQT - Thành viên",
+   450000000
+  ],
+  [
+   "Trần Tấn Việt",
+   "Thù lao HĐQT - Thành viên",
+   540000000
+  ],
+  [
+   "Trần Trọng Gia Vinh",
+   "Thù lao HĐQT - Thành viên độc lập",
+   735000000
+  ],
+  [
+   "Lê Quang Phúc",
+   "Thù lao HĐQT - Thành viên độc lập",
+   750000000
+  ],
+  [
+   "Thái Văn Chuyện",
+   "Thù lao Tổng Giám đốc",
+   1204995000
+  ],
+  [
+   "Các thành viên quản lý khác (Ban Tổng Giám đốc)",
+   "Thù lao Ban Tổng Giám đốc",
+   5550776737
+  ]
+ ],
+ "leaders": [
+  [
+   "Nguyễn Bạch Kim Vy",
+   "Phó Tổng Giám đốc",
+   "management",
+   "2026-02-02",
+   "",
+   ""
+  ]
+ ]
+}

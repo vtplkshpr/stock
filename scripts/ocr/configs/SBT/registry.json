@@ -1,0 +1,170 @@
+{
+ "Công ty Cổ phần Đầu tư Thành Thành Công": {
+  "relationship": "major_shareholder",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Thương mại Thành Thành Công": {
+  "relationship": "group_company",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Xuất nhập khẩu Bến Tre": {
+  "relationship": "associate",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Bao bì Xanh": {
+  "relationship": "group_company",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Điện Gia Lai": {
+  "relationship": "group_company",
+  "ticker": "GEG"
+ },
+ "Công ty Cổ phần Xuất nhập khẩu Tân Định": {
+  "relationship": "associate",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Toàn Hải Vân": {
+  "relationship": "associate",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Năng lượng Thành Thành Công": {
+  "relationship": "group_company",
+  "ticker": ""
+ },
+ "Công ty TNHH Mía Đường TTC Attapeu": {
+  "relationship": "subsidiary",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Hàng Tiêu Dùng Biên Hòa": {
+  "relationship": "subsidiary",
+  "ticker": ""
+ },
+ "Công ty AgriS Ninh Hòa": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Nông nghiệp AgriS Gia Lai": {
+  "relationship": "subsidiary",
+  "ticker": ""
+ },
+ "Công ty TNHH MTV Mía Đường TTC Attapeu": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Đường Nước Trong": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Đường Biên Hòa - Phan Rang": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Phát triển Nông nghiệp Thành Thành Công": {
+  "relationship": "subsidiary",
+  "ticker": ""
+ },
+ "Công ty TNHH Nghiên cứu, Ứng dụng Mía Đường Thành Thành Công": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Công ty TNHH MTV Nông nghiệp Xanh Thành Công": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Công ty TNHH MTV Thành Công Xanh": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Công ty TNHH MTV Đầu tư Nông nghiệp Thành Công": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Công ty TNHH MTV Ý Tưởng Xanh Thành Công": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Công ty TNHH MTV TM DV SX TTC An Hòa": {
+  "relationship": "subsidiary",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Phát triển Sản xuất AgriS": {
+  "relationship": "subsidiary",
+  "ticker": ""
+ },
+ "Công ty TNHH Hải Vi": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Mía Đường Tây Ninh": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Công ty Cổ phần In Thanh Niên": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Biên Hòa - Thành Long": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Khu Công nghiệp Thành Thành Công": {
+  "relationship": "group_company",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Khai thác và Quản lý Khu công nghiệp Đặng Huỳnh": {
+  "relationship": "other",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Phát triển Nông nghiệp AgriS": {
+  "relationship": "subsidiary",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Bò Giống Miền Trung": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Cao su Nước Trong": {
+  "relationship": "subsidiary",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Điện AgriS Gia Lai": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Công ty TNHH MTV Nhiệt điện Ninh Hòa": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Công ty CP Global Mind Business": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Global Mind Agriculture Pte. Ltd": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Du lịch Thành Thành Công": {
+  "relationship": "group_company",
+  "ticker": "VNG"
+ },
+ "Công ty Cổ phần nước Miaqua": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Khoai mì Tây Ninh": {
+  "relationship": "associate",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Đầu tư Hạ tầng Cụm Công nghiệp Tân Hội": {
+  "relationship": "other",
+  "ticker": ""
+ },
+ "TSU Australia Pty Ltd.": {
+  "relationship": "subsidiary",
+  "ticker": ""
+ },
+ "Công ty Cổ phần Đầu tư Growfin": {
+  "relationship": "indirect_subsidiary",
+  "ticker": ""
+ }
+}
