@@ -153,6 +153,9 @@ CATEGORIES = {
     )
 }
 
+# Categories that feed the computed financial_metrics / valuation_metrics tables (see metrics.py).
+METRIC_SOURCES = {"finance_reports", "finance_report_items", "stock_prices"}
+
 # CSV ticker columns and the company id column each one resolves to.
 COMPANY_REFS = {
     "ticker": "company_id",
@@ -573,6 +576,13 @@ def main(argv: Sequence[str] | None = None) -> int:
             connection.rollback()
             print("Có lỗi, không lưu thay đổi nào.", file=sys.stderr)
             return 1
+        if METRIC_SOURCES & set(files):
+            try:
+                from . import metrics
+            except ImportError:
+                import metrics
+            print("Tính lại chỉ số tài chính:")
+            print(metrics.format_summary(metrics.recompute(connection, parse_tickers(args.tickers))))
         if args.dry_run:
             connection.rollback()
             print("Chạy thử: không lưu thay đổi.")

@@ -9,9 +9,10 @@ from pathlib import Path
 from typing import Any, Sequence
 
 try:
-    from . import data_import
+    from . import data_import, metrics
 except ImportError:
     import data_import
+    import metrics
 
 
 def load_database_config() -> dict[str, str]:
@@ -198,6 +199,8 @@ def show_company(connection: Any, company_id: int) -> None:
         if value is not None and value != "":
             if key.endswith("_shares") and str(value).isdigit():
                 value = f"{int(value):,}"
+            elif isinstance(value, Decimal):
+                value = display_value(value)
             print(f"{label}: {value}")
 
     for label, key in (
@@ -431,6 +434,53 @@ def browse_related_parties(connection: Any, company_id: int, ticker: str, page_s
     )
 
 
+def flag_sql() -> str:
+    return "CONCAT_WS(', ', " + ", ".join(
+        f"IF({column}, '{label}', NULL)" for column, label in metrics.FLAG_LABELS.items()) + ")"
+
+
+def browse_metrics(connection: Any, company_id: int, ticker: str, page_size: int) -> None:
+    print("\nPhạm vi: 1. Hợp nhất  2. Riêng   |   Kỳ: a. TTM  b. Năm  c. Quý (Enter = hợp nhất, TTM)")
+    answer = (prompt("> ") or "").lower()
+    scope = "separate" if "2" in answer else "consolidated"
+    period = {"b": "year", "c": "quarter"}.get(next((ch for ch in answer if ch in "abc"), "a"), "ttm")
+    browse_pages(
+        connection,
+        f"Chỉ số tài chính {ticker} ({'hợp nhất' if scope == 'consolidated' else 'riêng'}, {period}) "
+        "- tiền: tỷ đồng, tỷ lệ: %",
+        f"""SELECT CONCAT('NĐ', fiscal_year, ' Q', fiscal_quarter), period_end,
+                   CASE flow_source WHEN 'derived' THEN 'suy ra' WHEN 'mixed' THEN 'một phần suy ra' ELSE 'công bố' END,
+                   ROUND(cfo / 1e9, 1), ROUND(cfi / 1e9, 1), ROUND(cff / 1e9, 1), ROUND(free_cash_flow / 1e9, 1),
+                   cash_flow_pattern, lifecycle_stage, ROUND(net_margin * 100, 1), ROUND(roe * 100, 1),
+                   ROUND(debt_to_equity, 2), ROUND(net_debt_to_ebitda, 1), ROUND(interest_coverage, 2),
+                   ROUND(cfo_to_net_income, 2), ROUND(current_ratio, 2), {flag_sql()}
+            FROM financial_metrics
+            WHERE company_id = %s AND report_scope = %s AND period_type = %s
+            ORDER BY period_end DESC LIMIT %s OFFSET %s""",
+        "SELECT COUNT(*) FROM financial_metrics WHERE company_id = %s AND report_scope = %s AND period_type = %s",
+        (company_id, scope, period),
+        ("Kỳ", "Đến ngày", "Nguồn", "CFO", "CFI", "CFF", "FCF", "Mẫu", "Vòng đời", "LN ròng %", "ROE %",
+         "Nợ/VCSH", "Nợ ròng/EBITDA", "EBIT/lãi", "CFO/LN", "Thanh toán", "Cảnh báo"),
+        page_size,
+    )
+
+
+def browse_valuations(connection: Any, company_id: int, ticker: str, page_size: int) -> None:
+    browse_pages(
+        connection,
+        f"Định giá {ticker} theo ngày (chỉ dùng báo cáo đã công bố trước ngày giá)",
+        """SELECT price_date, close_price, ROUND(market_cap / 1e9, 0), ROUND(pe_ttm, 1), ROUND(pb, 2),
+                  ROUND(ps_ttm, 2), ROUND(ev_ebitda, 1), ROUND(dividend_yield * 100, 2),
+                  ROUND(fcf_yield * 100, 2), report_scope
+           FROM valuation_metrics WHERE company_id = %s
+           ORDER BY price_date DESC LIMIT %s OFFSET %s""",
+        "SELECT COUNT(*) FROM valuation_metrics WHERE company_id = %s",
+        (company_id,),
+        ("Ngày", "Giá", "Vốn hóa (tỷ)", "P/E", "P/B", "P/S", "EV/EBITDA", "Cổ tức %", "FCF yield %", "Phạm vi"),
+        page_size,
+    )
+
+
 def browse_news(connection: Any, company_id: int, ticker: str, page_size: int) -> None:
     result = browse_pages(
         connection,
@@ -489,6 +539,8 @@ def confirm_and_commit(connection: Any, results: dict[str, data_import.ImportSta
         return
     answer = prompt("Lưu thay đổi? (y/N): ")
     if answer is not None and answer.lower() in {"y", "yes", "c", "co", "có"}:
+        if data_import.METRIC_SOURCES & set(results):
+            print(metrics.format_summary(metrics.recompute(connection)))
         connection.commit()
         print("Đã lưu thay đổi.")
     else:
@@ -663,7 +715,7 @@ def company_menu(connection: Any, selected: tuple[Any, ...], page_size: int) -> 
         print("\n1. Giá cổ phiếu   2. Cổ đông   3. Nhà cung cấp (upstream)")
         print("4. Khách hàng (downstream)   5. Báo cáo tài chính   6. Tin tức")
         print("7. Công ty con, liên kết & đầu tư   8. Nhập/cập nhật dữ liệu")
-        print("9. Giao dịch bên liên quan")
+        print("9. Giao dịch bên liên quan   10. Chỉ số tài chính   11. Định giá")
         print("b. Quay lại tìm kiếm")
         try:
             choice = input("> ").strip().lower()
@@ -691,6 +743,10 @@ def company_menu(connection: Any, selected: tuple[Any, ...], page_size: int) -> 
             data_entry_menu(connection, [ticker])
         elif choice == "9":
             browse_related_parties(connection, company_id, ticker, page_size)
+        elif choice == "10":
+            browse_metrics(connection, company_id, ticker, page_size)
+        elif choice == "11":
+            browse_valuations(connection, company_id, ticker, page_size)
         else:
             print("Lựa chọn không hợp lệ.")
 

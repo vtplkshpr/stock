@@ -117,7 +117,7 @@ The default page size is 10; accepted values range from 1 to 100. Use `--help` t
    python3 scripts/import_companies.py --from-backup backups/2026-11-05
    ```
 
-This loads every category (companies, shareholders, leadership, investments, related-party transactions, prices, reports, news, supply chain, tiers). Check the row counts it prints against `backups/2026-11-05/manifest.json`.
+This loads every category (companies, shareholders, leadership, investments, related-party transactions, prices, reports, news, supply chain, tiers). The financial metrics and valuations are recomputed from the restored reports and prices at the end of the restore. Check the row counts it prints against `backups/2026-11-05/manifest.json`.
 
 To refresh the backup after entering new data, run `python3 src/data_import.py --export backups/$(date +%F)` and commit the new folder. See "Back Up and Restore Data" in README.md for details.
 

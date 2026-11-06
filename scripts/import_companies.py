@@ -301,6 +301,7 @@ def import_csv(input_dir: Path) -> dict[str, int]:
 def restore_backup(directory: Path, replace: bool = False, dry_run: bool = False) -> int:
     sys.path.insert(0, str(MODULE_DIR / "src"))
     import data_import
+    import metrics
     import mysql.connector
 
     files = data_import.backup_files(directory)
@@ -324,6 +325,8 @@ def restore_backup(directory: Path, replace: bool = False, dry_run: bool = False
             connection.rollback()
             print("Errors found; nothing was changed.", file=sys.stderr)
             return 1
+        # financial_metrics / valuation_metrics are computed, so they are rebuilt, not restored.
+        print(metrics.format_summary(metrics.recompute(connection)))
         if dry_run:
             connection.rollback()
             print("Dry run: nothing was changed.")

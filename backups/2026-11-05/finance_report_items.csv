@@ -1309,7 +1309,7 @@ SBT,quarterly,separate,2026,3,income_statement,32,Chi phí khác,-1505295995.000
 SBT,quarterly,separate,2026,3,income_statement,40,Lợi nhuận khác,283137422.0000,915357543.0000,21018947938.0000,-2385909760.0000
 SBT,quarterly,separate,2026,3,income_statement,50,Tổng lợi nhuận kế toán trước thuế,17776227773.0000,103443508996.0000,400834820367.0000,801553929011.0000
 SBT,quarterly,separate,2026,3,income_statement,51,Chi phí thuế TNDN hiện hành,-1777622777.0000,-10344350900.0000,-16679438891.0000,-30576971016.0000
-SBT,quarterly,separate,2026,3,income_statement,60,Lợi nhuận sau thuế TNDN,15998604996.0000,93099158096.0000,,770976957995.0000
+SBT,quarterly,separate,2026,3,income_statement,60,Lợi nhuận sau thuế TNDN,15998604996.0000,93099158096.0000,384155381476.0000,770976957995.0000
 SBT,quarterly,separate,2026,3,cash_flow,01,Lợi nhuận trước thuế,,,400834820367.0000,801553929011.0000
 SBT,quarterly,separate,2026,3,cash_flow,02,Khấu hao TSCĐ và BĐSĐT,,,60081752112.0000,57835919961.0000
 SBT,quarterly,separate,2026,3,cash_flow,03,Các khoản dự phòng,,,-130890429034.0000,-29558558549.0000

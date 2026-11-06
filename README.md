@@ -113,6 +113,40 @@ python src/data_import.py --list
 python src/data_import.py --tickers HPG,VNM stock_prices=prices.csv finance_reports=reports.csv --dry-run
 ```
 
+## Financial Metrics and Valuation
+
+`financial_metrics` and `valuation_metrics` are computed from the reported statements (`finance_report_items`) and prices (`stock_prices`) by `src/metrics.py`. They are rebuilt automatically after every import of reports or prices (CLI, `src/data_import.py`) and after a backup restore, so they are not part of the backup. To rebuild them by hand:
+
+```bash
+python src/metrics.py                 # all companies
+python src/metrics.py --tickers SBT   # one company
+```
+
+`financial_metrics` holds one row per company, scope (separate/consolidated), period type and fiscal period:
+
+- `quarter`: the stand-alone quarter. Quarterly cash-flow statements are year-to-date, so later quarters are derived as YTD(q) − YTD(q−1); `flow_source` says whether a row is `reported`, `derived` or `mixed`. Return ratios and warning flags are left empty for single quarters.
+- `ttm`: the twelve months to the quarter end (YTD + previous year − previous YTD). The fiscal year is read from `companies.fiscal_year_start_month` (July for SBT).
+- `year`: the fiscal year; audited annual reports take precedence over the fourth-quarter YTD.
+
+`available_from` is the latest publication date of the reports a row uses; `audit_status` is the weakest status among them.
+
+| Group | Columns |
+| --- | --- |
+| Cash flow | `cfo`, `cfi`, `cff`, `capex`, `free_cash_flow` (CFO + capex), `dividends_paid` |
+| Cash-flow pattern | `cfo_sign`, `cfi_sign`, `cff_sign` (−1/0/1; flows below 0.5% of total assets count as 0), `cash_flow_pattern` (e.g. `+--`), `lifecycle_stage` (Dickinson 2011: introduction `-,-,+`, growth `+,-,+`, mature `+,-,-`, decline `-,+,±`, shake-out otherwise) |
+| Profitability | `gross_margin`, `ebit_margin`, `net_margin`, `roe` (parent net income / average parent equity), `roa`, `roic` |
+| Earnings quality | `cfo_to_net_income`, `accrual_ratio` ((net income − CFO) / average assets) |
+| Leverage | `interest_bearing_debt`, `net_debt`, `debt_to_equity`, `net_debt_to_ebitda`, `interest_coverage` (EBIT / interest expense), `cfo_interest_coverage` ((CFO + interest paid + tax paid) / interest paid) |
+| Liquidity | `current_ratio`, `quick_ratio`, `cash_ratio` |
+| Efficiency | `dso`, `dio`, `dpo`, `cash_conversion_cycle` (days), `asset_turnover` |
+| Growth | `revenue_yoy`, `net_income_yoy`, `cfo_yoy` against the same period a year earlier |
+| Per share | `shares_outstanding` (common share capital / VND 10,000 par), `eps`, `bvps`, `cfo_per_share` |
+| Flags (TTM and year) | `flag_negative_cfo`, `flag_negative_fcf`, `flag_low_earnings_quality` (CFO / net income < 1), `flag_high_accruals` (accrual ratio > 10%), `flag_weak_interest_coverage` (EBIT / interest < 1.5x), `flag_high_leverage` (net debt / EBITDA > 4x), `flag_low_liquidity` (current ratio < 1) |
+
+Line codes differ between Circular 200 and Circular 99 statements (e.g. total assets 270 vs 280); `ITEMS` in `src/metrics.py` maps both, and the thresholds are in `THRESHOLDS`.
+
+`valuation_metrics` has one row per price day: market cap, enterprise value (market cap + net debt), P/E and P/S on TTM figures, P/B, EV/EBITDA, dividend and FCF yield. Each day uses the latest TTM row whose reports were already published on that day (consolidated where available), so historical multiples carry no look-ahead. Import prices as the `stock_prices` category (close price in VND per share, not thousands); the valuations are computed during the import. The CLI shows both tables in the company menu (options 10 and 11).
+
 ## Financial Report Files
 
 Report files (PDF) are kept locally under `financial_reports/<TICKER>/<fiscal_year>/`, named `<TICKER>_<fiscal_year>_Q<quarter>_<scope>_<period_start>-<period_end>.pdf` (use `FY` instead of `Q<quarter>` for annual reports). Git ignores `financial_reports/` because the files are large, so copy the folder to other machines yourself; backups contain only the paths. For example:
