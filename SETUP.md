@@ -58,6 +58,10 @@ These are example variable names, not shared credentials. Setup creates the file
 | `company_tiers` | Links companies to tiers |
 | `supply_chain_relations` | Suppliers, customers, product categories, and revenue percentages |
 | `company_news` | Text news and media URLs or storage paths |
+| `company_leaders` | Board members, executives, and other officers with position and birth year |
+| `company_investments` | Subsidiaries, associates, and shareholdings in other companies |
+| `finance_report_items` | Every statement line of each financial report, with comparative and year-to-date values |
+| `related_party_transactions` | Related-party sales, purchases, loans, interest, dividends, and remuneration by reporting period |
 
 Foreign keys link related records to `companies`; deleting a company cascades to its dependent records. Initialization uses `CREATE TABLE IF NOT EXISTS` and adds missing company-information columns to existing databases, so it can be rerun without deleting existing data.
 
@@ -70,13 +74,13 @@ Setup looks for a virtual environment in the module's `.venv/` or `venv/` direct
 ```bash
 cd ~/stock/stock
 source ../venv/bin/activate
-python scripts/stock_cli.py
+python src/stock_cli.py
 ```
 
 If setup used a different virtual environment, adjust the `source` path or invoke its Python executable directly, for example:
 
 ```bash
-../venv/bin/python scripts/stock_cli.py
+../venv/bin/python src/stock_cli.py
 ```
 
 The CLI main menu provides:
@@ -89,12 +93,35 @@ In a list, enter a row number to select a company, `n`/`p` to move between pages
 Search directly without opening the main menu:
 
 ```bash
-python scripts/stock_cli.py --query HPG --page-size 20
+python src/stock_cli.py --query HPG --page-size 20
 ```
 
 The default page size is 10; accepted values range from 1 to 100. Use `--help` to see the CLI options.
 
 ## Loading Data
+
+### Restore the real data on a new machine
+
+1. Clone the repository. The data backups in `backups/` come with it.
+2. Copy the `financial_reports/` folder from the old machine into the project root (for example via USB or a shared drive). Git ignores this folder (and the unprocessed `sbt/` folder) because the PDFs are large, so it does not come with the clone. Without it the database still restores, but the report paths stored in `document_storage_path` point to missing files.
+3. Set up MySQL, the application user, `.env`, and all tables:
+
+   ```bash
+   ./scripts/setup_database.sh
+   ```
+
+   On a machine whose database was created by an older version of this project, run `python3 scripts/init_database.py` instead; it adds the newer tables and columns without touching existing data.
+4. Import the newest backup folder under `backups/` (currently `backups/2026-11-05`):
+
+   ```bash
+   python3 scripts/import_companies.py --from-backup backups/2026-11-05
+   ```
+
+This loads every category (companies, shareholders, leadership, investments, related-party transactions, prices, reports, news, supply chain, tiers). Check the row counts it prints against `backups/2026-11-05/manifest.json`.
+
+To refresh the backup after entering new data, run `python3 src/data_import.py --export backups/$(date +%F)` and commit the new folder. See "Back Up and Restore Data" in README.md for details.
+
+### Rebuild the company list from raw sources
 
 Prepare table-specific CSV files from `raw_data/` without a database connection:
 

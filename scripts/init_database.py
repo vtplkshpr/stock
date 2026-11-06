@@ -4,8 +4,21 @@ import argparse
 import os
 import re
 import sys
+from pathlib import Path
 from typing import Any
 
+
+HOLDER_TYPES = (
+    "individual",
+    "institution",
+    "state",
+    "foreign_individual",
+    "foreign_institution",
+    "other",
+)
+HOLDER_TYPE_DEFINITION = (
+    "ENUM(" + ", ".join(f"'{value}'" for value in HOLDER_TYPES) + ") NULL"
+)
 
 TABLES = (
     """
@@ -47,12 +60,12 @@ TABLES = (
         UNIQUE KEY uq_tiers_name (tier_name)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
     """,
-    """
+    f"""
     CREATE TABLE IF NOT EXISTS stock_holders (
         holder_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
         company_id BIGINT UNSIGNED NOT NULL,
         holder_name VARCHAR(255) NOT NULL,
-        holder_type VARCHAR(64) NULL,
+        holder_type {HOLDER_TYPE_DEFINITION},
         shares_owned DECIMAL(24, 4) NULL,
         ownership_percentage DECIMAL(9, 6) NULL,
         snapshot_date DATE NOT NULL,
@@ -163,30 +176,206 @@ TABLES = (
             REFERENCES companies (company_id) ON DELETE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
     """,
+    """
+    CREATE TABLE IF NOT EXISTS company_leaders (
+        leader_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+        company_id BIGINT UNSIGNED NOT NULL,
+        person_name VARCHAR(255) NOT NULL,
+        position VARCHAR(255) NOT NULL,
+        leader_group ENUM('board', 'management', 'audit_committee', 'other') NULL,
+        birth_year SMALLINT UNSIGNED NULL,
+        source_url VARCHAR(1024) NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        PRIMARY KEY (leader_id),
+        UNIQUE KEY uq_company_leaders_person_position (company_id, person_name, position),
+        CONSTRAINT fk_company_leaders_company FOREIGN KEY (company_id)
+            REFERENCES companies (company_id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+    """,
+    """
+    CREATE TABLE IF NOT EXISTS finance_report_items (
+        item_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+        company_id BIGINT UNSIGNED NOT NULL,
+        report_type VARCHAR(64) NOT NULL,
+        report_scope ENUM('separate', 'consolidated') NULL,
+        fiscal_year SMALLINT UNSIGNED NOT NULL,
+        fiscal_quarter TINYINT UNSIGNED NULL,
+        statement ENUM('balance_sheet', 'income_statement', 'cash_flow') NOT NULL,
+        item_code VARCHAR(8) NOT NULL,
+        item_name VARCHAR(255) NULL,
+        value DECIMAL(24, 4) NULL,
+        comparative_value DECIMAL(24, 4) NULL,
+        ytd_value DECIMAL(24, 4) NULL,
+        ytd_comparative_value DECIMAL(24, 4) NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        PRIMARY KEY (item_id),
+        KEY ix_finance_report_items_report (company_id, fiscal_year, fiscal_quarter, statement),
+        CONSTRAINT fk_finance_report_items_company FOREIGN KEY (company_id)
+            REFERENCES companies (company_id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+    """,
+    """
+    CREATE TABLE IF NOT EXISTS related_party_transactions (
+        transaction_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+        company_id BIGINT UNSIGNED NOT NULL,
+        counterparty_name VARCHAR(255) NOT NULL,
+        counterparty_ticker VARCHAR(16) NULL,
+        report_scope ENUM('separate', 'consolidated') NULL,
+        relationship ENUM(
+            'subsidiary', 'indirect_subsidiary', 'associate', 'major_shareholder',
+            'co_owner', 'group_company', 'key_management', 'other'
+        ) NULL,
+        transaction_type ENUM(
+            'sale_goods', 'sale_services', 'sale_other', 'purchase_goods',
+            'purchase_materials', 'purchase_services', 'interest_income',
+            'interest_expense', 'other_income', 'asset_disposal', 'lending',
+            'loan_collection', 'borrowing', 'loan_repayment', 'dividend_received',
+            'remuneration', 'other'
+        ) NOT NULL,
+        description VARCHAR(255) NULL,
+        period_start DATE NOT NULL,
+        period_end DATE NOT NULL,
+        amount DECIMAL(24, 4) NULL,
+        currency CHAR(3) NOT NULL DEFAULT 'VND',
+        document_storage_path VARCHAR(1024) NULL,
+        source_url VARCHAR(1024) NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        PRIMARY KEY (transaction_id),
+        UNIQUE KEY uq_related_party_transactions_item (
+            company_id, report_scope, counterparty_name, transaction_type, description,
+            period_start, period_end
+        ),
+        KEY ix_related_party_transactions_counterparty (counterparty_ticker),
+        CONSTRAINT fk_related_party_transactions_company FOREIGN KEY (company_id)
+            REFERENCES companies (company_id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+    """,
+    """
+    CREATE TABLE IF NOT EXISTS company_investments (
+        investment_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+        company_id BIGINT UNSIGNED NOT NULL,
+        investee_name VARCHAR(255) NOT NULL,
+        investee_ticker VARCHAR(16) NULL,
+        relation_type ENUM('subsidiary', 'associate', 'shareholding') NOT NULL,
+        shares_owned BIGINT UNSIGNED NULL,
+        ownership_percentage DECIMAL(9, 6) NULL,
+        charter_capital DECIMAL(24, 4) NULL,
+        contributed_capital DECIMAL(24, 4) NULL,
+        as_of_date DATE NULL,
+        note TEXT NULL,
+        source_url VARCHAR(1024) NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        PRIMARY KEY (investment_id),
+        UNIQUE KEY uq_company_investments_investee (company_id, investee_name),
+        KEY ix_company_investments_ticker (investee_ticker),
+        CONSTRAINT fk_company_investments_company FOREIGN KEY (company_id)
+            REFERENCES companies (company_id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+    """,
 )
 
 
-COMPANY_ADDITIONAL_COLUMNS = {
-    "charter_capital": "DECIMAL(24, 4) NULL",
-    "listed_shares": "BIGINT UNSIGNED NULL",
-    "outstanding_shares": "BIGINT UNSIGNED NULL",
-    "initial_listed_shares": "BIGINT UNSIGNED NULL",
-    "first_trading_date": "DATE NULL",
-    "company_history": "LONGTEXT NULL",
-    "headquarters_addresses": "JSON NULL",
-    "phone_numbers": "JSON NULL",
-    "fax": "VARCHAR(64) NULL",
-    "email": "VARCHAR(255) NULL",
+# Columns added after a table was first created; missing ones are added on every run.
+ADDITIONAL_COLUMNS = {
+    "companies": {
+        "charter_capital": "DECIMAL(24, 4) NULL",
+        "listed_shares": "BIGINT UNSIGNED NULL",
+        "outstanding_shares": "BIGINT UNSIGNED NULL",
+        "initial_listed_shares": "BIGINT UNSIGNED NULL",
+        "first_trading_date": "DATE NULL",
+        "company_history": "LONGTEXT NULL",
+        "headquarters_addresses": "JSON NULL",
+        "phone_numbers": "JSON NULL",
+        "fax": "VARCHAR(64) NULL",
+        "email": "VARCHAR(255) NULL",
+        "fiscal_year_start_month": "TINYINT UNSIGNED NULL",
+        "business_registration_amendment": "SMALLINT UNSIGNED NULL",
+        "business_registration_date": "DATE NULL",
+        "listing_license": "VARCHAR(255) NULL",
+    },
+    "finance_reports": {
+        "report_scope": "ENUM('separate', 'consolidated') NULL",
+        "period_start": "DATE NULL",
+        "period_end": "DATE NULL",
+        "audit_status": "ENUM('unaudited', 'reviewed', 'audited') NULL",
+        "auditor": "VARCHAR(255) NULL",
+        "audit_opinion": "ENUM('unqualified', 'qualified', 'adverse', 'disclaimer') NULL",
+        "audit_report_date": "DATE NULL",
+        "employee_count": "INT UNSIGNED NULL",
+        "net_revenue": "DECIMAL(24, 4) NULL",
+        "cost_of_goods_sold": "DECIMAL(24, 4) NULL",
+        "financial_income": "DECIMAL(24, 4) NULL",
+        "financial_expense": "DECIMAL(24, 4) NULL",
+        "interest_expense": "DECIMAL(24, 4) NULL",
+        "selling_expense": "DECIMAL(24, 4) NULL",
+        "admin_expense": "DECIMAL(24, 4) NULL",
+        "other_profit": "DECIMAL(24, 4) NULL",
+        "profit_before_tax": "DECIMAL(24, 4) NULL",
+        "income_tax_expense": "DECIMAL(24, 4) NULL",
+        "net_income_parent": "DECIMAL(24, 4) NULL",
+        "cash_and_equivalents": "DECIMAL(24, 4) NULL",
+        "short_term_investments": "DECIMAL(24, 4) NULL",
+        "short_term_receivables": "DECIMAL(24, 4) NULL",
+        "inventory": "DECIMAL(24, 4) NULL",
+        "current_assets": "DECIMAL(24, 4) NULL",
+        "current_liabilities": "DECIMAL(24, 4) NULL",
+        "short_term_debt": "DECIMAL(24, 4) NULL",
+        "long_term_debt": "DECIMAL(24, 4) NULL",
+        "share_capital": "DECIMAL(24, 4) NULL",
+        "investing_cash_flow": "DECIMAL(24, 4) NULL",
+        "financing_cash_flow": "DECIMAL(24, 4) NULL",
+    },
+    "company_leaders": {
+        "appointed_date": "DATE NULL",
+        "dismissed_date": "DATE NULL",
+        "status": "ENUM('current', 'former') NULL",
+        "is_legal_representative": "TINYINT(1) NULL",
+    },
+    "related_party_transactions": {
+        "report_scope": "ENUM('separate', 'consolidated') NULL AFTER counterparty_ticker",
+    },
+    "company_investments": {
+        "is_direct": "TINYINT(1) NULL",
+        "voting_percentage": "DECIMAL(9, 6) NULL",
+        "investment_cost": "DECIMAL(24, 4) NULL",
+        "business_line": "TEXT NULL",
+        "operating_status": "VARCHAR(64) NULL",
+    },
+}
+# ENUM columns whose value list grew after creation (only additions are safe here).
+ENUM_COLUMNS = {
+    ("company_leaders", "leader_group"):
+        "ENUM('board', 'management', 'audit_committee', 'other') NULL",
 }
 
 
+def load_env_config() -> dict[str, str]:
+    config: dict[str, str] = {}
+    config_path = Path(__file__).resolve().parents[1] / ".env"
+    if config_path.is_file():
+        for line in config_path.read_text(encoding="utf-8").splitlines():
+            key, separator, value = line.partition("=")
+            if separator and key.startswith("MYSQL_"):
+                config[key] = value.strip().strip("\"'")
+    return config
+
+
 def parse_args() -> argparse.Namespace:
+    file_config = load_env_config()
+
+    def setting(key: str, default: str) -> str:
+        return os.environ.get(key, file_config.get(key, default))
+
     parser = argparse.ArgumentParser(description="Create the stock module MySQL schema.")
-    parser.add_argument("--host", default=os.getenv("MYSQL_HOST", "localhost"))
-    parser.add_argument("--port", type=int, default=int(os.getenv("MYSQL_PORT", "3306")))
-    parser.add_argument("--user", default=os.getenv("MYSQL_USER", "root"))
-    parser.add_argument("--password", default=os.getenv("MYSQL_PASSWORD", ""))
-    parser.add_argument("--database", default=os.getenv("MYSQL_DATABASE", "stock_market"))
+    parser.add_argument("--host", default=setting("MYSQL_HOST", "localhost"))
+    parser.add_argument("--port", type=int, default=int(setting("MYSQL_PORT", "3306")))
+    parser.add_argument("--user", default=setting("MYSQL_USER", "stock_app"))
+    parser.add_argument("--password", default=setting("MYSQL_PASSWORD", ""))
+    parser.add_argument("--database", default=setting("MYSQL_DATABASE", "stock_market"))
     parser.add_argument(
         "--skip-create-database",
         action="store_true",
@@ -201,14 +390,60 @@ def validate_database_name(database: str) -> str:
     return database
 
 
-def migrate_companies_table(cursor: Any) -> None:
-    cursor.execute("SHOW COLUMNS FROM companies")
-    existing_columns = {row[0] for row in cursor.fetchall()}
-    for column_name, definition in COMPANY_ADDITIONAL_COLUMNS.items():
-        if column_name not in existing_columns:
-            cursor.execute(
-                f"ALTER TABLE companies ADD COLUMN `{column_name}` {definition}"
-            )
+def migrate_stock_holders_table(cursor: Any) -> None:
+    cursor.execute("SHOW COLUMNS FROM stock_holders LIKE 'holder_type'")
+    column_type = cursor.fetchone()[1]
+    if isinstance(column_type, bytes):
+        column_type = column_type.decode()
+    if column_type == HOLDER_TYPE_DEFINITION.removesuffix(" NULL").lower():
+        return
+    # Free-text values outside the list would block the conversion, so map them to 'other'.
+    placeholders = ", ".join("%s" for _ in HOLDER_TYPES)
+    cursor.execute(
+        f"UPDATE stock_holders SET holder_type = 'other' "
+        f"WHERE holder_type IS NOT NULL AND LOWER(holder_type) NOT IN ({placeholders})",
+        HOLDER_TYPES,
+    )
+    cursor.execute(
+        f"ALTER TABLE stock_holders MODIFY COLUMN holder_type {HOLDER_TYPE_DEFINITION}"
+    )
+
+
+def migrate_additional_columns(cursor: Any) -> None:
+    for table, columns in ADDITIONAL_COLUMNS.items():
+        cursor.execute(f"SHOW COLUMNS FROM `{table}`")
+        existing_columns = {row[0] for row in cursor.fetchall()}
+        for column_name, definition in columns.items():
+            if column_name not in existing_columns:
+                cursor.execute(
+                    f"ALTER TABLE `{table}` ADD COLUMN `{column_name}` {definition}"
+                )
+
+
+def migrate_related_party_key(cursor: Any) -> None:
+    """Separate and consolidated reports disclose the same period, and one counterparty can have
+    several lines of the same type (e.g. selling tools and selling materials), so the scope and
+    the description are part of the key."""
+    cursor.execute(
+        "SHOW INDEX FROM related_party_transactions WHERE Key_name = 'uq_related_party_transactions_item'"
+    )
+    if {"report_scope", "description"} <= {row[4] for row in cursor.fetchall()}:
+        return
+    cursor.execute(
+        "ALTER TABLE related_party_transactions DROP INDEX uq_related_party_transactions_item, "
+        "ADD UNIQUE KEY uq_related_party_transactions_item (company_id, report_scope, "
+        "counterparty_name, transaction_type, description, period_start, period_end)"
+    )
+
+
+def migrate_enum_columns(cursor: Any) -> None:
+    for (table, column), definition in ENUM_COLUMNS.items():
+        cursor.execute(f"SHOW COLUMNS FROM `{table}` LIKE %s", (column,))
+        column_type = cursor.fetchone()[1]
+        if isinstance(column_type, bytes):
+            column_type = column_type.decode()
+        if column_type.replace(" ", "") != definition.removesuffix(" NULL").replace(" ", "").lower():
+            cursor.execute(f"ALTER TABLE `{table}` MODIFY COLUMN `{column}` {definition}")
 
 
 def initialize_database(config: argparse.Namespace) -> None:
@@ -240,7 +475,10 @@ def initialize_database(config: argparse.Namespace) -> None:
         cursor = connection.cursor()
         for statement in TABLES:
             cursor.execute(statement)
-        migrate_companies_table(cursor)
+        migrate_additional_columns(cursor)
+        migrate_enum_columns(cursor)
+        migrate_related_party_key(cursor)
+        migrate_stock_holders_table(cursor)
         connection.commit()
 
 

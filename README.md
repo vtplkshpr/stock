@@ -6,7 +6,7 @@ A terminal-based module for looking up listed companies. It reads data from MySQ
 
 - Search for companies by ticker or name.
 - Browse companies already stored in the database.
-- View company contact, listing, share-count, history, and address details alongside stock prices, shareholders, suppliers, customers, financial reports, and news.
+- View company contact, listing, share-count, history, address, and leadership details alongside stock prices, shareholders, subsidiaries/associates/investments, suppliers, customers, financial reports, and news.
 - Paginate with `LIMIT/OFFSET` queries instead of loading the entire result set into memory.
 - Fetch full news text only after a news item is selected.
 
@@ -15,10 +15,14 @@ The database stores these data groups:
 - `companies`: basic information and listing ticker.
 - `stock_prices`: daily prices and trading volume.
 - `stock_holders`: shareholders and ownership percentages by snapshot date.
-- `finance_reports`: financial metrics, additional metrics, and document paths.
+- `finance_reports`: reporting period, scope (separate/consolidated), income statement, balance sheet and cash-flow metrics, employee count, and the path of the report file.
 - `tiers`, `company_tiers`: company classifications.
 - `supply_chain_relations`: supplier and customer relationships.
 - `company_news`: news text and media metadata or paths.
+- `company_leaders`: board members, executives, and other officers.
+- `company_investments`: subsidiaries (direct and indirect), associates, and shareholdings in other companies.
+- `finance_report_items`: every line of each report's balance sheet, income statement and cash flow, with comparative and year-to-date columns.
+- `related_party_transactions`: related-party transactions disclosed in financial reports (sales, purchases, loans, interest, dividends, remuneration).
 
 The scripts create and migrate the schema, prepare table-specific CSV files from the raw company sources, and import available rows into MySQL. Only `companies` currently receives rows from the supplied raw data; other table CSVs contain headers until matching sources are added.
 
@@ -39,7 +43,7 @@ From the module directory, activate the virtual environment found or created by 
 
 ```bash
 source ../venv/bin/activate
-python scripts/stock_cli.py
+python src/stock_cli.py
 ```
 
 If the virtual environment is inside the project, use `source .venv/bin/activate` or `source venv/bin/activate`, as applicable.
@@ -48,18 +52,94 @@ The main menu provides:
 
 1. **Search for a company** by ticker or name.
 2. **Browse the company list** one page at a time.
+3. **Enter or update data** manually or from CSV files for one or more companies.
 
-In a list, enter `n`/`p` to move forward/backward, select a row number to open a company, or enter `b` to go back. The company menu provides stock prices, shareholders, upstream suppliers, downstream customers, financial reports, and news.
+In a list, enter `n`/`p` to move forward/backward, select a row number to open a company, or enter `b` to go back. The company profile shows registration details and the leadership team grouped by board, audit committee, management, and other positions, followed by former officers. The company menu provides stock prices (1), shareholders (2), upstream suppliers (3), downstream customers (4), financial reports (5), news (6), subsidiaries/associates/investments (7), data entry (8), and related-party transactions (9).
+
+Suppliers and customers combine `supply_chain_relations` with related-party purchases and sales: a company's suppliers are the parties it buys from, plus companies whose reports show sales to it (matched by `counterparty_ticker`); customers work the other way round.
 
 You can open search directly:
 
 ```bash
-python scripts/stock_cli.py --query HPG --page-size 20
+python src/stock_cli.py --query HPG --page-size 20
 ```
 
 `--page-size` accepts values from 1 to 100 and defaults to 10. Enter `q` in the main menu to quit.
 
 The CLI reads `.env` from the module directory. The `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_USER`, `MYSQL_PASSWORD`, and `MYSQL_DATABASE` environment variables can override its values.
+
+## Enter and Update Data
+
+Open data entry from main-menu option 3 (choose one ticker, several tickers such as `HPG,VNM`, or `*` for every ticker in the files) or from option 7 in a company menu. Both offer:
+
+- **Manual entry** for one company and one category. Key fields come first; each other field shows its current value, and Enter keeps it.
+- **CSV import** for one or several categories. With several categories, give a folder containing `<category>.csv` files or one file per category.
+
+Every import merges cell by cell. Records are matched by their key columns. A non-empty CSV cell overwrites or fills the stored cell, and an empty or missing cell leaves it unchanged. Records not yet in the table are inserted. Changes are shown as counts and saved only after confirmation; any error rolls back the whole import.
+
+| Category | Key columns | Other columns |
+| --- | --- | --- |
+| `companies` | `ticker` | `company_name` (required for new companies) and the other company fields |
+| `stock_prices` | `ticker`, `price_date` | prices, `trading_volume` (`close_price` required for new rows) |
+| `stock_holders` | `ticker`, `holder_name`, `snapshot_date` | `holder_type`, `shares_owned`, `ownership_percentage`, `source_url` |
+| `finance_reports` | `ticker`, `report_type`, `report_scope`, `fiscal_year`, `fiscal_quarter` (blank = annual) | `period_start`, `period_end`, `audit_status`, income statement, balance sheet and cash-flow metrics (VND), `employee_count`, `other_metrics` (JSON), `document_storage_path`, `published_at` |
+| `supply_chain_relations` | `supplier_ticker`, `customer_ticker`, `product_category` | `percentage_revenue`, `source_url` |
+| `company_news` | `ticker`, `title` | content, media, publication and source fields |
+| `company_leaders` | `ticker`, `person_name`, `position` | `leader_group`, `birth_year`, `appointed_date`, `dismissed_date`, `status`, `is_legal_representative` (1/0), `source_url` |
+| `company_investments` | `ticker`, `investee_name` | `investee_ticker`, `relation_type` (required for new rows), `is_direct` (1/0), `shares_owned`, `ownership_percentage`, `voting_percentage`, `investment_cost`, `charter_capital`, `contributed_capital` (VND), `business_line`, `operating_status`, `as_of_date`, `note`, `source_url` |
+| `finance_report_items` | `ticker`, `report_type`, `report_scope`, `fiscal_year`, `fiscal_quarter`, `statement`, `item_code` | `item_name`, `value`, `comparative_value`, `ytd_value`, `ytd_comparative_value` (every line of the balance sheet, income statement and cash flow, by line code) |
+| `related_party_transactions` | `ticker`, `report_scope`, `counterparty_name`, `transaction_type`, `description`, `period_start`, `period_end` | `counterparty_ticker`, `relationship`, `description` (wording from the report), `amount`, `currency`, `document_storage_path`, `source_url` |
+| `company_tiers` | `ticker`, `tier_name` | `tier_description` (new tiers are created automatically) |
+
+When exactly one company is selected, CSV rows may omit its ticker column (for supply chain, omit the side that is the selected company). With several companies, every row needs its ticker, and rows for other tickers are skipped. Dates accept `YYYY-MM-DD` or `DD/MM/YYYY`. Choice columns accept only their listed values (case-insensitive); manual entry shows them as a numbered list:
+
+- `holder_type`: `individual`, `institution`, `state`, `foreign_individual`, `foreign_institution`, `other`
+- `media_type`: `text`, `video`, `audio`, `image`, `document`, `other`
+- `leader_group`: `board`, `management`, `audit_committee`, `other`
+- `status` (leaders): `current`, `former` (blank counts as current)
+- `relation_type`: `subsidiary`, `associate`, `shareholding`
+- `report_scope`: `separate`, `consolidated`; `audit_status`: `unaudited`, `reviewed`, `audited`; `audit_opinion`: `unqualified`, `qualified`, `adverse`, `disclaimer`
+- `relationship`: `subsidiary`, `indirect_subsidiary`, `associate`, `major_shareholder`, `co_owner`, `group_company`, `key_management`, `other`
+- `transaction_type`: `sale_goods`, `sale_services`, `sale_other`, `purchase_goods`, `purchase_materials`, `purchase_services`, `interest_income`, `interest_expense`, `other_income`, `asset_disposal`, `lending`, `loan_collection`, `borrowing`, `loan_repayment`, `dividend_received`, `remuneration`, `other`
+
+A person holding several positions has one row per position. `investee_ticker` is optional plain text, so unlisted subsidiaries can be recorded.
+
+To change the `holder_type` list, edit `HOLDER_TYPES` in `scripts/init_database.py` and run that script again.
+
+The same import is available without the menu:
+
+```bash
+python src/data_import.py --list
+python src/data_import.py --tickers HPG,VNM stock_prices=prices.csv finance_reports=reports.csv --dry-run
+```
+
+## Financial Report Files
+
+Report files (PDF) are kept locally under `financial_reports/<TICKER>/<fiscal_year>/`, named `<TICKER>_<fiscal_year>_Q<quarter>_<scope>_<period_start>-<period_end>.pdf` (use `FY` instead of `Q<quarter>` for annual reports). Git ignores `financial_reports/` because the files are large, so copy the folder to other machines yourself; backups contain only the paths. For example:
+
+```text
+financial_reports/SBT/2027/SBT_2027_Q1_separate_20260701-20260930.pdf
+```
+
+`fiscal_year` is the calendar year in which the fiscal year ends, matching how companies title their reports. SBT's fiscal year runs from 1 July to 30 June, so its July–September 2026 report is Q1 of fiscal year 2027; `period_start` and `period_end` always hold the exact dates. Store the file path relative to the project root in `finance_reports.document_storage_path` (and in `related_party_transactions.document_storage_path` for figures taken from it). The path appears in the financial-report and supplier/customer lists.
+
+## Back Up and Restore Data
+
+`backups/<date>/` holds a full copy of the database data: one CSV per category (in the format described under "Enter and Update Data") plus `manifest.json` with the row count of each table. The current backup is `backups/2026-11-05/`.
+
+Create a new backup after entering data:
+
+```bash
+python src/data_import.py --export backups/$(date +%F)
+```
+
+Restore a backup, for example on a new machine after `scripts/setup_database.sh` has created the database:
+
+```bash
+python scripts/import_companies.py --from-backup backups/2026-11-05
+```
+
+Use the newest folder under `backups/` (compare `manifest.json` row counts if unsure). `--from-backup` uses the same cell-by-cell merge as CSV import, so running it on a database that already holds data only fills or overwrites cells present in the backup, never deletes rows, and is safe to repeat. Any error rolls back the whole restore. Do not use plain `python scripts/import_companies.py` for a backup: that command reads the raw-data CSVs in `processed_data/`, which only contain the original company list.
 
 ## Company Data
 
@@ -97,15 +177,23 @@ The importer reads connection settings from `.env` or the `MYSQL_*` environment 
 stock/
 ├── main.py
 ├── module_info_draft.py
-├── scripts/
-│   ├── init_database.py
-│   ├── setup_database.sh
+├── financial_reports/
+│   └── SBT/2027/       # report PDFs: <TICKER>/<fiscal_year>/ (not in Git)
+├── backups/
+│   └── 2026-11-05/     # full data backup (one CSV per category + manifest.json)
+├── src/
+│   ├── cli.py
+│   ├── data_import.py
 │   └── stock_cli.py
+├── scripts/
+│   ├── import_companies.py
+│   ├── init_database.py
+│   └── setup_database.sh
 ├── README.md
 └── SETUP.md
 ```
 
-Run the lookup interface with `scripts/stock_cli.py`. `scripts/init_database.py` is a lower-level script that accepts connection settings through command-line arguments or `MYSQL_*` environment variables; it does not read `.env` itself. For normal initialization, use `scripts/setup_database.sh`.
+Run the lookup interface with `src/stock_cli.py`. `scripts/init_database.py` is a lower-level script that accepts connection settings through command-line arguments or `MYSQL_*` environment variables; it reads `.env` when those are not set. For normal initialization, use `scripts/setup_database.sh`.
 
 ## Documentation
 

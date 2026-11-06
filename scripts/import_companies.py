@@ -298,6 +298,31 @@ def import_csv(input_dir: Path) -> dict[str, int]:
     return imported
 
 
+def restore_backup(directory: Path) -> int:
+    sys.path.insert(0, str(MODULE_DIR / "src"))
+    import data_import
+    import mysql.connector
+
+    files = data_import.backup_files(directory)
+    if not files:
+        print(f"Error: no backup CSV files found in {directory}", file=sys.stderr)
+        return 1
+
+    connection = mysql.connector.connect(**load_database_config())
+    try:
+        results = data_import.import_files(connection, files, None)
+        print(data_import.format_report(results))
+        if any(stats.errors for stats in results.values()):
+            connection.rollback()
+            print("Errors found; nothing was imported.", file=sys.stderr)
+            return 1
+        connection.commit()
+    finally:
+        connection.close()
+    print(f"Backup imported from {directory}")
+    return 0
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Prepare table-specific CSVs and/or import them into MySQL."
@@ -315,6 +340,13 @@ def parse_args() -> argparse.Namespace:
         help="Regenerate all table CSVs, then import their data rows.",
     )
     mode.add_argument(
+        "--from-backup",
+        type=Path,
+        metavar="DIR",
+        help="Import a backup folder created by 'src/data_import.py --export' "
+        "(merged cell by cell; --data-dir is ignored).",
+    )
+    mode.add_argument(
         "--prepare-only",
         action="store_true",
         help="Regenerate all table CSVs without connecting to MySQL.",
@@ -324,6 +356,8 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
+    if args.from_backup:
+        return restore_backup(args.from_backup)
     try:
         if args.prepare or args.prepare_only:
             count = prepare_csv(args.data_dir)
