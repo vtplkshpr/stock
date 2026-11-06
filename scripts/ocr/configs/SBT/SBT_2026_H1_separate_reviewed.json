@@ -1,0 +1,92 @@
+{
+ "source_pdf": "financial_reports/SBT/2026/SBT_2026_H1_separate_reviewed_20250701-20251231.pdf",
+ "ocr_dir": "ocr_work/out/SBT_2026_H1_separate_reviewed_20250701-20251231",
+ "out_dir": "ocr_work/csv/SBT_2026_H1_separate_reviewed_20250701-20251231",
+ "meta": {
+  "report_type": "semi_annual",
+  "scope": "separate",
+  "fiscal_year": 2026,
+  "quarter": null,
+  "period_start": "2025-07-01",
+  "period_end": "2025-12-31",
+  "published_at": "2026-02-28",
+  "audit_status": "reviewed",
+  "auditor": "Công ty TNHH Ernst & Young Việt Nam",
+  "audit_report_date": "2026-02-28",
+  "document": "financial_reports/SBT/2026/SBT_2026_H1_separate_reviewed_20250701-20251231.pdf"
+ },
+ "set": {
+  "balance_sheet": {
+   "100": [
+    16186785145827,
+    14258223051150
+   ],
+   "440": [
+    36733873783997,
+    34898146091806
+   ]
+  },
+  "cash_flow": {
+   "33": [
+    14725452367282,
+    19854624277477
+   ]
+  }
+ },
+ "employees": {
+  "total": 955
+ },
+ "description_fix": {
+  "dich vu": "Doanh thu cung cấp dịch vụ",
+  "Doanh thu cung cp": "Doanh thu cung cấp dịch vụ"
+ },
+ "parties": {
+  "Công ty TNHH MTV Sàn xut TMDV An Hòa": [
+   "Công ty TNHH MTV TM DV SX TTC An Hòa",
+   "subsidiary",
+   ""
+  ],
+  "Công ty TNHH MTV Nm Trang Sinh": [
+   "Công ty TNHH MTV Nấm Trang Sinh",
+   "indirect_subsidiary",
+   ""
+  ]
+ },
+ "remuneration": [
+  [
+   "Đặng Huỳnh Ức My",
+   "Thù lao HĐQT - Chủ tịch",
+   2310000000
+  ],
+  [
+   "Lê Quang Phúc",
+   "Thù lao HĐQT - Thành viên độc lập",
+   1500000000
+  ],
+  [
+   "Trần Trọng Gia Vinh",
+   "Thù lao HĐQT - Thành viên độc lập",
+   1470000000
+  ],
+  [
+   "Trần Tấn Việt",
+   "Thù lao HĐQT - Thành viên",
+   1080000000
+  ],
+  [
+   "Huỳnh Bích Ngọc",
+   "Thù lao HĐQT - Thành viên",
+   900000000
+  ],
+  [
+   "Thái Văn Chuyện",
+   "Thù lao Tổng Giám đốc",
+   2776512564
+  ],
+  [
+   "Các thành viên quản lý khác (Ban Tổng Giám đốc)",
+   "Thù lao Ban Tổng Giám đốc",
+   12313319102
+  ]
+ ]
+}

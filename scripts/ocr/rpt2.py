@@ -43,7 +43,7 @@ def extract_page(number, page):
         return []
     header_y = desc_head[3] + 5
     above = [t for t in tokens if t[2] < header_y + 40 and t[2] > desc_head[2] - 200]
-    if not re.search(r"cho k|\bk\w? k\w? to|n\w{0,2}m nay|n\w{0,2}m tr", fold(" ".join(t[4] for t in above if t[0] > desc_head[1]))):
+    if not re.search(r"cho k|\bk\w? k\w? to|n\w{0,2}m nay|n\w{0,2}m tr|\bk\w? n\w{0,2}y\b|\bk\w? tr\w{0,2}\w?c\b", fold(" ".join(t[4] for t in above if t[0] > desc_head[1]))):
         return []  # balance tables head their columns with dates, not "Cho ky ke toan"
     rel_head = next((t for t in above if "quan h" in fold(t[4]) and t[0] < desc_head[0]), None)
     body = [t for t in tokens if t[2] > header_y]

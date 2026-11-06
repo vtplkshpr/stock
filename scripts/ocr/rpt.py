@@ -31,6 +31,11 @@ VOCABULARY = [
     ("Trả nợ vay", "loan_repayment"), ("Trả gốc vay", "loan_repayment"), ("Cổ tức", "dividend_received"),
     ("Cổ tức được chia", "dividend_received"), ("Đặt cọc", "other"), ("Hoàn ký quỹ", "other"),
     ("Nhận hoàn đặt cọc", "other"),
+    # Wording used in the reviewed semi-annual reports.
+    ("Doanh thu cung cấp dịch vụ", "sale_services"), ("Doanh thu khác", "sale_other"),
+    ("Thu nhập lãi cho vay", "interest_income"), ("Nhận lại tiền cho vay", "loan_collection"),
+    ("Mua khác", "purchase_goods"), ("Bán máy móc, công cụ", "sale_other"),
+    ("Mua hàng hóa, dịch vụ", "purchase_goods"), ("Mua hàng hóa, tài sản", "purchase_goods"), ("Trả vay", "loan_repayment"), ("Bán đường", "sale_goods"),
 ]
 
 TYPE_RULES = [
