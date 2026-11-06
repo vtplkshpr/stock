@@ -71,9 +71,9 @@ THRESHOLDS = {
     "current_ratio": 1.0,      # below 1: current liabilities exceed current assets
 }
 FLAG_LABELS = {
-    "flag_negative_cfo": "CFO<0", "flag_negative_fcf": "FCF<0", "flag_low_earnings_quality": "CFO/LN<1",
-    "flag_high_accruals": "dồn tích>10%", "flag_weak_interest_coverage": "EBIT/lãi<1.5",
-    "flag_high_leverage": "nợ ròng/EBITDA>4", "flag_low_liquidity": "thanh toán<1",
+    "flag_negative_cfo": "CFO<0", "flag_negative_fcf": "FCF<0", "flag_low_earnings_quality": "CFO/NI<1",
+    "flag_high_accruals": "accruals>10%", "flag_weak_interest_coverage": "EBIT/interest<1.5",
+    "flag_high_leverage": "net debt/EBITDA>4", "flag_low_liquidity": "current ratio<1",
 }
 REPORT_RANK = {"quarterly": 1, "semi_annual": 2, "annual": 3}
 AUDIT_RANK = {None: 0, "unaudited": 0, "reviewed": 1, "audited": 2}
@@ -496,14 +496,14 @@ def recompute(connection: Any, tickers: Sequence[str] | None = None) -> dict[str
 
 def format_summary(summary: dict[str, tuple[int, int]]) -> str:
     if not summary:
-        return "Không có doanh nghiệp nào có báo cáo tài chính hoặc giá để tính chỉ số."
-    return "\n".join(f"- {ticker}: {m} dòng chỉ số tài chính, {v} dòng định giá" for ticker, (m, v) in summary.items())
+        return "No company has financial reports or prices to compute metrics from."
+    return "\n".join(f"- {ticker}: {m} financial metric rows, {v} valuation rows" for ticker, (m, v) in summary.items())
 
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Tính lại bảng chỉ số tài chính và định giá.")
-    parser.add_argument("--tickers", default="", help="Các mã cần tính, cách nhau bởi dấu phẩy (mặc định: tất cả).")
-    parser.add_argument("--dry-run", action="store_true", help="Tính thử rồi hoàn tác.")
+    parser = argparse.ArgumentParser(description="Recompute the financial metric and valuation tables.")
+    parser.add_argument("--tickers", default="", help="Comma-separated tickers to compute (default: all).")
+    parser.add_argument("--dry-run", action="store_true", help="Compute, then roll back.")
     return parser.parse_args(argv)
 
 
@@ -523,10 +523,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(format_summary(recompute(connection, tickers)))
         if args.dry_run:
             connection.rollback()
-            print("Chạy thử: không lưu thay đổi.")
+            print("Dry run: nothing was saved.")
         else:
             connection.commit()
-            print("Đã lưu chỉ số.")
+            print("Metrics saved.")
     finally:
         connection.close()
     return 0

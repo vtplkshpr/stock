@@ -45,7 +45,7 @@ Process reports one at a time and compare the related-party rows with the page i
 | `description_fix` | `{"OCR text": "standard wording"}` for truncated transaction descriptions |
 | `skip_rows`, `extra_rows` | Drop `[page, amount]` rows / add `[name, type, description, amount]` rows by hand |
 | `remuneration` | `[name, description, amount]` rows from the board and management remuneration tables (current period) |
-| `leaders` | `[name, position, group, appointed_date, dismissed_date, status]` updates from "Thông tin chung" |
+| `leaders` | `[name, position, group, appointed_date, dismissed_date, status]` updates from the "Thông tin chung" (general information) pages |
 
 ## Files
 
@@ -55,4 +55,4 @@ Process reports one at a time and compare the related-party rows with the page i
 - `rpt.py`, `rpt2.py`: read related-party transaction tables; standard description vocabulary and transaction types.
 - `assemble.py`: combine everything into the import CSVs.
 - `vas_tt200.py`, `vas_tt99.py`: standard line names per circular.
-- `configs/SBT/`: the configs used for the 14 SBT reports imported so far. The July–September 2026 separate report was entered by hand; its statement lines were added with `build.py` only.
+- `configs/SBT/`: the configs of the SBT reports imported so far. The July–September 2026 separate report was entered by hand; its statement lines were added with `build.py` only.

@@ -35,7 +35,7 @@ CATEGORIES = {
     for category in (
         Category(
             "companies",
-            "Thông tin cơ bản",
+            "Basic information",
             ("ticker",),
             (
                 "company_name", "exchange", "industry", "tax_code", "charter_capital",
@@ -50,7 +50,7 @@ CATEGORIES = {
         ),
         Category(
             "stock_prices",
-            "Giá cổ phiếu",
+            "Share prices",
             ("ticker", "price_date"),
             (
                 "open_price", "high_price", "low_price", "close_price",
@@ -60,13 +60,13 @@ CATEGORIES = {
         ),
         Category(
             "stock_holders",
-            "Cổ đông",
+            "Shareholders",
             ("ticker", "holder_name", "snapshot_date"),
             ("holder_type", "shares_owned", "ownership_percentage", "source_url"),
         ),
         Category(
             "finance_reports",
-            "Báo cáo tài chính",
+            "Financial reports",
             ("ticker", "report_type", "report_scope", "fiscal_year", "fiscal_quarter"),
             (
                 "period_start", "period_end", "audit_status", "auditor", "audit_opinion",
@@ -87,7 +87,7 @@ CATEGORIES = {
         ),
         Category(
             "finance_report_items",
-            "Chi tiết dòng báo cáo tài chính",
+            "Financial statement lines",
             (
                 "ticker", "report_type", "report_scope", "fiscal_year", "fiscal_quarter",
                 "statement", "item_code",
@@ -97,13 +97,13 @@ CATEGORIES = {
         ),
         Category(
             "supply_chain_relations",
-            "Chuỗi cung ứng",
+            "Supply chain",
             ("supplier_ticker", "customer_ticker", "product_category"),
             ("percentage_revenue", "source_url"),
         ),
         Category(
             "company_news",
-            "Tin tức",
+            "News",
             ("ticker", "title"),
             (
                 "content_text", "media_type", "media_url", "storage_path",
@@ -112,7 +112,7 @@ CATEGORIES = {
         ),
         Category(
             "company_leaders",
-            "Ban lãnh đạo",
+            "Leadership",
             ("ticker", "person_name", "position"),
             (
                 "leader_group", "birth_year", "appointed_date", "dismissed_date",
@@ -121,7 +121,7 @@ CATEGORIES = {
         ),
         Category(
             "company_investments",
-            "Công ty con, liên kết & đầu tư",
+            "Subsidiaries, associates & investments",
             ("ticker", "investee_name"),
             (
                 "investee_ticker", "relation_type", "is_direct", "shares_owned",
@@ -133,7 +133,7 @@ CATEGORIES = {
         ),
         Category(
             "related_party_transactions",
-            "Giao dịch bên liên quan",
+            "Related-party transactions",
             (
                 "ticker", "report_scope", "counterparty_name", "transaction_type", "description",
                 "period_start", "period_end",
@@ -146,7 +146,7 @@ CATEGORIES = {
         ),
         Category(
             "company_tiers",
-            "Phân loại (tier)",
+            "Tiers",
             ("ticker", "tier_name"),
             ("tier_description",),
         ),
@@ -207,7 +207,7 @@ def normalize_value(column: str, value: str) -> str:
         try:
             return json.dumps(json.loads(value), ensure_ascii=False)
         except json.JSONDecodeError as exc:
-            raise ValueError(f"{column} phải là JSON hợp lệ.") from exc
+            raise ValueError(f"{column} must be valid JSON.") from exc
     return value
 
 
@@ -225,7 +225,7 @@ def normalize_row(
         if choices and column in choices:
             value = value.lower()
             if value not in choices[column]:
-                raise ValueError(f"{column} phải là một trong: {', '.join(choices[column])}")
+                raise ValueError(f"{column} must be one of: {', '.join(choices[column])}")
         row[column] = normalize_value(column, value)
 
     # A row may omit its single missing company reference when one company is selected.
@@ -237,7 +237,7 @@ def normalize_row(
         c for c in category.keys if c not in row and c not in category.nullable_keys
     ]
     if missing_keys:
-        raise ValueError(f"thiếu giá trị khóa: {', '.join(missing_keys)}")
+        raise ValueError(f"missing key values: {', '.join(missing_keys)}")
     return row
 
 
@@ -245,7 +245,7 @@ def company_id_for(cursor: Any, ticker: str) -> int:
     cursor.execute("SELECT company_id FROM companies WHERE ticker = %s", (ticker,))
     found = cursor.fetchone()
     if found is None:
-        raise ValueError(f"mã {ticker} chưa có trong bảng companies")
+        raise ValueError(f"ticker {ticker} is not in the companies table")
     return found[0]
 
 
@@ -332,7 +332,7 @@ def merge_row(cursor: Any, category: Category, row: Mapping[str, str]) -> str:
 
     missing = [column for column in category.required if column not in values]
     if missing:
-        raise ValueError(f"bản ghi mới thiếu giá trị bắt buộc: {', '.join(missing)}")
+        raise ValueError(f"new record lacks required values: {', '.join(missing)}")
     data = {**keys, **values}
     columns = ", ".join(f"`{column}`" for column in data)
     placeholders = ", ".join("%s" for _ in data)
@@ -403,14 +403,14 @@ def import_files(
         unknown = [column for column in header if column not in category.columns]
         if unknown and len(unknown) == len(header):
             results[table] = ImportStats(errors=[
-                f"{path.name}: dòng đầu tiên phải là tên cột, ví dụ: "
+                f"{path.name}: the first row must hold the column names, e.g. "
                 f"{','.join(category.columns)}"
             ])
             continue
         if unknown:
             results[table] = ImportStats(errors=[
-                f"{path.name}: cột không hợp lệ {', '.join(unknown)}. "
-                f"Các cột hỗ trợ: {', '.join(category.columns)}"
+                f"{path.name}: unknown columns {', '.join(unknown)}. "
+                f"Supported columns: {', '.join(category.columns)}"
             ])
             continue
         results[table] = merge_rows(connection, category, rows, tickers)
@@ -495,13 +495,13 @@ def format_report(results: Mapping[str, ImportStats], max_errors: int = 20) -> s
     lines = []
     for table, stats in results.items():
         lines.append(
-            f"- {CATEGORIES[table].label} ({table}): thêm mới {stats.inserted}, "
-            f"cập nhật {stats.updated}, không đổi {stats.unchanged}, "
-            f"bỏ qua (ngoài mã chỉ định) {stats.skipped}, lỗi {len(stats.errors)}"
+            f"- {CATEGORIES[table].label} ({table}): inserted {stats.inserted}, "
+            f"updated {stats.updated}, unchanged {stats.unchanged}, "
+            f"skipped (other tickers) {stats.skipped}, errors {len(stats.errors)}"
         )
         lines.extend(f"    ! {error}" for error in stats.errors[:max_errors])
         if len(stats.errors) > max_errors:
-            lines.append(f"    ! ... và {len(stats.errors) - max_errors} lỗi khác")
+            lines.append(f"    ! ... and {len(stats.errors) - max_errors} more errors")
     return "\n".join(lines)
 
 
@@ -514,24 +514,24 @@ def parse_tickers(text: str) -> list[str] | None:
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Cập nhật dữ liệu từ CSV vào database stock theo từng ô.",
-        epilog="Danh mục: " + ", ".join(CATEGORIES),
+        description="Merge CSV data into the stock database, cell by cell.",
+        epilog="Categories: " + ", ".join(CATEGORIES),
     )
     parser.add_argument(
-        "files", nargs="*", metavar="DANH_MUC=FILE.csv",
-        help="Một hoặc nhiều cặp danh mục=đường dẫn CSV.",
+        "files", nargs="*", metavar="CATEGORY=FILE.csv",
+        help="One or more category=path.csv pairs.",
     )
     parser.add_argument(
         "--tickers", default="*",
-        help="Các mã áp dụng, cách nhau bởi dấu phẩy (mặc định *: mọi mã trong file).",
+        help="Comma-separated tickers to apply (default *: every ticker in the files).",
     )
-    parser.add_argument("--dry-run", action="store_true", help="Chạy thử, không lưu.")
+    parser.add_argument("--dry-run", action="store_true", help="Run without saving.")
     parser.add_argument(
-        "--list", action="store_true", help="Liệt kê danh mục và các cột CSV."
+        "--list", action="store_true", help="List the categories and their CSV columns."
     )
     parser.add_argument(
-        "--export", type=Path, metavar="THU_MUC",
-        help="Xuất toàn bộ dữ liệu ra thư mục backup (mỗi danh mục một CSV).",
+        "--export", type=Path, metavar="DIR",
+        help="Export all data to a backup folder (one CSV per category).",
     )
     return parser.parse_args(argv)
 
@@ -547,7 +547,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     for item in args.files:
         table, separator, path = item.partition("=")
         if not separator or table not in CATEGORIES:
-            print(f"Tham số không hợp lệ: {item}", file=sys.stderr)
+            print(f"Invalid argument: {item}", file=sys.stderr)
             return 2
         files[table] = Path(path).expanduser()
 
@@ -566,29 +566,29 @@ def main(argv: Sequence[str] | None = None) -> int:
         finally:
             connection.close()
         for table, count in counts.items():
-            print(f"- {CATEGORIES[table].label} ({table}): {count} dòng")
-        print(f"Đã xuất backup vào {args.export}")
+            print(f"- {CATEGORIES[table].label} ({table}): {count} rows")
+        print(f"Backup exported to {args.export}")
         return 0
     try:
         results = import_files(connection, files, parse_tickers(args.tickers))
         print(format_report(results))
         if any(stats.errors for stats in results.values()):
             connection.rollback()
-            print("Có lỗi, không lưu thay đổi nào.", file=sys.stderr)
+            print("Errors found; nothing was saved.", file=sys.stderr)
             return 1
         if METRIC_SOURCES & set(files):
             try:
                 from . import metrics
             except ImportError:
                 import metrics
-            print("Tính lại chỉ số tài chính:")
+            print("Recomputing financial metrics:")
             print(metrics.format_summary(metrics.recompute(connection, parse_tickers(args.tickers))))
         if args.dry_run:
             connection.rollback()
-            print("Chạy thử: không lưu thay đổi.")
+            print("Dry run: nothing was saved.")
         else:
             connection.commit()
-            print("Đã lưu thay đổi.")
+            print("Changes saved.")
     finally:
         connection.close()
     return 0

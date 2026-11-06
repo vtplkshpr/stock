@@ -150,14 +150,14 @@ Line codes differ between Circular 200 and Circular 99 statements (e.g. total as
 
 ## Stock Screening and Early Warnings
 
-Main-menu option 4 sorts companies into four financial states using their newest TTM row in `financial_metrics` (consolidated when available) compared with the TTM row a year earlier. Each group lists companies that meet every condition ("khớp") and those missing exactly one ("gần khớp", with the failed condition shown); choose a row to open the company. Option 5 lists companies with warning flags (most flags first) and option 6 shows every company's score in each group.
+Main-menu option 4 sorts companies into four financial states using their newest TTM row in `financial_metrics` (consolidated when available) compared with the TTM row a year earlier. Each group lists companies that meet every condition ("match") and those missing exactly one ("near match", with the failed condition shown); choose a row to open the company. Option 5 lists companies with warning flags (most flags first) and option 6 shows every company's score in each group.
 
 | Group | Conditions (all required) |
 | --- | --- |
-| Khỏe mạnh & tăng trưởng | cash-flow pattern `+--`; ROE > 15% and not lower than a year earlier; FCF ≥ 5% of revenue |
-| Đột biến trên giấy | net income up ≥ 20% year on year; CFO / net income < 0.5; receivables or inventory growing > 20 points faster than revenue |
-| Đốt tiền bành trướng | cash-flow pattern `--+`; debt/equity or interest expense up ≥ 20% year on year |
-| Khủng hoảng thoái trào | ROE down ≥ 3 points; CFO negative or < 1.5x interest paid; CFF negative. P/E up ≥ 30% is shown for reference once prices exist |
+| Healthy & growing | cash-flow pattern `+--`; ROE > 15% and not lower than a year earlier; FCF ≥ 5% of revenue |
+| Paper profits | net income up ≥ 20% year on year; CFO / net income < 0.5; receivables or inventory growing > 20 points faster than revenue |
+| Cash-burning expansion | cash-flow pattern `--+`; debt/equity or interest expense up ≥ 20% year on year |
+| Declining | ROE down ≥ 3 points; CFO negative or < 1.5x interest paid; CFF negative. P/E up ≥ 30% is shown for reference once prices exist |
 
 Conditions without data count as not met. The thresholds are in `RULES` in `src/screening.py`; the screening is computed when the menu opens, so it always reflects the latest metrics.
 
@@ -228,12 +228,14 @@ stock/
 ├── main.py
 ├── module_info_draft.py
 ├── financial_reports/
-│   └── SBT/2027/       # report PDFs: <TICKER>/<fiscal_year>/ (not in Git)
+│   └── SBT/2025, 2026, 2027/  # report PDFs: <TICKER>/<fiscal_year>/ (not in Git)
 ├── backups/
 │   └── 2026-11-05/     # full data backup (one CSV per category + manifest.json)
 ├── src/
 │   ├── cli.py
 │   ├── data_import.py
+│   ├── metrics.py      # computed financial metrics and valuations
+│   ├── screening.py    # stock screening groups
 │   └── stock_cli.py
 ├── scripts/
 │   ├── ocr/            # scanned financial reports -> import CSVs (see scripts/ocr/README.md)
