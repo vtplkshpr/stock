@@ -298,7 +298,7 @@ def import_csv(input_dir: Path) -> dict[str, int]:
     return imported
 
 
-def restore_backup(directory: Path) -> int:
+def restore_backup(directory: Path, replace: bool = False, dry_run: bool = False) -> int:
     sys.path.insert(0, str(MODULE_DIR / "src"))
     import data_import
     import mysql.connector
@@ -310,12 +310,24 @@ def restore_backup(directory: Path) -> int:
 
     connection = mysql.connector.connect(**load_database_config())
     try:
+        if replace:
+            # Same transaction as the import: the old data is only gone if the import succeeds.
+            # Deleting companies cascades to every company-linked table.
+            cursor = connection.cursor()
+            cursor.execute("DELETE FROM companies")
+            cursor.execute("DELETE FROM tiers")
+            cursor.close()
+            print("Existing data cleared; importing the backup in its place.")
         results = data_import.import_files(connection, files, None)
         print(data_import.format_report(results))
         if any(stats.errors for stats in results.values()):
             connection.rollback()
-            print("Errors found; nothing was imported.", file=sys.stderr)
+            print("Errors found; nothing was changed.", file=sys.stderr)
             return 1
+        if dry_run:
+            connection.rollback()
+            print("Dry run: nothing was changed.")
+            return 0
         connection.commit()
     finally:
         connection.close()
@@ -351,13 +363,27 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Regenerate all table CSVs without connecting to MySQL.",
     )
-    return parser.parse_args()
+    parser.add_argument(
+        "--replace",
+        action="store_true",
+        help="With --from-backup: delete all existing data first, so the database becomes an "
+        "exact copy of the backup (rows removed since an older backup do not linger).",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="With --from-backup: run the whole restore, report the counts, then roll back.",
+    )
+    args = parser.parse_args()
+    if (args.replace or args.dry_run) and not args.from_backup:
+        parser.error("--replace and --dry-run require --from-backup")
+    return args
 
 
 def main() -> int:
     args = parse_args()
     if args.from_backup:
-        return restore_backup(args.from_backup)
+        return restore_backup(args.from_backup, replace=args.replace, dry_run=args.dry_run)
     try:
         if args.prepare or args.prepare_only:
             count = prepare_csv(args.data_dir)

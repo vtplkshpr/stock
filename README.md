@@ -139,6 +139,8 @@ Restore a backup, for example on a new machine after `scripts/setup_database.sh`
 python scripts/import_companies.py --from-backup backups/2026-11-05
 ```
 
+To make an already-populated database an exact copy of the backup (for example on a machine running an older version, after `git pull` and `python scripts/init_database.py`), add `--replace`; it clears the existing data in the same transaction as the import. `--dry-run` runs the restore and rolls it back. See "Update a machine that already runs an older version" in SETUP.md.
+
 Use the newest folder under `backups/` (compare `manifest.json` row counts if unsure). `--from-backup` uses the same cell-by-cell merge as CSV import, so running it on a database that already holds data only fills or overwrites cells present in the backup, never deletes rows, and is safe to repeat. Any error rolls back the whole restore. Do not use plain `python scripts/import_companies.py` for a backup: that command reads the raw-data CSVs in `processed_data/`, which only contain the original company list.
 
 ## Company Data

@@ -121,6 +121,31 @@ This loads every category (companies, shareholders, leadership, investments, rel
 
 To refresh the backup after entering new data, run `python3 src/data_import.py --export backups/$(date +%F)` and commit the new folder. See "Back Up and Restore Data" in README.md for details.
 
+### Update a machine that already runs an older version
+
+Use this when the project is already deployed and you want the newest code and data:
+
+1. Get the new code and backup:
+
+   ```bash
+   cd ~/stock
+   git pull
+   ```
+2. Copy the newest `financial_reports/` folder from the source machine over the local one (it is not in Git).
+3. Upgrade the database schema. This adds new tables, columns and keys and never deletes data; it is safe to run more than once:
+
+   ```bash
+   python3 scripts/init_database.py
+   ```
+4. Preview the import, then run it:
+
+   ```bash
+   python3 scripts/import_companies.py --from-backup backups/2026-11-05 --replace --dry-run
+   python3 scripts/import_companies.py --from-backup backups/2026-11-05 --replace
+   ```
+
+`--replace` deletes all existing data and loads the backup in its place, in one transaction: if anything fails, nothing changes. Use it when the backup is the master copy (the usual case), so rows that were corrected or removed on the source machine do not linger as duplicates. Leave it out only if this machine has data that is not in the backup; then the backup is merged cell by cell, but outdated rows stay. Check the printed counts against `backups/2026-11-05/manifest.json`.
+
 ### Rebuild the company list from raw sources
 
 Prepare table-specific CSV files from `raw_data/` without a database connection:
