@@ -14,7 +14,7 @@ import sys
 from datetime import date, timedelta
 from typing import Any, Sequence
 
-FORMULA_VERSION = "1.0"
+FORMULA_VERSION = "1.1"
 PAR_VALUE = 10_000  # VND per share, the statutory par value of Vietnamese listed shares
 DEFAULT_TAX_RATE = 0.20  # Vietnamese corporate income tax rate, used when the effective rate is unusable
 
@@ -259,6 +259,7 @@ def compute_row(flows: PeriodValues, end: PeriodValues, start: PeriodValues, pri
     equity = b("equity")
     equity_parent = equity - (b("minority_interest") or 0) if equity is not None else None
     row.update(revenue=revenue, gross_profit=f("gross_profit"), ebit=ebit, ebitda=ebitda,
+               interest_expense=interest, receivables=b("receivables_trade"), inventory=b("inventory"),
                net_income=net_income, net_income_parent=net_income_parent, cfo=cfo, cfi=cfi, cff=cff,
                capex=capex, free_cash_flow=fcf, dividends_paid=f("dividends_paid"),
                total_assets=b("total_assets"), equity_parent=equity_parent,

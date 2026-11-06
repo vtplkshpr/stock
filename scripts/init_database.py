@@ -432,6 +432,11 @@ ADDITIONAL_COLUMNS = {
         "investing_cash_flow": "DECIMAL(24, 4) NULL",
         "financing_cash_flow": "DECIMAL(24, 4) NULL",
     },
+    "financial_metrics": {
+        "interest_expense": "DECIMAL(24, 4) NULL AFTER ebitda",
+        "receivables": "DECIMAL(24, 4) NULL AFTER net_debt",
+        "inventory": "DECIMAL(24, 4) NULL AFTER receivables",
+    },
     "company_leaders": {
         "appointed_date": "DATE NULL",
         "dismissed_date": "DATE NULL",

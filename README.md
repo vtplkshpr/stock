@@ -53,6 +53,7 @@ The main menu provides:
 1. **Search for a company** by ticker or name.
 2. **Browse the company list** one page at a time.
 3. **Enter or update data** manually or from CSV files for one or more companies.
+4. **Stock screening and early warnings** across all companies with financial reports.
 
 In a list, enter `n`/`p` to move forward/backward, select a row number to open a company, or enter `b` to go back. The company profile shows registration details and the leadership team grouped by board, audit committee, management, and other positions, followed by former officers. The company menu provides stock prices (1), shareholders (2), upstream suppliers (3), downstream customers (4), financial reports (5), news (6), subsidiaries/associates/investments (7), data entry (8), and related-party transactions (9).
 
@@ -146,6 +147,19 @@ python src/metrics.py --tickers SBT   # one company
 Line codes differ between Circular 200 and Circular 99 statements (e.g. total assets 270 vs 280); `ITEMS` in `src/metrics.py` maps both, and the thresholds are in `THRESHOLDS`.
 
 `valuation_metrics` has one row per price day: market cap, enterprise value (market cap + net debt), P/E and P/S on TTM figures, P/B, EV/EBITDA, dividend and FCF yield. Each day uses the latest TTM row whose reports were already published on that day (consolidated where available), so historical multiples carry no look-ahead. Import prices as the `stock_prices` category (close price in VND per share, not thousands); the valuations are computed during the import. The CLI shows both tables in the company menu (options 10 and 11).
+
+## Stock Screening and Early Warnings
+
+Main-menu option 4 sorts companies into four financial states using their newest TTM row in `financial_metrics` (consolidated when available) compared with the TTM row a year earlier. Each group lists companies that meet every condition ("khớp") and those missing exactly one ("gần khớp", with the failed condition shown); choose a row to open the company. Option 5 lists companies with warning flags (most flags first) and option 6 shows every company's score in each group.
+
+| Group | Conditions (all required) |
+| --- | --- |
+| Khỏe mạnh & tăng trưởng | cash-flow pattern `+--`; ROE > 15% and not lower than a year earlier; FCF ≥ 5% of revenue |
+| Đột biến trên giấy | net income up ≥ 20% year on year; CFO / net income < 0.5; receivables or inventory growing > 20 points faster than revenue |
+| Đốt tiền bành trướng | cash-flow pattern `--+`; debt/equity or interest expense up ≥ 20% year on year |
+| Khủng hoảng thoái trào | ROE down ≥ 3 points; CFO negative or < 1.5x interest paid; CFF negative. P/E up ≥ 30% is shown for reference once prices exist |
+
+Conditions without data count as not met. The thresholds are in `RULES` in `src/screening.py`; the screening is computed when the menu opens, so it always reflects the latest metrics.
 
 ## Financial Report Files
 

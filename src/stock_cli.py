@@ -9,10 +9,11 @@ from pathlib import Path
 from typing import Any, Sequence
 
 try:
-    from . import data_import, metrics
+    from . import data_import, metrics, screening
 except ImportError:
     import data_import
     import metrics
+    import screening
 
 
 def load_database_config() -> dict[str, str]:
@@ -751,6 +752,138 @@ def company_menu(connection: Any, selected: tuple[Any, ...], page_size: int) -> 
             print("Lựa chọn không hợp lệ.")
 
 
+def browse_list(title: str, headers: Sequence[str], rows: list[Sequence[Any]], page_size: int) -> int | None:
+    """Page through in-memory rows; return the index of the chosen row, or None."""
+    page, total_pages = 0, max(1, (len(rows) + page_size - 1) // page_size)
+    while True:
+        chunk = rows[page * page_size:(page + 1) * page_size]
+        print(f"\n{title} | {len(rows)} kết quả | Trang {page + 1}/{total_pages}")
+        if not chunk:
+            print("Không có dữ liệu.")
+            return None
+        print_table(("#", *headers), [(i, *row) for i, row in enumerate(chunk, start=1)])
+        print("Nhập số thứ tự để mở công ty, n: trang sau, p: trang trước, b: quay lại.")
+        choice = (prompt("> ") or "b").lower()
+        if choice == "b":
+            return None
+        if choice == "n" and page + 1 < total_pages:
+            page += 1
+        elif choice == "p" and page > 0:
+            page -= 1
+        elif choice.isdigit() and 1 <= int(choice) <= len(chunk):
+            return page * page_size + int(choice) - 1
+        else:
+            print("Lựa chọn không hợp lệ.")
+
+
+def open_company(connection: Any, company_id: int, page_size: int) -> None:
+    cursor = connection.cursor()
+    cursor.execute("SELECT company_id, ticker, company_name, exchange, industry FROM companies WHERE company_id = %s",
+                   (company_id,))
+    selected = cursor.fetchone()
+    cursor.close()
+    if selected:
+        company_menu(connection, selected, page_size)
+
+
+def pct(value: Any, digits: int = 1) -> str:
+    return "-" if value is None else f"{float(value) * 100:.{digits}f}"
+
+
+def num(value: Any, digits: int = 2) -> str:
+    return "-" if value is None else f"{float(value):.{digits}f}"
+
+
+def screening_row(result: "screening.Result") -> tuple:
+    s = result.snapshot
+    roe_change = (s.get("roe") - s.before("roe")) * 100 if s.get("roe") is not None and s.before("roe") is not None else None
+    failed = [c.label for c, o in zip(result.group.criteria, result.outcomes) if c.required and o is not True]
+    return (s.ticker, s.name, f"NĐ{s.now['fiscal_year']} Q{s.now['fiscal_quarter']}",
+            "HN" if s.now["report_scope"] == "consolidated" else "Riêng", s.now.get("cash_flow_pattern") or "-",
+            pct(s.get("roe")), num(roe_change, 1), num(s.get("cfo_to_net_income")), num(s.get("debt_to_equity")),
+            f"{result.met}/{len(result.required)}", "; ".join(failed) or "-")
+
+
+SCREEN_HEADERS = ("Mã", "Doanh nghiệp", "Kỳ TTM", "Phạm vi", "Mẫu", "ROE %", "ΔROE (điểm %)", "CFO/LN",
+                  "Nợ/VCSH", "Đạt", "Chưa đạt / thiếu dữ liệu")
+
+
+def show_group(connection: Any, group: "screening.Group", results: list, page_size: int) -> None:
+    print(f"\n=== {group.name.upper()} ===\n{group.meaning}\nĐiều kiện:")
+    for criterion in group.criteria:
+        print(f"  - {criterion.label}{'' if criterion.required else ' (tham khảo)'}")
+    matched = [r for r in results if r.matched]
+    near = [r for r in results if not r.matched and r.near]
+    rows = [("KHỚP", *screening_row(r)) for r in matched] + [("gần khớp", *screening_row(r)) for r in near]
+    while True:
+        index = browse_list(f"{group.name}: {len(matched)} khớp, {len(near)} gần khớp (thiếu 1 điều kiện)",
+                            ("Kết quả", *SCREEN_HEADERS), rows, page_size)
+        if index is None:
+            return
+        open_company(connection, (matched + near)[index].snapshot.company_id, page_size)
+
+
+def show_warnings(connection: Any, snapshots: list, page_size: int) -> None:
+    rows, targets = [], []
+    for s in snapshots:
+        active = [label for column, label in metrics.FLAG_LABELS.items() if s.now.get(column)]
+        if active:
+            rows.append((len(active), s.ticker, s.name, f"NĐ{s.now['fiscal_year']} Q{s.now['fiscal_quarter']}",
+                         num(s.get("interest_coverage")), num(s.get("net_debt_to_ebitda"), 1),
+                         num(s.get("cfo_to_net_income")), num(s.get("current_ratio")), ", ".join(active)))
+            targets.append(s.company_id)
+    order = sorted(range(len(rows)), key=lambda i: -rows[i][0])
+    rows, targets = [rows[i] for i in order], [targets[i] for i in order]
+    while True:
+        index = browse_list("Cảnh báo sớm (cờ trên kỳ TTM mới nhất, nhiều cờ xếp trước)",
+                            ("Số cờ", "Mã", "Doanh nghiệp", "Kỳ TTM", "EBIT/lãi", "Nợ ròng/EBITDA", "CFO/LN",
+                             "Thanh toán", "Cảnh báo"), rows, page_size)
+        if index is None:
+            return
+        open_company(connection, targets[index], page_size)
+
+
+def run_screening(connection: Any, page_size: int) -> None:
+    cursor = connection.cursor()
+    try:
+        results = screening.screen(cursor)
+    finally:
+        cursor.close()
+    snapshots = list({id(r.snapshot): r.snapshot for r in results}.values())
+    while True:
+        print(f"\n=== LỌC CỔ PHIẾU & CẢNH BÁO SỚM === (kỳ TTM mới nhất của {len(snapshots)} doanh nghiệp có báo cáo)")
+        for index, group in enumerate(screening.GROUPS, start=1):
+            group_results = [r for r in results if r.group is group]
+            print(f"{index}. {group.name}: {sum(r.matched for r in group_results)} khớp, "
+                  f"{sum((not r.matched) and r.near for r in group_results)} gần khớp")
+        flagged = sum(1 for s in snapshots if any(s.now.get(c) for c in metrics.FLAG_LABELS))
+        print(f"{len(screening.GROUPS) + 1}. Cảnh báo sớm: {flagged} doanh nghiệp có cờ")
+        print(f"{len(screening.GROUPS) + 2}. Bảng tổng hợp mọi doanh nghiệp")
+        print("b. Quay lại")
+        choice = (prompt("> ") or "b").lower()
+        if choice == "b":
+            return
+        if choice.isdigit() and 1 <= int(choice) <= len(screening.GROUPS):
+            group = screening.GROUPS[int(choice) - 1]
+            show_group(connection, group, [r for r in results if r.group is group], page_size)
+        elif choice == str(len(screening.GROUPS) + 1):
+            show_warnings(connection, snapshots, page_size)
+        elif choice == str(len(screening.GROUPS) + 2):
+            rows = []
+            for s in snapshots:
+                own = [r for r in results if r.snapshot is s]
+                rows.append((s.ticker, s.name, f"NĐ{s.now['fiscal_year']} Q{s.now['fiscal_quarter']}",
+                             s.now.get("cash_flow_pattern") or "-", s.now.get("lifecycle_stage") or "-",
+                             *[("✓ " if r.matched else "") + f"{r.met}/{len(r.required)}" for r in own]))
+            index = browse_list("Mức khớp từng nhóm (✓ = khớp)",
+                                ("Mã", "Doanh nghiệp", "Kỳ TTM", "Mẫu", "Vòng đời",
+                                 *[g.name for g in screening.GROUPS]), rows, page_size)
+            if index is not None:
+                open_company(connection, snapshots[index].company_id, page_size)
+        else:
+            print("Lựa chọn không hợp lệ.")
+
+
 def run_search(connection: Any, page_size: int, initial_query: str | None = None) -> None:
     query = initial_query
     while True:
@@ -818,6 +951,7 @@ def run(argv: Sequence[str] | None = None) -> int:
                 print("1. Tìm kiếm doanh nghiệp")
                 print("2. Xem danh sách doanh nghiệp")
                 print("3. Nhập/cập nhật dữ liệu (nhập tay / CSV)")
+                print("4. Lọc cổ phiếu & cảnh báo sớm")
                 print("q. Thoát")
                 try:
                     choice = input("> ").strip().lower()
@@ -832,6 +966,8 @@ def run(argv: Sequence[str] | None = None) -> int:
                     run_company_catalog(connection, args.page_size)
                 elif choice == "3":
                     run_data_entry(connection)
+                elif choice == "4":
+                    run_screening(connection, args.page_size)
                 else:
                     print("Lựa chọn không hợp lệ.")
     except Exception as exc:
