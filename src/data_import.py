@@ -54,9 +54,58 @@ CATEGORIES = {
             ("ticker", "price_date"),
             (
                 "open_price", "high_price", "low_price", "close_price",
-                "adjusted_close", "trading_volume",
+                "adjusted_close", "price_change", "change_percentage", "trading_volume",
+                "trading_value", "negotiated_volume", "negotiated_value",
             ),
             required=("close_price",),
+        ),
+        Category(
+            "foreign_trades",
+            "Foreign investor trading",
+            ("ticker", "trade_date"),
+            (
+                "buy_volume", "buy_value", "sell_volume", "sell_value", "net_volume",
+                "net_value", "room_remaining", "ownership_percentage", "source_url",
+            ),
+        ),
+        Category(
+            "proprietary_trades",
+            "Proprietary trading",
+            ("ticker", "trade_date"),
+            (
+                "buy_volume", "buy_value", "sell_volume", "sell_value", "net_volume",
+                "net_value", "source_url",
+            ),
+        ),
+        Category(
+            "order_statistics",
+            "Order statistics",
+            ("ticker", "trade_date"),
+            (
+                "buy_orders", "buy_volume", "avg_buy_order_volume", "sell_orders",
+                "sell_volume", "avg_sell_order_volume", "net_volume", "source_url",
+            ),
+        ),
+        Category(
+            "intraday_trades",
+            "Intraday matched trades",
+            ("ticker", "trade_date", "seq"),
+            (
+                "trade_time", "price", "price_change", "lot_volume", "cumulative_volume",
+                "weight_percentage", "source_url",
+            ),
+            required=("trade_time",),
+        ),
+        Category(
+            "insider_trades",
+            "Insider & major shareholder trades",
+            ("ticker", "trader_name", "registration_start"),
+            (
+                "trader_position", "related_person_name", "related_person_position",
+                "shares_before", "registered_buy", "registered_sell", "registration_end",
+                "executed_buy", "executed_sell", "execution_date", "shares_after",
+                "ownership_after_percentage", "source_url",
+            ),
         ),
         Category(
             "stock_holders",
@@ -165,7 +214,8 @@ COMPANY_REFS = {
 DATE_COLUMNS = {
     "price_date", "snapshot_date", "published_at", "first_trading_date", "as_of_date",
     "established_date", "listed_date", "period_start", "period_end", "appointed_date",
-    "dismissed_date", "business_registration_date", "audit_report_date",
+    "dismissed_date", "business_registration_date", "audit_report_date", "trade_date",
+    "registration_start", "registration_end", "execution_date",
 }
 JSON_COLUMNS = {"headquarters_addresses", "phone_numbers", "other_metrics"}
 DMY_PATTERN = re.compile(r"(\d{1,2})/(\d{1,2})/(\d{4})(.*)")

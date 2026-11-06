@@ -111,13 +111,13 @@ The default page size is 10; accepted values range from 1 to 100. Use `--help` t
    ```
 
    On a machine whose database was created by an older version of this project, run `python3 scripts/init_database.py` instead; it adds the newer tables and columns without touching existing data.
-4. Import the newest backup folder under `backups/` (currently `backups/2026-11-05`):
+4. Import the newest backup folder under `backups/` (currently `backups/2026-11-06`):
 
    ```bash
-   python3 scripts/import_companies.py --from-backup backups/2026-11-05
+   python3 scripts/import_companies.py --from-backup backups/2026-11-06
    ```
 
-This loads every category (companies, shareholders, leadership, investments, related-party transactions, prices, reports, news, supply chain, tiers). The financial metrics and valuations are recomputed from the restored reports and prices at the end of the restore. Check the row counts it prints against `backups/2026-11-05/manifest.json`.
+This loads every category (companies, prices, foreign/proprietary trading, order statistics, intraday trades, insider trades, shareholders, leadership, investments, related-party transactions, reports, news, supply chain, tiers). The financial metrics and valuations are recomputed from the restored reports and prices at the end of the restore. Check the row counts it prints against `backups/2026-11-06/manifest.json`.
 
 To refresh the backup after entering new data, run `python3 src/data_import.py --export backups/$(date +%F)` and commit the new folder. See "Back Up and Restore Data" in README.md for details.
 
@@ -140,11 +140,11 @@ Use this when the project is already deployed and you want the newest code and d
 4. Preview the import, then run it:
 
    ```bash
-   python3 scripts/import_companies.py --from-backup backups/2026-11-05 --replace --dry-run
-   python3 scripts/import_companies.py --from-backup backups/2026-11-05 --replace
+   python3 scripts/import_companies.py --from-backup backups/2026-11-06 --replace --dry-run
+   python3 scripts/import_companies.py --from-backup backups/2026-11-06 --replace
    ```
 
-`--replace` deletes all existing data and loads the backup in its place, in one transaction: if anything fails, nothing changes. Use it when the backup is the master copy (the usual case), so rows that were corrected or removed on the source machine do not linger as duplicates. Leave it out only if this machine has data that is not in the backup; then the backup is merged cell by cell, but outdated rows stay. Check the printed counts against `backups/2026-11-05/manifest.json`.
+`--replace` deletes all existing data and loads the backup in its place, in one transaction: if anything fails, nothing changes. Use it when the backup is the master copy (the usual case), so rows that were corrected or removed on the source machine do not linger as duplicates. Leave it out only if this machine has data that is not in the backup; then the backup is merged cell by cell, but outdated rows stay. Check the printed counts against `backups/2026-11-06/manifest.json`.
 
 ### Rebuild the company list from raw sources
 
@@ -191,7 +191,7 @@ Do not switch the CLI to the `root` account. Run `./scripts/setup_database.sh` a
 Run the CLI using the virtual environment created by setup, or activate the correct environment and install the connector:
 
 ```bash
-python -m pip install mysql-connector-python
+python -m pip install mysql-connector-python openpyxl
 ```
 
 ### No companies found

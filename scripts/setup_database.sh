@@ -132,7 +132,7 @@ else
 fi
 
 printf 'Installing Python MySQL connector...\n'
-"$PYTHON_BIN" -m pip install mysql-connector-python
+"$PYTHON_BIN" -m pip install mysql-connector-python openpyxl
 
 CONFIG_FILE="$PROJECT_ROOT/.env"
 umask 077

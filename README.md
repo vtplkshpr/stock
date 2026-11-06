@@ -13,7 +13,12 @@ A terminal-based module for looking up listed companies. It reads data from MySQ
 The database stores these data groups:
 
 - `companies`: basic information and listing ticker.
-- `stock_prices`: daily prices and trading volume.
+- `stock_prices`: daily prices, change, matched volume/value and negotiated (put-through) volume/value.
+- `foreign_trades`: daily foreign-investor buy/sell/net volume and value, remaining foreign room and foreign ownership %.
+- `proprietary_trades`: daily proprietary trading (tự doanh) of securities companies: buy/sell/net volume and value.
+- `order_statistics`: daily number and volume of buy and sell orders placed, average order size and net volume.
+- `intraday_trades`: matched trades within one session (time, price, lot, running total, weight), in source order.
+- `insider_trades`: trades registered and reported by major shareholders, insiders and their related persons (registered buy/sell and window, executed buy/sell and date, holdings before/after).
 - `stock_holders`: shareholders and ownership percentages by snapshot date.
 - `finance_reports`: reporting period, scope (separate/consolidated), income statement, balance sheet and cash-flow metrics, employee count, and the path of the report file.
 - `tiers`, `company_tiers`: company classifications.
@@ -55,7 +60,7 @@ The main menu provides:
 3. **Enter or update data** manually or from CSV files for one or more companies.
 4. **Stock screening and early warnings** across all companies with financial reports.
 
-In a list, enter `n`/`p` to move forward/backward, select a row number to open a company, or enter `b` to go back. The company profile shows registration details and the leadership team grouped by board, audit committee, management, and other positions, followed by former officers. The company menu provides stock prices (1), shareholders (2), upstream suppliers (3), downstream customers (4), financial reports (5), news (6), subsidiaries/associates/investments (7), data entry (8), and related-party transactions (9).
+In a list, enter `n`/`p` to move forward/backward, select a row number to open a company, or enter `b` to go back. The company profile shows registration details and the leadership team grouped by board, audit committee, management, and other positions, followed by former officers. The company menu provides stock prices (1), shareholders (2), upstream suppliers (3), downstream customers (4), financial reports (5), news (6), subsidiaries/associates/investments (7), data entry (8), related-party transactions (9), financial metrics (10), valuation (11), and trading activity (12): foreign investors, proprietary trading, order statistics, insider & major shareholder trades, and intraday matched trades. Insider trades show the executed share of the registered amount and a status: `reported` (a result or execution date exists), `in progress` (registration window still open) or `awaiting result`.
 
 Suppliers and customers combine `supply_chain_relations` with related-party purchases and sales: a company's suppliers are the parties it buys from, plus companies whose reports show sales to it (matched by `counterparty_ticker`); customers work the other way round.
 
@@ -81,7 +86,12 @@ Every import merges cell by cell. Records are matched by their key columns. A no
 | Category | Key columns | Other columns |
 | --- | --- | --- |
 | `companies` | `ticker` | `company_name` (required for new companies) and the other company fields |
-| `stock_prices` | `ticker`, `price_date` | prices, `trading_volume` (`close_price` required for new rows) |
+| `stock_prices` | `ticker`, `price_date` | prices, `price_change`, `change_percentage`, `trading_volume`, `trading_value`, `negotiated_volume`, `negotiated_value` (`close_price` required for new rows) |
+| `foreign_trades` | `ticker`, `trade_date` | `buy_volume`, `buy_value`, `sell_volume`, `sell_value`, `net_volume`, `net_value` (VND), `room_remaining`, `ownership_percentage`, `source_url` |
+| `proprietary_trades` | `ticker`, `trade_date` | `buy_volume`, `buy_value`, `sell_volume`, `sell_value`, `net_volume`, `net_value` (VND), `source_url` |
+| `order_statistics` | `ticker`, `trade_date` | `buy_orders`, `buy_volume`, `avg_buy_order_volume`, `sell_orders`, `sell_volume`, `avg_sell_order_volume`, `net_volume`, `source_url` |
+| `intraday_trades` | `ticker`, `trade_date`, `seq` (position in the session) | `trade_time` (required for new rows), `price`, `price_change` (VND), `lot_volume`, `cumulative_volume`, `weight_percentage`, `source_url` |
+| `insider_trades` | `ticker`, `trader_name`, `registration_start` | `trader_position` (position, or relationship to the insider, e.g. "Con"), `related_person_name`, `related_person_position`, `shares_before`, `registered_buy`, `registered_sell`, `registration_end`, `executed_buy`, `executed_sell`, `execution_date`, `shares_after`, `ownership_after_percentage`, `source_url` |
 | `stock_holders` | `ticker`, `holder_name`, `snapshot_date` | `holder_type`, `shares_owned`, `ownership_percentage`, `source_url` |
 | `finance_reports` | `ticker`, `report_type`, `report_scope`, `fiscal_year`, `fiscal_quarter` (blank = annual) | `period_start`, `period_end`, `audit_status`, income statement, balance sheet and cash-flow metrics (VND), `employee_count`, `other_metrics` (JSON), `document_storage_path`, `published_at` |
 | `supply_chain_relations` | `supplier_ticker`, `customer_ticker`, `product_category` | `percentage_revenue`, `source_url` |
@@ -113,6 +123,31 @@ The same import is available without the menu:
 python src/data_import.py --list
 python src/data_import.py --tickers HPG,VNM stock_prices=prices.csv finance_reports=reports.csv --dry-run
 ```
+
+## Import CafeF Trading Data
+
+`scripts/import_cafef.py` reads files exported (or copied) from the CafeF "Dữ liệu lịch sử" tabs, writes one import CSV per category to `processed_data/cafef/`, and merges them like any CSV import (cell by cell, safe to repeat). The type is recognised from the file name; the ticker and dates come from the file contents (for intraday trades, from the name):
+
+| File | Category | Tab |
+| --- | --- | --- |
+| `CafeF_LichSuGia_*.xlsx` | `stock_prices` | Lịch sử giá |
+| `CafeF_ThongKeDatLenh_*.xlsx` | `order_statistics` | Thống kê đặt lệnh |
+| `CafeF_GiaoDichKhoiNgoai_*.xlsx` | `foreign_trades` | Khối ngoại |
+| `CafeF_GiaoDichTuDoanh_*.xlsx` | `proprietary_trades` | Tự doanh |
+| `CafeF_KhopLenh_<TICKER>_<YYYYMMDD>.xlsx` | `intraday_trades` | Khớp lệnh theo phiên |
+| `CafeF_GiaoDichCoDong*.txt` | `insider_trades` | Cổ đông & Nội bộ (select the page from the search form down to the end of the table and paste it into the file) |
+
+```bash
+python scripts/import_cafef.py                  # every file in new_data/
+python scripts/import_cafef.py path/to/file.xlsx other_folder/ --dry-run
+python scripts/import_cafef.py --prepare-only   # only write processed_data/cafef/*.csv
+```
+
+Conversions: CafeF quotes prices in thousand VND and values in VND billion; the database stores VND (21.05 → 21,050; 1.84 bn → 1,840,000,000). Insider-trade dates are DD/MM/YY and `-` means "not applicable" (stored empty). While no result has been reported (no execution date and nothing executed), CafeF shows 0 holdings after the trade; those cells are left empty. Order-statistics rows that are all zeros (the current day, before CafeF publishes it) are skipped. Every intraday row is kept, including identical rows (separate trades matched at the same moment), and `seq` keeps the export's order. Because rows are keyed by position, importing an intraday file replaces that ticker's whole session for that date (in the same transaction) instead of merging into it.
+
+The intraday export is inconsistent: in many rows the lot and running-total columns hold amounts rather than share counts, and the running total is not monotonic. `lot_volume`, `cumulative_volume` and `weight_percentage` are therefore stored exactly as exported (thousand separators removed, no unit conversion), and should not be summed into daily volume; `stock_prices.trading_volume` is the reliable daily figure.
+
+Importing prices recomputes `valuation_metrics` for those tickers.
 
 ## Financial Metrics and Valuation
 
@@ -173,7 +208,7 @@ financial_reports/SBT/2027/SBT_2027_Q1_separate_20260701-20260930.pdf
 
 ## Back Up and Restore Data
 
-`backups/<date>/` holds a full copy of the database data: one CSV per category (in the format described under "Enter and Update Data") plus `manifest.json` with the row count of each table. The current backup is `backups/2026-11-05/`.
+`backups/<date>/` holds a full copy of the database data: one CSV per category (in the format described under "Enter and Update Data") plus `manifest.json` with the row count of each table. The current backup is `backups/2026-11-06/`.
 
 Create a new backup after entering data:
 
@@ -184,7 +219,7 @@ python src/data_import.py --export backups/$(date +%F)
 Restore a backup, for example on a new machine after `scripts/setup_database.sh` has created the database:
 
 ```bash
-python scripts/import_companies.py --from-backup backups/2026-11-05
+python scripts/import_companies.py --from-backup backups/2026-11-06
 ```
 
 To make an already-populated database an exact copy of the backup (for example on a machine running an older version, after `git pull` and `python scripts/init_database.py`), add `--replace`; it clears the existing data in the same transaction as the import. `--dry-run` runs the restore and rolls it back. See "Update a machine that already runs an older version" in SETUP.md.
@@ -230,7 +265,8 @@ stock/
 ├── financial_reports/
 │   └── SBT/2025, 2026, 2027/  # report PDFs: <TICKER>/<fiscal_year>/ (not in Git)
 ├── backups/
-│   └── 2026-11-05/     # full data backup (one CSV per category + manifest.json)
+│   ├── 2026-11-05/     # previous backup
+│   └── 2026-11-06/     # current full data backup (one CSV per category + manifest.json)
 ├── src/
 │   ├── cli.py
 │   ├── data_import.py
@@ -239,6 +275,7 @@ stock/
 │   └── stock_cli.py
 ├── scripts/
 │   ├── ocr/            # scanned financial reports -> import CSVs (see scripts/ocr/README.md)
+│   ├── import_cafef.py # CafeF trading exports (new_data/) -> import CSVs -> database
 │   ├── import_companies.py
 │   ├── init_database.py
 │   └── setup_database.sh

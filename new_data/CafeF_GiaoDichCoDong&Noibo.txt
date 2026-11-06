@@ -1,0 +1,36 @@
+Dữ liệu lịch sử
+Thứ Sáu, 06 Tháng 11, 2026
+
+Dữ liệu giao dịch chứng khoán của cổ đông lớn và cổ đông nội bộ hàng ngày.
+
+Mã chứng khoán
+
+HPG
+Từ ngày
+
+01/01/2026
+Đến ngày
+
+06/11/2026
+Xem
+Mã	Tổ chức/ người GD	Người liên quan	SLCP trước GD	Đăng ký	Kết quả	SLCP sau GD	Tỷ lệ(%)
+Chức vụ	Tên	Chức vụ	Mua	Bán	Ngày BĐ	Ngày KT	Mua	Bán	Ngày TH
+HPG	
+Trần Vũ Minh
+Con
+Trần Đình Long
+Chủ tịch HĐQT	230,652,290	50,000,000	-	07/10/26	05/11/26	0	-	-	0	0.00
+HPG	
+Doãn Thị Bích Ngọc
+Chị
+Doãn Gia Cường
+Phó Chủ tịch HĐQT	564,696	0	350,000	15/09/26	14/10/26	0	350,000	14/10/26	214,696	0.00
+HPG	
+Nguyễn Ngọc Quang
+Thành viên HĐQT
+125,485,714	0	6,600,000	11/06/26	10/07/26	0	6,600,000	08/07/26	131,434,285	1.56
+HPG	
+Trần Vũ Minh
+Con
+Trần Đình Long
+Chủ tịch HĐQT	176,391,996	50,000,000	-	12/03/26	10/04/26	33,291,904	-	09/04/26	209,683,900	2.48

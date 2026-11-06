@@ -379,11 +379,129 @@ TABLES = (
             REFERENCES companies (company_id) ON DELETE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
     """,
+    # Daily foreign-investor trading (matched + negotiated), values in VND.
+    """
+    CREATE TABLE IF NOT EXISTS foreign_trades (
+        company_id BIGINT UNSIGNED NOT NULL,
+        trade_date DATE NOT NULL,
+        buy_volume BIGINT UNSIGNED NULL,
+        buy_value DECIMAL(24, 4) NULL,
+        sell_volume BIGINT UNSIGNED NULL,
+        sell_value DECIMAL(24, 4) NULL,
+        net_volume BIGINT NULL,
+        net_value DECIMAL(24, 4) NULL,
+        room_remaining BIGINT UNSIGNED NULL,
+        ownership_percentage DECIMAL(9, 6) NULL,
+        source_url VARCHAR(1024) NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        PRIMARY KEY (company_id, trade_date),
+        KEY ix_foreign_trades_date (trade_date),
+        CONSTRAINT fk_foreign_trades_company FOREIGN KEY (company_id)
+            REFERENCES companies (company_id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+    """,
+    # Daily proprietary trading by securities companies (tu doanh), values in VND.
+    """
+    CREATE TABLE IF NOT EXISTS proprietary_trades (
+        company_id BIGINT UNSIGNED NOT NULL,
+        trade_date DATE NOT NULL,
+        buy_volume BIGINT UNSIGNED NULL,
+        buy_value DECIMAL(24, 4) NULL,
+        sell_volume BIGINT UNSIGNED NULL,
+        sell_value DECIMAL(24, 4) NULL,
+        net_volume BIGINT NULL,
+        net_value DECIMAL(24, 4) NULL,
+        source_url VARCHAR(1024) NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        PRIMARY KEY (company_id, trade_date),
+        KEY ix_proprietary_trades_date (trade_date),
+        CONSTRAINT fk_proprietary_trades_company FOREIGN KEY (company_id)
+            REFERENCES companies (company_id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+    """,
+    # Daily order-book statistics: number and volume of buy/sell orders placed.
+    """
+    CREATE TABLE IF NOT EXISTS order_statistics (
+        company_id BIGINT UNSIGNED NOT NULL,
+        trade_date DATE NOT NULL,
+        buy_orders INT UNSIGNED NULL,
+        buy_volume BIGINT UNSIGNED NULL,
+        avg_buy_order_volume BIGINT UNSIGNED NULL,
+        sell_orders INT UNSIGNED NULL,
+        sell_volume BIGINT UNSIGNED NULL,
+        avg_sell_order_volume BIGINT UNSIGNED NULL,
+        net_volume BIGINT NULL,
+        source_url VARCHAR(1024) NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        PRIMARY KEY (company_id, trade_date),
+        CONSTRAINT fk_order_statistics_company FOREIGN KEY (company_id)
+            REFERENCES companies (company_id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+    """,
+    # Matched trades within one session, in the order the source lists them (seq).
+    """
+    CREATE TABLE IF NOT EXISTS intraday_trades (
+        company_id BIGINT UNSIGNED NOT NULL,
+        trade_date DATE NOT NULL,
+        seq INT UNSIGNED NOT NULL,
+        trade_time TIME NOT NULL,
+        price DECIMAL(20, 4) NULL,
+        price_change DECIMAL(20, 4) NULL,
+        lot_volume BIGINT UNSIGNED NULL,
+        cumulative_volume BIGINT UNSIGNED NULL,
+        weight_percentage DECIMAL(9, 4) NULL,
+        source_url VARCHAR(1024) NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (company_id, trade_date, seq),
+        KEY ix_intraday_trades_time (company_id, trade_date, trade_time),
+        CONSTRAINT fk_intraday_trades_company FOREIGN KEY (company_id)
+            REFERENCES companies (company_id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+    """,
+    # Registered and executed trades of major shareholders, insiders and their related persons.
+    """
+    CREATE TABLE IF NOT EXISTS insider_trades (
+        trade_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+        company_id BIGINT UNSIGNED NOT NULL,
+        trader_name VARCHAR(255) NOT NULL,
+        trader_position VARCHAR(255) NULL,
+        related_person_name VARCHAR(255) NULL,
+        related_person_position VARCHAR(255) NULL,
+        shares_before BIGINT UNSIGNED NULL,
+        registered_buy BIGINT UNSIGNED NULL,
+        registered_sell BIGINT UNSIGNED NULL,
+        registration_start DATE NOT NULL,
+        registration_end DATE NULL,
+        executed_buy BIGINT UNSIGNED NULL,
+        executed_sell BIGINT UNSIGNED NULL,
+        execution_date DATE NULL,
+        shares_after BIGINT UNSIGNED NULL,
+        ownership_after_percentage DECIMAL(9, 6) NULL,
+        source_url VARCHAR(1024) NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        PRIMARY KEY (trade_id),
+        UNIQUE KEY uq_insider_trades_registration (company_id, trader_name, registration_start),
+        KEY ix_insider_trades_related (related_person_name),
+        CONSTRAINT fk_insider_trades_company FOREIGN KEY (company_id)
+            REFERENCES companies (company_id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+    """,
 )
 
 
 # Columns added after a table was first created; missing ones are added on every run.
 ADDITIONAL_COLUMNS = {
+    "stock_prices": {
+        "price_change": "DECIMAL(20, 4) NULL AFTER adjusted_close",
+        "change_percentage": "DECIMAL(9, 4) NULL AFTER price_change",
+        "trading_value": "DECIMAL(24, 4) NULL AFTER trading_volume",
+        "negotiated_volume": "BIGINT UNSIGNED NULL AFTER trading_value",
+        "negotiated_value": "DECIMAL(24, 4) NULL AFTER negotiated_volume",
+    },
     "companies": {
         "charter_capital": "DECIMAL(24, 4) NULL",
         "listed_shares": "BIGINT UNSIGNED NULL",

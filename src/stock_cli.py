@@ -301,14 +301,134 @@ def browse_prices(connection: Any, company_id: int, ticker: str, page_size: int)
         connection,
         f"Share prices {ticker}",
         """SELECT price_date, open_price, high_price, low_price, close_price,
-                  adjusted_close, trading_volume
+                  adjusted_close, price_change, change_percentage, trading_volume,
+                  ROUND(trading_value / 1e9, 2), negotiated_volume, ROUND(negotiated_value / 1e9, 2)
            FROM stock_prices WHERE company_id = %s
            ORDER BY price_date DESC LIMIT %s OFFSET %s""",
         "SELECT COUNT(*) FROM stock_prices WHERE company_id = %s",
         (company_id,),
-        ("Date", "Open", "High", "Low", "Close", "Adjusted", "Volume"),
+        ("Date", "Open", "High", "Low", "Close", "Adjusted", "Change", "Change %", "Volume",
+         "Value (bn)", "Negotiated vol.", "Negotiated (bn)"),
         page_size,
     )
+
+
+def browse_foreign_trades(connection: Any, company_id: int, ticker: str, page_size: int) -> None:
+    browse_pages(
+        connection,
+        f"Foreign investor trading {ticker} - values: VND billion",
+        """SELECT trade_date, buy_volume, ROUND(buy_value / 1e9, 2), sell_volume,
+                  ROUND(sell_value / 1e9, 2), net_volume, ROUND(net_value / 1e9, 2),
+                  room_remaining, ownership_percentage
+           FROM foreign_trades WHERE company_id = %s
+           ORDER BY trade_date DESC LIMIT %s OFFSET %s""",
+        "SELECT COUNT(*) FROM foreign_trades WHERE company_id = %s",
+        (company_id,),
+        ("Date", "Buy vol.", "Buy value", "Sell vol.", "Sell value", "Net vol.", "Net value",
+         "Room left", "Foreign owned %"),
+        page_size,
+    )
+
+
+def browse_proprietary_trades(connection: Any, company_id: int, ticker: str, page_size: int) -> None:
+    browse_pages(
+        connection,
+        f"Proprietary trading {ticker} - values: VND billion",
+        """SELECT trade_date, buy_volume, ROUND(buy_value / 1e9, 2), sell_volume,
+                  ROUND(sell_value / 1e9, 2), net_volume, ROUND(net_value / 1e9, 2)
+           FROM proprietary_trades WHERE company_id = %s
+           ORDER BY trade_date DESC LIMIT %s OFFSET %s""",
+        "SELECT COUNT(*) FROM proprietary_trades WHERE company_id = %s",
+        (company_id,),
+        ("Date", "Buy vol.", "Buy value", "Sell vol.", "Sell value", "Net vol.", "Net value"),
+        page_size,
+    )
+
+
+def browse_order_statistics(connection: Any, company_id: int, ticker: str, page_size: int) -> None:
+    browse_pages(
+        connection,
+        f"Order statistics {ticker}",
+        """SELECT trade_date, buy_orders, buy_volume, avg_buy_order_volume, sell_orders,
+                  sell_volume, avg_sell_order_volume, net_volume
+           FROM order_statistics WHERE company_id = %s
+           ORDER BY trade_date DESC LIMIT %s OFFSET %s""",
+        "SELECT COUNT(*) FROM order_statistics WHERE company_id = %s",
+        (company_id,),
+        ("Date", "Buy orders", "Buy vol.", "Avg/buy order", "Sell orders", "Sell vol.",
+         "Avg/sell order", "Net vol."),
+        page_size,
+    )
+
+
+def browse_intraday_trades(connection: Any, company_id: int, ticker: str, page_size: int) -> None:
+    browse_pages(
+        connection,
+        f"Intraday matched trades {ticker} (as exported by the source)",
+        """SELECT trade_date, trade_time, price, price_change, lot_volume, cumulative_volume,
+                  weight_percentage
+           FROM intraday_trades WHERE company_id = %s
+           ORDER BY trade_date DESC, seq LIMIT %s OFFSET %s""",
+        "SELECT COUNT(*) FROM intraday_trades WHERE company_id = %s",
+        (company_id,),
+        ("Date", "Time", "Price", "Change", "Lot", "Cumulative", "Weight %"),
+        page_size,
+    )
+
+
+# Executed share of the registered amount, and whether a result has been reported yet.
+INSIDER_STATUS_SQL = """
+    CASE WHEN execution_date IS NOT NULL OR COALESCE(executed_buy, 0) + COALESCE(executed_sell, 0) > 0
+              THEN 'reported'
+         WHEN registration_end >= CURDATE() THEN 'in progress'
+         ELSE 'awaiting result' END"""
+INSIDER_EXECUTED_SQL = """
+    ROUND(100 * (COALESCE(executed_buy, 0) + COALESCE(executed_sell, 0))
+          / NULLIF(COALESCE(registered_buy, 0) + COALESCE(registered_sell, 0), 0), 1)"""
+
+
+def browse_insider_trades(connection: Any, company_id: int, ticker: str, page_size: int) -> None:
+    browse_pages(
+        connection,
+        f"Insider & major shareholder trades {ticker}",
+        f"""SELECT trader_name, trader_position,
+                   CONCAT_WS(' - ', related_person_name, related_person_position),
+                   shares_before, registered_buy, registered_sell,
+                   registration_start, registration_end,
+                   executed_buy, executed_sell, execution_date, {INSIDER_EXECUTED_SQL},
+                   shares_after, ownership_after_percentage, {INSIDER_STATUS_SQL}
+            FROM insider_trades WHERE company_id = %s
+            ORDER BY registration_start DESC, trader_name LIMIT %s OFFSET %s""",
+        "SELECT COUNT(*) FROM insider_trades WHERE company_id = %s",
+        (company_id,),
+        ("Trader", "Position / relation", "Related insider", "Shares before", "Reg. buy",
+         "Reg. sell", "Reg. from", "Reg. to", "Bought", "Sold", "Exec. date", "Done %", "Shares after",
+         "Owned %", "Status"),
+        page_size,
+    )
+
+
+TRADING_VIEWS = (
+    ("Foreign investors", browse_foreign_trades),
+    ("Proprietary trading", browse_proprietary_trades),
+    ("Order statistics", browse_order_statistics),
+    ("Insider & major shareholder trades", browse_insider_trades),
+    ("Intraday matched trades", browse_intraday_trades),
+)
+
+
+def trading_menu(connection: Any, company_id: int, ticker: str, page_size: int) -> None:
+    while True:
+        print(f"\nTrading activity {ticker}")
+        print("   ".join(f"{i}. {label}" for i, (label, _) in enumerate(TRADING_VIEWS, start=1)))
+        print("b. Back")
+        choice = (prompt("> ") or "b").lower()
+        if choice == "b":
+            return
+        if choice.isdigit() and 1 <= int(choice) <= len(TRADING_VIEWS):
+            TRADING_VIEWS[int(choice) - 1][1](connection, company_id, ticker, page_size)
+        else:
+            print("Invalid choice.")
 
 
 def browse_holders(connection: Any, company_id: int, ticker: str, page_size: int) -> None:
@@ -717,6 +837,7 @@ def company_menu(connection: Any, selected: tuple[Any, ...], page_size: int) -> 
         print("4. Customers (downstream)   5. Financial reports   6. News")
         print("7. Subsidiaries, associates & investments   8. Enter / update data")
         print("9. Related-party transactions   10. Financial metrics   11. Valuation")
+        print("12. Trading activity (foreign, proprietary, orders, insiders, intraday)")
         print("b. Back to search")
         try:
             choice = input("> ").strip().lower()
@@ -748,6 +869,8 @@ def company_menu(connection: Any, selected: tuple[Any, ...], page_size: int) -> 
             browse_metrics(connection, company_id, ticker, page_size)
         elif choice == "11":
             browse_valuations(connection, company_id, ticker, page_size)
+        elif choice == "12":
+            trading_menu(connection, company_id, ticker, page_size)
         else:
             print("Invalid choice.")
 
