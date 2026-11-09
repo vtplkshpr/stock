@@ -317,6 +317,10 @@ def restore_backup(directory: Path, replace: bool = False, dry_run: bool = False
             cursor = connection.cursor()
             cursor.execute("DELETE FROM companies")
             cursor.execute("DELETE FROM tiers")
+            # The organisation register does not hang off companies, so it is cleared on its own.
+            cursor.execute("DELETE FROM organization_aliases")
+            cursor.execute("UPDATE organizations SET parent_org_id = NULL")
+            cursor.execute("DELETE FROM organizations")
             cursor.close()
             print("Existing data cleared; importing the backup in its place.")
         results = data_import.import_files(connection, files, None)
@@ -325,6 +329,8 @@ def restore_backup(directory: Path, replace: bool = False, dry_run: bool = False
             connection.rollback()
             print("Errors found; nothing was changed.", file=sys.stderr)
             return 1
+        # Rows are linked to organisations by name, so the links are rebuilt rather than restored.
+        print(data_import.refresh_organizations(connection, files) or "Organisations: nothing to link")
         # financial_metrics / valuation_metrics are computed, so they are rebuilt, not restored.
         print(metrics.format_summary(metrics.recompute(connection)))
         if dry_run:

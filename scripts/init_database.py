@@ -379,6 +379,52 @@ TABLES = (
             REFERENCES companies (company_id) ON DELETE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
     """,
+    # Every organisation named in the data (listed or not), under one canonical name:
+    # "<abbreviated legal form> <full own name>", e.g. "TNHH MTV Nông Nghiệp Xanh Thành Công".
+    # kind is the structure word left out of the name (Công ty, Tổng công ty, Viện, Quỹ, ...);
+    # ticker links a listed organisation to companies.ticker.
+    """
+    CREATE TABLE IF NOT EXISTS organizations (
+        org_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+        canonical_name VARCHAR(255) NOT NULL,
+        full_name VARCHAR(512) NULL,
+        kind VARCHAR(64) NULL,
+        legal_form VARCHAR(64) NULL,
+        ticker VARCHAR(16) NULL,
+        tax_code VARCHAR(32) NULL,
+        country VARCHAR(64) NULL,
+        industry VARCHAR(255) NULL,
+        address VARCHAR(512) NULL,
+        website VARCHAR(512) NULL,
+        parent_org_id BIGINT UNSIGNED NULL,
+        status ENUM('auto', 'reviewed') NOT NULL DEFAULT 'auto',
+        note TEXT NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        PRIMARY KEY (org_id),
+        UNIQUE KEY uq_organizations_name (canonical_name),
+        KEY ix_organizations_ticker (ticker),
+        KEY ix_organizations_tax_code (tax_code),
+        CONSTRAINT fk_organizations_parent FOREIGN KEY (parent_org_id)
+            REFERENCES organizations (org_id) ON DELETE SET NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+    """,
+    # Each spelling of a name met in the sources -> its organisation. org_id NULL marks a name
+    # that is not an organisation (a person, a placeholder line), so it is never linked.
+    """
+    CREATE TABLE IF NOT EXISTS organization_aliases (
+        alias_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+        alias VARCHAR(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+        org_id BIGINT UNSIGNED NULL,
+        source VARCHAR(32) NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (alias_id),
+        UNIQUE KEY uq_organization_aliases_alias (alias),
+        KEY ix_organization_aliases_org (org_id),
+        CONSTRAINT fk_organization_aliases_org FOREIGN KEY (org_id)
+            REFERENCES organizations (org_id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+    """,
     # Daily foreign-investor trading (matched + negotiated), values in VND.
     """
     CREATE TABLE IF NOT EXISTS foreign_trades (
@@ -563,8 +609,17 @@ ADDITIONAL_COLUMNS = {
     },
     "related_party_transactions": {
         "report_scope": "ENUM('separate', 'consolidated') NULL AFTER counterparty_ticker",
+        "counterparty_org_id": "BIGINT UNSIGNED NULL AFTER counterparty_ticker, ADD KEY ix_rpt_org (counterparty_org_id)",
+    },
+    "stock_holders": {
+        "holder_org_id": "BIGINT UNSIGNED NULL AFTER holder_name, ADD KEY ix_stock_holders_org (holder_org_id)",
+    },
+    "supply_chain_relations": {
+        "supplier_org_id": "BIGINT UNSIGNED NULL AFTER customer_id, ADD KEY ix_supply_chain_supplier_org (supplier_org_id)",
+        "customer_org_id": "BIGINT UNSIGNED NULL AFTER supplier_org_id, ADD KEY ix_supply_chain_customer_org (customer_org_id)",
     },
     "company_investments": {
+        "investee_org_id": "BIGINT UNSIGNED NULL AFTER investee_ticker, ADD KEY ix_company_investments_org (investee_org_id)",
         "is_direct": "TINYINT(1) NULL",
         "voting_percentage": "DECIMAL(9, 6) NULL",
         "investment_cost": "DECIMAL(24, 4) NULL",
@@ -662,6 +717,15 @@ def migrate_related_party_key(cursor: Any) -> None:
     )
 
 
+def migrate_supply_chain_sides(cursor: Any) -> None:
+    """Either side of a supply relation may now be an unlisted organisation (supplier_org_id /
+    customer_org_id) instead of a listed company, so the company columns become optional."""
+    cursor.execute("SHOW COLUMNS FROM supply_chain_relations WHERE Field IN ('supplier_id', 'customer_id')")
+    for row in cursor.fetchall():
+        if row[2] == "NO":
+            cursor.execute(f"ALTER TABLE supply_chain_relations MODIFY COLUMN `{row[0]}` BIGINT UNSIGNED NULL")
+
+
 def migrate_enum_columns(cursor: Any) -> None:
     for (table, column), definition in ENUM_COLUMNS.items():
         cursor.execute(f"SHOW COLUMNS FROM `{table}` LIKE %s", (column,))
@@ -704,6 +768,7 @@ def initialize_database(config: argparse.Namespace) -> None:
         migrate_additional_columns(cursor)
         migrate_enum_columns(cursor)
         migrate_related_party_key(cursor)
+        migrate_supply_chain_sides(cursor)
         migrate_stock_holders_table(cursor)
         connection.commit()
 

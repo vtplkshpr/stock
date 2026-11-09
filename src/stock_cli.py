@@ -9,11 +9,16 @@ from pathlib import Path
 from typing import Any, Sequence
 
 try:
-    from . import data_import, metrics, screening
+    from . import data_import, metrics, organizations, screening
 except ImportError:
     import data_import
     import metrics
+    import organizations
     import screening
+
+# Display name of the organisation linked as `org`, e.g. "Công ty TNHH MTV Thành Công Xanh"
+# (structure word + canonical name, see organizations.py); NULL when the row has no organisation.
+ORG_NAME = organizations.display_sql("org")
 
 
 def load_database_config() -> dict[str, str]:
@@ -435,10 +440,11 @@ def browse_holders(connection: Any, company_id: int, ticker: str, page_size: int
     browse_pages(
         connection,
         f"Shareholders {ticker}",
-        """SELECT holder_name, holder_type, shares_owned, ownership_percentage,
-                  snapshot_date, source_url
-           FROM stock_holders WHERE company_id = %s
-           ORDER BY snapshot_date DESC, ownership_percentage DESC LIMIT %s OFFSET %s""",
+        f"""SELECT COALESCE({ORG_NAME}, holder.holder_name), holder.holder_type, holder.shares_owned,
+                   holder.ownership_percentage, holder.snapshot_date, holder.source_url
+            FROM stock_holders AS holder LEFT JOIN organizations AS org ON org.org_id = holder.holder_org_id
+            WHERE holder.company_id = %s
+            ORDER BY holder.snapshot_date DESC, holder.ownership_percentage DESC LIMIT %s OFFSET %s""",
         "SELECT COUNT(*) FROM stock_holders WHERE company_id = %s",
         (company_id,),
         ("Shareholder", "Type", "Shares", "Ownership %", "As of", "Source"),
@@ -466,26 +472,39 @@ def browse_supply_chain(
         own_side, other_side = "supplier_id", "customer_id"
         own_types, reverse_types = SALE_TYPES, PURCHASE_TYPES
 
+    # Names are shown in their standard form when the organisation register knows them. The other
+    # side of a supply relation may be a listed company or an unlisted organisation; sales the
+    # company reports to others count when they name its ticker or its organisation record.
+    other_org = other_side.replace("_id", "_org_id")
     union_sql = f"""
-        SELECT partner.ticker AS partner_ticker, partner.company_name AS partner_name,
+        SELECT COALESCE(partner.ticker, org.ticker) AS partner_ticker,
+               COALESCE({ORG_NAME}, partner.company_name) AS partner_name,
                relation.product_category AS content, relation.percentage_revenue AS share,
                NULL AS amount, NULL AS period_end, NULL AS scope, relation.source_url AS source
         FROM supply_chain_relations AS relation
-        JOIN companies AS partner ON partner.company_id = relation.{other_side}
+        LEFT JOIN companies AS partner ON partner.company_id = relation.{other_side}
+        LEFT JOIN organizations AS org
+          ON org.org_id = COALESCE(relation.{other_org},
+                                   (SELECT o.org_id FROM organizations AS o WHERE o.ticker = partner.ticker LIMIT 1))
         WHERE relation.{own_side} = %s
         UNION ALL
-        SELECT trade.counterparty_ticker, trade.counterparty_name, trade.description,
-               NULL, trade.amount, trade.period_end, trade.report_scope,
+        SELECT COALESCE(trade.counterparty_ticker, org.ticker), COALESCE({ORG_NAME}, trade.counterparty_name),
+               trade.description, NULL, trade.amount, trade.period_end, trade.report_scope,
                COALESCE(trade.document_storage_path, trade.source_url)
         FROM related_party_transactions AS trade
+        LEFT JOIN organizations AS org ON org.org_id = trade.counterparty_org_id
         WHERE trade.company_id = %s AND trade.transaction_type IN ({own_types})
         UNION ALL
-        SELECT seller.ticker, seller.company_name, trade.description,
+        SELECT seller.ticker, COALESCE({ORG_NAME}, seller.company_name), trade.description,
                NULL, trade.amount, trade.period_end, trade.report_scope,
                COALESCE(trade.document_storage_path, trade.source_url)
         FROM related_party_transactions AS trade
         JOIN companies AS seller ON seller.company_id = trade.company_id
-        WHERE trade.counterparty_ticker = %s AND trade.transaction_type IN ({reverse_types})"""
+        LEFT JOIN organizations AS org ON org.org_id =
+            (SELECT o.org_id FROM organizations AS o WHERE o.ticker = seller.ticker LIMIT 1)
+        WHERE trade.company_id <> %s AND trade.transaction_type IN ({reverse_types})
+          AND (trade.counterparty_ticker = %s OR trade.counterparty_org_id IN
+               (SELECT o.org_id FROM organizations AS o WHERE o.ticker = %s))"""
     browse_pages(
         connection,
         title,
@@ -493,7 +512,7 @@ def browse_supply_chain(
             ORDER BY period_end DESC, amount DESC, partner_name
             LIMIT %s OFFSET %s""",
         f"SELECT COUNT(*) FROM ({union_sql}) AS partners",
-        (company_id, company_id, ticker),
+        (company_id, company_id, company_id, ticker, ticker),
         ("Ticker", "Company", "Description", "Share %", "Amount", "Period end", "Scope", "Source"),
         page_size,
     )
@@ -523,15 +542,17 @@ def browse_investments(connection: Any, company_id: int, ticker: str, page_size:
     browse_pages(
         connection,
         f"Subsidiaries, associates & investments of {ticker}",
-        """SELECT relation_type,
-                  CASE is_direct WHEN 1 THEN 'direct' WHEN 0 THEN 'indirect' END,
-                  investee_name, investee_ticker, shares_owned, ownership_percentage,
-                  voting_percentage, investment_cost, as_of_date
-           FROM company_investments WHERE company_id = %s
-           ORDER BY FIELD(relation_type, 'subsidiary', 'associate', 'shareholding'),
-                    is_direct DESC, investment_cost DESC, ownership_percentage DESC,
-                    investment_id
-           LIMIT %s OFFSET %s""",
+        f"""SELECT inv.relation_type,
+                   CASE inv.is_direct WHEN 1 THEN 'direct' WHEN 0 THEN 'indirect' END,
+                   COALESCE({ORG_NAME}, inv.investee_name), COALESCE(inv.investee_ticker, org.ticker),
+                   inv.shares_owned, inv.ownership_percentage, inv.voting_percentage,
+                   inv.investment_cost, inv.as_of_date
+            FROM company_investments AS inv LEFT JOIN organizations AS org ON org.org_id = inv.investee_org_id
+            WHERE inv.company_id = %s
+            ORDER BY FIELD(inv.relation_type, 'subsidiary', 'associate', 'shareholding'),
+                     inv.is_direct DESC, inv.investment_cost DESC, inv.ownership_percentage DESC,
+                     inv.investment_id
+            LIMIT %s OFFSET %s""",
         "SELECT COUNT(*) FROM company_investments WHERE company_id = %s",
         (company_id,),
         ("Type", "Holding", "Company", "Ticker", "Shares", "Ownership %", "Voting %", "Cost", "As of"),
@@ -543,11 +564,13 @@ def browse_related_parties(connection: Any, company_id: int, ticker: str, page_s
     browse_pages(
         connection,
         f"Related-party transactions of {ticker}",
-        """SELECT period_end, report_scope, counterparty_name, relationship, transaction_type,
-                  description, amount
-           FROM related_party_transactions WHERE company_id = %s
-           ORDER BY period_end DESC, report_scope, counterparty_name, transaction_type
-           LIMIT %s OFFSET %s""",
+        f"""SELECT trade.period_end, trade.report_scope, COALESCE({ORG_NAME}, trade.counterparty_name) AS party,
+                   trade.relationship, trade.transaction_type, trade.description, trade.amount
+            FROM related_party_transactions AS trade
+            LEFT JOIN organizations AS org ON org.org_id = trade.counterparty_org_id
+            WHERE trade.company_id = %s
+            ORDER BY trade.period_end DESC, trade.report_scope, party, trade.transaction_type
+            LIMIT %s OFFSET %s""",
         "SELECT COUNT(*) FROM related_party_transactions WHERE company_id = %s",
         (company_id,),
         ("Period end", "Scope", "Related party", "Relationship", "Type", "Description", "Amount"),
@@ -660,6 +683,9 @@ def confirm_and_commit(connection: Any, results: dict[str, data_import.ImportSta
         return
     answer = prompt("Save changes? (y/N): ")
     if answer is not None and answer.lower() in {"y", "yes"}:
+        organisation_summary = data_import.refresh_organizations(connection, results)
+        if organisation_summary:
+            print(organisation_summary)
         if data_import.METRIC_SOURCES & set(results):
             print(metrics.format_summary(metrics.recompute(connection)))
         connection.commit()
@@ -1042,6 +1068,31 @@ def run_company_catalog(connection: Any, page_size: int) -> None:
         company_menu(connection, selected, page_size)
 
 
+def browser_view_notice() -> str:
+    """One line pointing to the browser diagram (src/backend/server.py), which runs separately."""
+    import urllib.request
+
+    values: dict[str, str] = {}
+    config_path = Path(__file__).resolve().parents[1] / ".env"
+    if config_path.is_file():
+        for line in config_path.read_text(encoding="utf-8").splitlines():
+            key, separator, value = line.partition("=")
+            if separator and key.startswith("WEB_"):
+                values[key.strip()] = value.strip().strip("\"'")
+    host = os.environ.get("WEB_HOST", values.get("WEB_HOST", "127.0.0.1"))
+    port = os.environ.get("WEB_PORT", values.get("WEB_PORT", "8765"))
+    probe_host = "127.0.0.1" if host in ("0.0.0.0", "::") else host
+    url = os.environ.get("WEB_PUBLIC_URL", values.get("WEB_PUBLIC_URL", f"http://{probe_host}:{port}"))
+    try:  # only the diagram's own health check counts, not any program on that port
+        with urllib.request.urlopen(f"http://{probe_host}:{int(port)}/api/health", timeout=0.5) as response:
+            running = json.load(response).get("status") == "ok"
+    except (OSError, ValueError):
+        running = False
+    if running:
+        return f"Browser view (company diagram) is running: {url}"
+    return f"Browser view (company diagram) is also supported: start it with `python src/backend/server.py`, then open {url}"
+
+
 def run(argv: Sequence[str] | None = None) -> int:
     args = parse_args(argv)
     try:
@@ -1065,6 +1116,7 @@ def run(argv: Sequence[str] | None = None) -> int:
         print("Run scripts/setup_database.sh to set it up, or check .env.", file=sys.stderr)
         return 1
 
+    print(browser_view_notice())
     try:
         if args.query:
             run_search(connection, args.page_size, args.query)

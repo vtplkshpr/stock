@@ -1,13 +1,13 @@
 # Installation and Usage
 
-This guide covers the current stock module. It uses MySQL/MariaDB to store data and provides a terminal CLI for company lookups.
+This guide covers the current stock module. It uses MySQL/MariaDB to store data and provides a terminal CLI for company lookups, plus an optional browser diagram of each company.
 
 ## Requirements
 
 - Ubuntu or Debian.
 - Python 3.10 or later and `venv`.
 - `sudo` access to install/start the database server and create a database user.
-- An internet connection if MySQL Server or the Python connector must be installed.
+- An internet connection if MySQL Server or the Python connector must be installed, and for the browser diagram's first setup (Python packages, Node.js and frontend packages are downloaded).
 
 The script uses an existing MariaDB or MySQL server. If no server is found, it installs `mysql-server`. The current development machine uses MariaDB.
 
@@ -98,6 +98,27 @@ python src/stock_cli.py --query HPG --page-size 20
 
 The default page size is 10; accepted values range from 1 to 100. Use `--help` to see the CLI options.
 
+## Run the Browser Diagram
+
+The diagram is a separate program next to the CLI; both can run at the same time. `scripts/setup_database.sh` already sets it up (unless run with `SKIP_WEB=1`). To set it up on its own, or to update it after `git pull`, run the one command:
+
+```bash
+cd ~/stock/stock
+bash scripts/setup_web.sh
+```
+
+It installs `src/backend/requirements.txt` into the same virtual environment, uses Node.js 20+ if installed or otherwise downloads a pinned Node.js into `.tools/` (no sudo), installs the frontend packages from `src/frontend/package-lock.json` and builds `src/frontend/dist/`. Then start the server and open the address it prints:
+
+```bash
+source ../venv/bin/activate
+python src/backend/server.py            # http://127.0.0.1:8765
+python src/backend/server.py --port 9000 --open
+```
+
+When the module is launched through `main.py` (the host application's entry point), this server starts automatically with the CLI and stops with it; `WEB_AUTOSTART=0` turns that off. Its output goes to `stock-diagram-<port>.log` in the system temp folder.
+
+Stop it with Ctrl+C. `WEB_HOST`, `WEB_PORT`, `WEB_PUBLIC_URL` and `WEB_CORS_ORIGINS` (environment or `.env`) change where it listens and the address it shows; the defaults keep it on this machine only. See "Browser Diagram" in README.md.
+
 ## Loading Data
 
 ### Restore the real data on a new machine
@@ -111,13 +132,13 @@ The default page size is 10; accepted values range from 1 to 100. Use `--help` t
    ```
 
    On a machine whose database was created by an older version of this project, run `python3 scripts/init_database.py` instead; it adds the newer tables and columns without touching existing data.
-4. Import the newest backup folder under `backups/` (currently `backups/2026-11-06`):
+4. Import the newest backup folder under `backups/` (currently `backups/2026-11-09`):
 
    ```bash
-   python3 scripts/import_companies.py --from-backup backups/2026-11-06
+   python3 scripts/import_companies.py --from-backup backups/2026-11-09
    ```
 
-This loads every category (companies, prices, foreign/proprietary trading, order statistics, intraday trades, insider trades, shareholders, leadership, investments, related-party transactions, reports, news, supply chain, tiers). The financial metrics and valuations are recomputed from the restored reports and prices at the end of the restore. Check the row counts it prints against `backups/2026-11-06/manifest.json`.
+This loads every category (companies, the organisation register, prices, foreign/proprietary trading, order statistics, intraday trades, insider trades, shareholders, leadership, investments, related-party transactions, reports, news, supply chain, tiers). Rows are relinked to the organisation register, and the financial metrics and valuations are recomputed from the restored reports and prices, at the end of the restore. Check the row counts it prints against `backups/2026-11-09/manifest.json`.
 
 To refresh the backup after entering new data, run `python3 src/data_import.py --export backups/$(date +%F)` and commit the new folder. See "Back Up and Restore Data" in README.md for details.
 
@@ -140,11 +161,11 @@ Use this when the project is already deployed and you want the newest code and d
 4. Preview the import, then run it:
 
    ```bash
-   python3 scripts/import_companies.py --from-backup backups/2026-11-06 --replace --dry-run
-   python3 scripts/import_companies.py --from-backup backups/2026-11-06 --replace
+   python3 scripts/import_companies.py --from-backup backups/2026-11-09 --replace --dry-run
+   python3 scripts/import_companies.py --from-backup backups/2026-11-09 --replace
    ```
 
-`--replace` deletes all existing data and loads the backup in its place, in one transaction: if anything fails, nothing changes. Use it when the backup is the master copy (the usual case), so rows that were corrected or removed on the source machine do not linger as duplicates. Leave it out only if this machine has data that is not in the backup; then the backup is merged cell by cell, but outdated rows stay. Check the printed counts against `backups/2026-11-06/manifest.json`.
+`--replace` deletes all existing data and loads the backup in its place, in one transaction: if anything fails, nothing changes. Use it when the backup is the master copy (the usual case), so rows that were corrected or removed on the source machine do not linger as duplicates. Leave it out only if this machine has data that is not in the backup; then the backup is merged cell by cell, but outdated rows stay. Check the printed counts against `backups/2026-11-09/manifest.json`.
 
 ### Rebuild the company list from raw sources
 
@@ -193,6 +214,13 @@ Run the CLI using the virtual environment created by setup, or activate the corr
 ```bash
 python -m pip install mysql-connector-python openpyxl
 ```
+
+### Browser diagram does not start or shows "frontend has not been built"
+
+- `Missing packages` or `No module named 'fastapi'`: run `bash scripts/setup_web.sh` (it installs into the virtual environment that setup uses), then start the server with that environment's Python.
+- The page says the frontend has not been built: run `bash scripts/setup_web.sh`, then restart the server.
+- `address already in use`: another program uses the port; start with `--port 9000` (or set `WEB_PORT`).
+- The CLI line says the diagram is not running although it is: the CLI looks for it at `WEB_HOST:WEB_PORT`; set the same values for both.
 
 ### No companies found
 

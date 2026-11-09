@@ -49,6 +49,21 @@ CATEGORIES = {
             required=("company_name",),
         ),
         Category(
+            "organizations",
+            "Organisations (listed and unlisted)",
+            ("canonical_name",),
+            (
+                "full_name", "kind", "legal_form", "ticker", "tax_code", "country", "industry",
+                "address", "website", "parent_org", "status", "note",
+            ),
+        ),
+        Category(
+            "organization_aliases",
+            "Organisation name spellings",
+            ("alias",),
+            ("org", "source"),
+        ),
+        Category(
             "stock_prices",
             "Share prices",
             ("ticker", "price_date"),
@@ -147,8 +162,9 @@ CATEGORIES = {
         Category(
             "supply_chain_relations",
             "Supply chain",
-            ("supplier_ticker", "customer_ticker", "product_category"),
+            ("supplier_ticker", "customer_ticker", "supplier_org", "customer_org", "product_category"),
             ("percentage_revenue", "source_url"),
+            nullable_keys=("supplier_ticker", "customer_ticker", "supplier_org", "customer_org"),
         ),
         Category(
             "company_news",
@@ -205,12 +221,25 @@ CATEGORIES = {
 # Categories that feed the computed financial_metrics / valuation_metrics tables (see metrics.py).
 METRIC_SOURCES = {"finance_reports", "finance_report_items", "stock_prices"}
 
+# Categories whose names feed the organisation register (see organizations.py).
+ORG_SOURCES = {"related_party_transactions", "company_investments", "stock_holders",
+               "organizations", "organization_aliases"}
+
 # CSV ticker columns and the company id column each one resolves to.
 COMPANY_REFS = {
     "ticker": "company_id",
     "supplier_ticker": "supplier_id",
     "customer_ticker": "customer_id",
 }
+# CSV organisation columns (canonical name or alias) and the organisation id column they fill.
+ORG_REFS = {
+    "org": "org_id",
+    "parent_org": "parent_org_id",
+    "supplier_org": "supplier_org_id",
+    "customer_org": "customer_org_id",
+}
+# Tables whose "ticker" column is plain text rather than a reference to companies.
+TICKER_AS_TEXT = {"companies", "organizations"}
 DATE_COLUMNS = {
     "price_date", "snapshot_date", "published_at", "first_trading_date", "as_of_date",
     "established_date", "listed_date", "period_start", "period_end", "appointed_date",
@@ -279,7 +308,11 @@ def normalize_row(
         row[column] = normalize_value(column, value)
 
     # A row may omit its single missing company reference when one company is selected.
-    missing_refs = [c for c in category.keys if c in COMPANY_REFS and c not in row]
+    missing_refs = [
+        c for c in category.keys
+        if c in COMPANY_REFS and c not in row
+        and not row.get(c.replace("_ticker", "_org"))  # that side is given as an organisation
+    ]
     if default_ticker and len(missing_refs) == 1:
         row[missing_refs[0]] = default_ticker.upper()
 
@@ -288,6 +321,10 @@ def normalize_row(
     ]
     if missing_keys:
         raise ValueError(f"missing key values: {', '.join(missing_keys)}")
+    if category.table == "supply_chain_relations":
+        for side in ("supplier", "customer"):
+            if not row.get(f"{side}_ticker") and not row.get(f"{side}_org"):
+                raise ValueError(f"{side}_ticker or {side}_org is required")
     return row
 
 
@@ -299,14 +336,55 @@ def company_id_for(cursor: Any, ticker: str) -> int:
     return found[0]
 
 
+def org_id_for(cursor: Any, name: str) -> int:
+    """Organisation id for a canonical name, an org id, or any recorded spelling."""
+    cursor.execute(
+        """SELECT org_id FROM organizations WHERE canonical_name = %s OR org_id = %s
+           UNION SELECT org_id FROM organization_aliases
+           WHERE alias = %s COLLATE utf8mb4_bin AND org_id IS NOT NULL LIMIT 1""",
+        (name, int(name) if name.isdigit() else -1, name),
+    )
+    found = cursor.fetchone()
+    if found is None:
+        raise ValueError(f"organisation {name!r} is not in the organisation register")
+    return found[0]
+
+
+def is_company_ref(category: Category, column: str) -> bool:
+    return column in COMPANY_REFS and category.table not in TICKER_AS_TEXT
+
+
 def key_filter(cursor: Any, category: Category, row: Mapping[str, str]) -> dict[str, Any]:
     keys = {}
     for column in category.keys:
-        if column in COMPANY_REFS and category.table != "companies":
-            keys[COMPANY_REFS[column]] = company_id_for(cursor, row[column])
+        value = row.get(column)
+        if is_company_ref(category, column):
+            keys[COMPANY_REFS[column]] = company_id_for(cursor, value) if value else None
+        elif column in ORG_REFS:
+            keys[ORG_REFS[column]] = org_id_for(cursor, value) if value else None
         else:
-            keys[column] = row.get(column)
+            keys[column] = value
     return keys
+
+
+def resolve_values(cursor: Any, row: Mapping[str, str], columns: Iterable[str]) -> dict[str, Any]:
+    """Row values by table column, with organisation names turned into ids."""
+    values = {}
+    for column in columns:
+        if column in row:
+            if column in ORG_REFS:
+                values[ORG_REFS[column]] = org_id_for(cursor, row[column])
+            else:
+                values[column] = row[column]
+    return values
+
+
+def value_select(column: str) -> str:
+    """SELECT expression giving a value column in its CSV form."""
+    if column in ORG_REFS:
+        return (f"(SELECT o.canonical_name FROM organizations AS o "
+                f"WHERE o.org_id = t.`{ORG_REFS[column]}`)")
+    return f"t.`{column}`"
 
 
 def fetch_existing(
@@ -316,10 +394,10 @@ def fetch_existing(
     if category.table == "company_tiers":
         return None
     keys = key_filter(cursor, category, row)
-    where = " AND ".join(f"`{column}` <=> %s" for column in keys)
-    columns = ", ".join(f"`{column}`" for column in category.values)
+    where = " AND ".join(f"t.`{column}` <=> %s" for column in keys)
+    columns = ", ".join(value_select(column) for column in category.values)
     cursor.execute(
-        f"SELECT {columns} FROM `{category.table}` WHERE {where} LIMIT 1",
+        f"SELECT {columns} FROM `{category.table}` AS t WHERE {where} LIMIT 1",
         tuple(keys.values()),
     )
     found = cursor.fetchone()
@@ -365,7 +443,7 @@ def merge_row(cursor: Any, category: Category, row: Mapping[str, str]) -> str:
         return merge_company_tier(cursor, row)
 
     keys = key_filter(cursor, category, row)
-    values = {column: row[column] for column in category.values if column in row}
+    values = resolve_values(cursor, row, category.values)
     where = " AND ".join(f"`{column}` <=> %s" for column in keys)
     cursor.execute(
         f"SELECT COUNT(*) FROM `{category.table}` WHERE {where}", tuple(keys.values())
@@ -380,7 +458,7 @@ def merge_row(cursor: Any, category: Category, row: Mapping[str, str]) -> str:
         )
         return "updated" if cursor.rowcount else "unchanged"
 
-    missing = [column for column in category.required if column not in values]
+    missing = [column for column in category.required if column not in row]
     if missing:
         raise ValueError(f"new record lacks required values: {', '.join(missing)}")
     data = {**keys, **values}
@@ -414,8 +492,9 @@ def merge_rows(
         for location, raw in rows:
             try:
                 row = normalize_row(category, raw, default_ticker, choices)
-                refs = {row[c] for c in category.keys if c in COMPANY_REFS}
-                if selected is not None and not refs & selected:
+                ref_columns = [c for c in category.keys if is_company_ref(category, c)]
+                refs = {row[c] for c in ref_columns if row.get(c)}
+                if selected is not None and ref_columns and not refs & selected:
                     stats.skipped += 1
                     continue
                 outcome = merge_row(cursor, category, row)
@@ -480,15 +559,15 @@ def export_rows(cursor: Any, category: Category) -> list[list[str]]:
     else:
         selects, joins = [], []
         for column in category.columns:
-            if column in COMPANY_REFS and category.table != "companies":
+            if is_company_ref(category, column):
                 alias = f"ref{len(joins)}"
                 joins.append(
-                    f"JOIN companies AS {alias} "
+                    f"LEFT JOIN companies AS {alias} "
                     f"ON {alias}.company_id = t.`{COMPANY_REFS[column]}`"
                 )
                 selects.append(f"{alias}.ticker")
             else:
-                selects.append(f"t.`{column}`")
+                selects.append(value_select(column))
         cursor.execute(f"SHOW KEYS FROM `{category.table}` WHERE Key_name = 'PRIMARY'")
         order = ", ".join(f"t.`{key[4]}`" for key in cursor.fetchall())
         cursor.execute(
@@ -539,6 +618,19 @@ def backup_files(directory: Path) -> dict[str, Path]:
         for table in CATEGORIES
         if (directory / f"{table}.csv").is_file()
     }
+
+
+def refresh_organizations(connection: Any, tables: Iterable[str]) -> str | None:
+    """After importing names, register new organisations and relink rows (organizations.py)."""
+    if not ORG_SOURCES & set(tables):
+        return None
+    try:
+        from . import organizations
+    except ImportError:
+        import organizations
+    stats = organizations.build(connection)
+    return (f"Organisations: {stats['organisations_created']} new, {stats['aliases_added']} new spellings, "
+            f"{stats['linked']} rows linked")
 
 
 def format_report(results: Mapping[str, ImportStats], max_errors: int = 20) -> str:
@@ -626,6 +718,9 @@ def main(argv: Sequence[str] | None = None) -> int:
             connection.rollback()
             print("Errors found; nothing was saved.", file=sys.stderr)
             return 1
+        organisation_summary = refresh_organizations(connection, files)
+        if organisation_summary:
+            print(organisation_summary)
         if METRIC_SOURCES & set(files):
             try:
                 from . import metrics

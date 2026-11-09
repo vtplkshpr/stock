@@ -21,6 +21,7 @@ Optional environment variables:
   MYSQL_HOST      Connection host (default: localhost)
   MYSQL_PORT      Connection port (default: 3306)
   MYSQL_PASSWORD  Optional app password; otherwise a random one is generated
+  SKIP_WEB=1      Do not set up the browser diagram (scripts/setup_web.sh)
 EOF
 }
 
@@ -149,3 +150,8 @@ export MYSQL_DATABASE="$DATABASE"
 printf 'Creating database tables...\n'
 "$PYTHON_BIN" "$SCRIPT_DIR/init_database.py" --skip-create-database
 printf '\nDatabase setup complete. Private connection settings saved to:\n%s\n' "$CONFIG_FILE"
+
+if [[ "${SKIP_WEB:-0}" != "1" ]]; then
+    printf '\nSetting up the browser diagram...\n'
+    bash "$SCRIPT_DIR/setup_web.sh"
+fi

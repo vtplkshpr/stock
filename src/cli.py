@@ -9,6 +9,7 @@ from rich.panel import Panel
 from rich.text import Text
 
 from . import stock_cli
+from .backend import launcher
 
 logger = logging.getLogger(__name__)
 console = Console()
@@ -26,7 +27,14 @@ def build_cli(plugin_factory: Callable[[], Any]) -> click.Group:
         """CLI for collecting information about Vietnamese listed companies."""
         ctx.ensure_object(dict)
         if ctx.invoked_subcommand is None:
-            exit_code = stock_cli.run(ctx.args)
+            # The browser diagram runs alongside the terminal CLI and stops when the CLI exits.
+            web = launcher.start_web_in_background()
+            if web.message:
+                console.print(f"[yellow]{web.message}[/yellow]")
+            try:
+                exit_code = stock_cli.run(ctx.args)
+            finally:
+                web.stop()
             if exit_code:
                 ctx.exit(exit_code)
 

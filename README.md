@@ -13,6 +13,7 @@ A terminal-based module for looking up listed companies. It reads data from MySQ
 The database stores these data groups:
 
 - `companies`: basic information and listing ticker.
+- `organizations`, `organization_aliases`: the organisation register: every organisation named in the data (listed or not) under one canonical name, with each spelling met in the sources (see "Organisation Register").
 - `stock_prices`: daily prices, change, matched volume/value and negotiated (put-through) volume/value.
 - `foreign_trades`: daily foreign-investor buy/sell/net volume and value, remaining foreign room and foreign ownership %.
 - `proprietary_trades`: daily proprietary trading (tự doanh) of securities companies: buy/sell/net volume and value.
@@ -62,6 +63,8 @@ The main menu provides:
 
 In a list, enter `n`/`p` to move forward/backward, select a row number to open a company, or enter `b` to go back. The company profile shows registration details and the leadership team grouped by board, audit committee, management, and other positions, followed by former officers. The company menu provides stock prices (1), shareholders (2), upstream suppliers (3), downstream customers (4), financial reports (5), news (6), subsidiaries/associates/investments (7), data entry (8), related-party transactions (9), financial metrics (10), valuation (11), and trading activity (12): foreign investors, proprietary trading, order statistics, insider & major shareholder trades, and intraday matched trades. Insider trades show the executed share of the registered amount and a status: `reported` (a result or execution date exists), `in progress` (registration window still open) or `awaiting result`.
 
+Organisation names in the shareholder, supplier/customer, subsidiary and related-party lists are shown in their standard form from the organisation register: the structure word followed by the canonical name, e.g. "Công ty CP Đầu Tư Thành Thành Công", "Viện Nghiên Cứu Nông Nghiệp Thành Thành Công" (foreign names as registered; people and names without a record as written in the source).
+
 Suppliers and customers combine `supply_chain_relations` with related-party purchases and sales: a company's suppliers are the parties it buys from, plus companies whose reports show sales to it (matched by `counterparty_ticker`); customers work the other way round.
 
 You can open search directly:
@@ -73,6 +76,31 @@ python src/stock_cli.py --query HPG --page-size 20
 `--page-size` accepts values from 1 to 100 and defaults to 10. Enter `q` in the main menu to quit.
 
 The CLI reads `.env` from the module directory. The `MYSQL_HOST`, `MYSQL_PORT`, `MYSQL_USER`, `MYSQL_PASSWORD`, and `MYSQL_DATABASE` environment variables can override its values.
+
+## Browser Diagram
+
+Besides the terminal CLI, a company can be explored as an interactive diagram in the browser. It is a separate program: it only reads the database and does not change the CLI, imports or backups.
+
+When the module is started through its plugin entry point (`main.py`, as the host application does), the diagram server starts automatically next to the CLI and stops when the CLI exits. It runs as a child process with the module's own virtual environment (so the host's interpreter does not need FastAPI), ignores Ctrl+C pressed in the CLI, and reuses a diagram server already running on the port. If it cannot start, the CLI still runs and prints the reason; set `WEB_AUTOSTART=0` to keep it from starting. The CLI prints one line at start-up with the diagram's address (or, when it is not running, the command to start it). Started on its own (`python src/stock_cli.py`), the CLI does not start the server.
+
+```bash
+bash scripts/setup_web.sh          # once (and after git pull): Python packages, Node.js, frontend build
+python src/backend/server.py       # then open http://127.0.0.1:8765  (--open opens the browser)
+```
+
+`scripts/setup_database.sh` runs `setup_web.sh` at the end (set `SKIP_WEB=1` to skip it). Node.js is only needed to build the frontend: when no Node.js 20+ is installed, the script downloads a pinned version into `.tools/` (checksum verified, no sudo, ignored by Git).
+
+How the diagram works:
+
+- The chosen company is the centre node. Click it to open its information **upwards**: profile, leadership, shareholders, subsidiaries, price & valuation, financial statements, financial metrics, trading activity, related-party transactions and news. Every branch shows how many records it holds; branches without data are greyed out.
+- Branches with a few natural groups open into sub-branches (leadership by board/management/audit, subsidiaries by kind, statements by statement, metrics by group, trading by kind); the rest open into a table, card or chart. A table in the diagram shows 10 rows with its own pager and filters (scope, periods, Circular 99/200, snapshot date); ⤢ opens it full size in a side panel.
+- **Suppliers** sit to the right and **customers** to the left. Each partner shows the amount and period of its latest disclosed transactions; the edge width follows that amount. The ten most recent partners are shown first, then "+ N more".
+- A listed partner opens into three branches that keep growing outwards: its information, its suppliers and its customers, and so on without limit. An unlisted partner opens into the transactions with it. A company already on the path appears as "↩ already shown"; click it to jump there. Hovering a company highlights its other copies.
+- Drag the background to move, scroll to zoom, drag nodes to rearrange (Re-arrange undoes it). The toolbar finds nodes on the diagram, fits the view, collapses everything and exports PNG/SVG. The address bar keeps the open branches, so a view can be bookmarked or shared.
+
+Suppliers and customers come from related-party purchases and sales (the company's own disclosures and those of other companies naming it) and from `supply_chain_relations`. Counterparties are identified through the organisation register, so every spelling of a name is one partner, and unlisted partners open into the same three branches as listed ones: their information (profile and recorded spellings, owners from listed companies' subsidiary lists, shareholdings in listed companies, disclosed transactions), suppliers and customers. Relationships disclosed by the partner itself are shown from the partner's side (a parent appears as "Parent company"). The start screen and search also find unlisted organisations by any recorded spelling. Because separate and consolidated reports repeat the same transaction and reporting periods overlap, a partner's amount is that of its latest period in one scope, never a sum.
+
+Settings come from environment variables or `.env`: `WEB_HOST` (default `127.0.0.1`), `WEB_PORT` (default `8765`), `WEB_PUBLIC_URL` (the address shown to users) and `WEB_CORS_ORIGINS` (other origins allowed to call the API). To serve it from an Ubuntu VPS later, set `WEB_HOST=0.0.0.0` and `WEB_PUBLIC_URL=http://<server-ip>:8765`, or keep `127.0.0.1` behind a reverse proxy; the API is read-only and has no login, so restrict who can reach it. The API is documented at `/api/docs`. For frontend development, run `npm run dev` in `src/frontend/` (port 5173, forwarding `/api` to the Python server); a frontend hosted elsewhere can be built with `VITE_API_BASE_URL=http://<api-host>:<port>`.
 
 ## Enter and Update Data
 
@@ -86,6 +114,8 @@ Every import merges cell by cell. Records are matched by their key columns. A no
 | Category | Key columns | Other columns |
 | --- | --- | --- |
 | `companies` | `ticker` | `company_name` (required for new companies) and the other company fields |
+| `organizations` | `canonical_name` | `full_name`, `kind`, `legal_form`, `ticker` (when listed), `tax_code`, `country`, `industry`, `address`, `website`, `parent_org` (canonical name), `status` (`auto`/`reviewed`), `note` |
+| `organization_aliases` | `alias` (exact spelling) | `org` (canonical name; empty = not an organisation, e.g. a person), `source` |
 | `stock_prices` | `ticker`, `price_date` | prices, `price_change`, `change_percentage`, `trading_volume`, `trading_value`, `negotiated_volume`, `negotiated_value` (`close_price` required for new rows) |
 | `foreign_trades` | `ticker`, `trade_date` | `buy_volume`, `buy_value`, `sell_volume`, `sell_value`, `net_volume`, `net_value` (VND), `room_remaining`, `ownership_percentage`, `source_url` |
 | `proprietary_trades` | `ticker`, `trade_date` | `buy_volume`, `buy_value`, `sell_volume`, `sell_value`, `net_volume`, `net_value` (VND), `source_url` |
@@ -94,7 +124,7 @@ Every import merges cell by cell. Records are matched by their key columns. A no
 | `insider_trades` | `ticker`, `trader_name`, `registration_start` | `trader_position` (position, or relationship to the insider, e.g. "Con"), `related_person_name`, `related_person_position`, `shares_before`, `registered_buy`, `registered_sell`, `registration_end`, `executed_buy`, `executed_sell`, `execution_date`, `shares_after`, `ownership_after_percentage`, `source_url` |
 | `stock_holders` | `ticker`, `holder_name`, `snapshot_date` | `holder_type`, `shares_owned`, `ownership_percentage`, `source_url` |
 | `finance_reports` | `ticker`, `report_type`, `report_scope`, `fiscal_year`, `fiscal_quarter` (blank = annual) | `period_start`, `period_end`, `audit_status`, income statement, balance sheet and cash-flow metrics (VND), `employee_count`, `other_metrics` (JSON), `document_storage_path`, `published_at` |
-| `supply_chain_relations` | `supplier_ticker`, `customer_ticker`, `product_category` | `percentage_revenue`, `source_url` |
+| `supply_chain_relations` | `supplier_ticker` or `supplier_org`, `customer_ticker` or `customer_org`, `product_category` | `percentage_revenue`, `source_url` (each side is a listed company by ticker or an organisation by canonical name or alias) |
 | `company_news` | `ticker`, `title` | content, media, publication and source fields |
 | `company_leaders` | `ticker`, `person_name`, `position` | `leader_group`, `birth_year`, `appointed_date`, `dismissed_date`, `status`, `is_legal_representative` (1/0), `source_url` |
 | `company_investments` | `ticker`, `investee_name` | `investee_ticker`, `relation_type` (required for new rows), `is_direct` (1/0), `shares_owned`, `ownership_percentage`, `voting_percentage`, `investment_cost`, `charter_capital`, `contributed_capital` (VND), `business_line`, `operating_status`, `as_of_date`, `note`, `source_url` |
@@ -123,6 +153,33 @@ The same import is available without the menu:
 python src/data_import.py --list
 python src/data_import.py --tickers HPG,VNM stock_prices=prices.csv finance_reports=reports.csv --dry-run
 ```
+
+## Organisation Register
+
+Related-party disclosures, subsidiary lists and shareholder lists name organisations in free text, with many spellings ("CT TNHH MTV …", "Công ty TNHH Một Thành Viên …", OCR slips) and mostly without a ticker. The register gives each organisation one record, listed or not, and links every row that names it: `related_party_transactions.counterparty_org_id`, `company_investments.investee_org_id`, `stock_holders.holder_org_id`, and `supply_chain_relations.supplier_org_id` / `customer_org_id` (so a supply relation can involve an unlisted organisation).
+
+Canonical names follow `<abbreviated legal form> <full own name>`:
+
+- the structure word (Công ty, Tổng công ty, Ngân hàng, Viện, Quỹ, Hợp tác xã, …) is left out of the name and kept in `kind`;
+- the legal form is abbreviated: `CP`, `TNHH`, `TNHH MTV`, `TNHH 2TV`, `TMCP`; `full_name` holds the fully written-out form;
+- generic words abbreviated inside the own name are written out (TM → Thương Mại, DV → Dịch Vụ, SX → Sản Xuất, XNK → Xuất Nhập Khẩu, …); brand acronyms (TTC, AgriS) are kept; words are capitalised and "và" stays lower case;
+- foreign organisations keep their registered name; their legal form (Pte. Ltd, GmbH, …) is noted in `legal_form`.
+
+Organisations with different legal forms are different organisations (e.g. `CP Global Mind Business` and `TNHH Global Mind Business`), so names are matched on legal form plus own name, ignoring case, accents, punctuation and "và". People (key management, individual shareholders) and placeholder lines are recorded as aliases without an organisation and never linked.
+
+The register is updated automatically after every import of related-party transactions, investments or shareholders (CLI, `src/data_import.py`, backup restore): new names are registered, records nobody has reviewed are refreshed, and rows are relinked. Records marked `reviewed` are never changed automatically. To review:
+
+```bash
+python scripts/organizations.py review-export            # writes processed_data/organizations_review.csv
+# fill the `action` column:  ok  |  merge:<canonical name or org_id>  |  not_org
+#   ok        keep the record, with any edits made in that row (name, kind, legal form, ticker, tax code, country)
+#   merge:X   the names belong to organisation X (they become its aliases)
+#   not_org   the names are not an organisation (a person, a placeholder)
+python scripts/organizations.py review-import --dry-run   # check, then run again without --dry-run
+python scripts/organizations.py build                     # register and link by hand (normally automatic)
+```
+
+The review sheet flags records without a legal form, names that also exist with another legal form, and names contained in a longer name of the same legal form. When it is unclear whether two names are one organisation, compare their tax codes (e.g. on thuvienphapluat.vn/ma-so-thue) and record the code in `tax_code`. The register and the aliases are part of the backup, so review decisions travel with it; the row links are rebuilt on restore.
 
 ## Import CafeF Trading Data
 
@@ -208,7 +265,7 @@ financial_reports/SBT/2027/SBT_2027_Q1_separate_20260701-20260930.pdf
 
 ## Back Up and Restore Data
 
-`backups/<date>/` holds a full copy of the database data: one CSV per category (in the format described under "Enter and Update Data") plus `manifest.json` with the row count of each table. The current backup is `backups/2026-11-06/`.
+`backups/<date>/` holds a full copy of the database data: one CSV per category (in the format described under "Enter and Update Data") plus `manifest.json` with the row count of each table. The current backup is `backups/2026-11-09/`.
 
 Create a new backup after entering data:
 
@@ -219,7 +276,7 @@ python src/data_import.py --export backups/$(date +%F)
 Restore a backup, for example on a new machine after `scripts/setup_database.sh` has created the database:
 
 ```bash
-python scripts/import_companies.py --from-backup backups/2026-11-06
+python scripts/import_companies.py --from-backup backups/2026-11-09
 ```
 
 To make an already-populated database an exact copy of the backup (for example on a machine running an older version, after `git pull` and `python scripts/init_database.py`), add `--replace`; it clears the existing data in the same transaction as the import. `--dry-run` runs the restore and rolls it back. See "Update a machine that already runs an older version" in SETUP.md.
@@ -265,11 +322,14 @@ stock/
 ├── financial_reports/
 │   └── SBT/2025, 2026, 2027/  # report PDFs: <TICKER>/<fiscal_year>/ (not in Git)
 ├── backups/
-│   ├── 2026-11-05/     # previous backup
-│   └── 2026-11-06/     # current full data backup (one CSV per category + manifest.json)
+│   ├── 2026-11-05/, 2026-11-06/  # previous backups
+│   └── 2026-11-09/     # current full data backup (one CSV per category + manifest.json)
 ├── src/
+│   ├── backend/        # browser diagram: API (FastAPI) - server.py, app.py, sections.py, partners.py
+│   ├── frontend/       # browser diagram: UI (React + React Flow) - src/, package.json; dist/ is built
 │   ├── cli.py
 │   ├── data_import.py
+│   ├── organizations.py # organisation register: canonical names, matching, linking, review
 │   ├── metrics.py      # computed financial metrics and valuations
 │   ├── screening.py    # stock screening groups
 │   └── stock_cli.py
@@ -278,12 +338,14 @@ stock/
 │   ├── import_cafef.py # CafeF trading exports (new_data/) -> import CSVs -> database
 │   ├── import_companies.py
 │   ├── init_database.py
-│   └── setup_database.sh
+│   ├── organizations.py # register commands: build, review-export, review-import
+│   ├── setup_database.sh
+│   └── setup_web.sh    # one-command install of the browser diagram (Python packages, Node.js, build)
 ├── README.md
 └── SETUP.md
 ```
 
-Run the lookup interface with `src/stock_cli.py`. `scripts/init_database.py` is a lower-level script that accepts connection settings through command-line arguments or `MYSQL_*` environment variables; it reads `.env` when those are not set. For normal initialization, use `scripts/setup_database.sh`.
+Run the lookup interface with `src/stock_cli.py`, and the browser diagram with `src/backend/server.py`. `scripts/init_database.py` is a lower-level script that accepts connection settings through command-line arguments or `MYSQL_*` environment variables; it reads `.env` when those are not set. For normal initialization, use `scripts/setup_database.sh`.
 
 ## Documentation
 

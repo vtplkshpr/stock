@@ -1,0 +1,23 @@
+{
+  "created_at": "2026-11-09",
+  "row_counts": {
+    "companies": 1993,
+    "organizations": 55,
+    "organization_aliases": 116,
+    "stock_prices": 207,
+    "foreign_trades": 209,
+    "proprietary_trades": 83,
+    "order_statistics": 204,
+    "intraday_trades": 11238,
+    "insider_trades": 4,
+    "stock_holders": 43,
+    "finance_reports": 16,
+    "finance_report_items": 2154,
+    "supply_chain_relations": 0,
+    "company_news": 0,
+    "company_leaders": 35,
+    "company_investments": 29,
+    "related_party_transactions": 909,
+    "company_tiers": 0
+  }
+}
