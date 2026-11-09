@@ -171,7 +171,6 @@ export function PartnerNode({ data }: NodeProps<DiagramNode>) {
           <b>{money(partner.latest_amount)}</b> <span className="muted">{period}</span>
         </div>
       )}
-      {partner.products.length > 0 && <div className="partner-products">{partner.products.join(" · ")}</div>}
       <Toggle node={node} open="− Close"
               closed={partner.expandable ? "+ Information · suppliers · customers" : "+ Transactions"} />
     </Shell>

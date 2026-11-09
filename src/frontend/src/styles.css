@@ -110,16 +110,6 @@ a { color: var(--accent); }
 .find { position: relative; width: 190px; }
 .find-count { position: absolute; right: 9px; top: 50%; transform: translateY(-50%); font-size: 12px; color: var(--muted); }
 
-.legend {
-  position: absolute; left: 60px; bottom: 14px; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center;
-  padding: 6px 12px; background: color-mix(in srgb, var(--surface) 92%, transparent); border: 1px solid var(--border);
-  border-radius: 999px; font-size: 12px; box-shadow: var(--shadow); z-index: 5; max-width: calc(100% - 300px);
-}
-.legend .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
-.legend .dot.info { background: var(--info); }
-.legend .dot.suppliers { background: var(--suppliers); }
-.legend .dot.customers { background: var(--customers); }
-
 .welcome { max-width: 620px; margin: 12vh auto 0; padding: 0 16px; text-align: center; }
 .welcome h1 { font-size: 28px; margin: 0 0 8px; }
 .welcome p { color: var(--muted); margin: 0 0 22px; }
@@ -320,7 +310,6 @@ a { color: var(--accent); }
 @media (max-width: 720px) {
   .company-search { width: 100%; }
   .breadcrumb { display: none; }
-  .legend { display: none; }
   .side-panel { top: 0; }
 }
 
@@ -328,3 +317,58 @@ a { color: var(--accent); }
 .company-node.is-organization .company-ticker { font-size: 18px; line-height: 1.25; }
 .company-node.is-organization .company-head { flex-wrap: wrap; }
 .chip-name { max-width: 220px; overflow: hidden; text-overflow: ellipsis; }
+
+/* Trade labels on supplier/customer edges: what is traded and each item's share. */
+.trade-label {
+  position: absolute; max-width: 210px; min-width: 120px; padding: 5px 8px; border-radius: 8px;
+  background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow);
+  font-size: 11px; line-height: 1.35; pointer-events: all; cursor: help;
+}
+.trade-label.side-suppliers { border-left: 3px solid var(--suppliers); }
+.trade-label.side-customers { border-left: 3px solid var(--customers); }
+.trade-amount { font-weight: 700; font-size: 12px; }
+.trade-item { display: flex; justify-content: space-between; gap: 8px; }
+.trade-name { color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.trade-share { font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.trade-more { color: var(--muted); font-style: italic; }
+.loop-node { min-height: 72px; justify-content: center; }
+
+/* Legend: top-left of the canvas, no background, clicks pass through to the diagram. */
+.legend-panel {
+  position: absolute; top: 10px; left: 12px; z-index: 5; max-width: 330px;
+  pointer-events: none; background: transparent; font-size: 12px; color: var(--text);
+  text-shadow: 0 0 3px var(--canvas), 0 0 3px var(--canvas), 0 0 6px var(--canvas);
+}
+.legend-toggle {
+  pointer-events: auto; border: 0; background: transparent; padding: 2px 0; cursor: pointer;
+  font-weight: 700; font-size: 12px; color: var(--muted); text-shadow: inherit;
+}
+.legend-toggle:hover { color: var(--accent); }
+.legend-body section { margin-top: 6px; }
+.legend-body h4 { margin: 0 0 2px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); }
+.legend-body p { margin: 2px 0; display: flex; flex-wrap: wrap; align-items: center; gap: 5px; line-height: 1.35; }
+.lg-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; }
+.lg-dot.info { background: var(--info); }
+.lg-dot.suppliers { background: var(--suppliers); }
+.lg-dot.customers { background: var(--customers); }
+.lg-node {
+  display: inline-flex; align-items: center; gap: 4px; padding: 0 6px; border-radius: 5px; font-size: 11px;
+  border: 1px solid var(--border-strong); text-shadow: none; white-space: nowrap;
+}
+.lg-node em { font-style: normal; font-size: 10px; color: var(--muted); }
+.lg-centre { border: 2px solid var(--accent); color: var(--accent); font-weight: 800; }
+.lg-section { border-top: 3px solid var(--info); }
+.lg-empty { opacity: 0.55; border-top-color: var(--border-strong); }
+.lg-side-suppliers { border: 2px solid var(--suppliers); color: var(--suppliers); font-weight: 700; }
+.lg-side-customers { border: 2px solid var(--customers); color: var(--customers); font-weight: 700; }
+.lg-dashed { border-style: dashed; color: var(--muted); }
+.lg-chip { padding: 0 6px; border-radius: 999px; font-size: 10px; font-weight: 600; border: 1px solid var(--border); color: var(--muted); text-shadow: none; }
+.lg-chip-strong { color: var(--accent); border-color: var(--accent); }
+.lg-line { display: inline-block; width: 28px; border-top: 2px solid var(--edge); }
+.lg-line.lg-thick { border-top-width: 5px; border-color: var(--suppliers); }
+.lg-line.lg-dash { border-top-style: dashed; }
+.lg-label {
+  display: inline-block; padding: 1px 6px; border-radius: 5px; font-size: 10px; line-height: 1.3;
+  border: 1px solid var(--border-strong); border-left: 3px solid var(--customers); text-shadow: none;
+}
+@media (max-width: 720px) { .legend-panel { max-width: calc(100% - 24px); } }

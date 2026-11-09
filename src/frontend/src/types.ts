@@ -46,6 +46,10 @@ export interface Partner {
   legal_form: string | null;
   relationships: string[];
   products: string[];
+  /** What is traded in the latest period, as worded in the report; share = % of that direction's total. */
+  items: { description: string; amount: number | null; share: number | null }[];
+  latest_document: string | null;
+  latest_reported_by: string[];
   latest_amount: number | null;
   latest_period_start: string | null;
   latest_period_end: string | null;

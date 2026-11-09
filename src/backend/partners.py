@@ -58,6 +58,7 @@ class Line:
     scope: str | None
     reported_by: str
     source: str
+    document: str | None = None  # report file (or URL) the line was taken from
 
 
 def _in(values: tuple[str, ...]) -> str:
@@ -110,7 +111,8 @@ def lines(company: Company, side: str) -> list[Line]:
     if company.listed:
         for row in db.rows(
             f"""SELECT counterparty_name, counterparty_ticker, counterparty_org_id, relationship, transaction_type,
-                       description, amount, period_start, period_end, report_scope
+                       description, amount, period_start, period_end, report_scope,
+                       COALESCE(document_storage_path, source_url) AS document
                 FROM related_party_transactions
                 WHERE company_id = %(cid)s AND transaction_type IN ({_in(own_types)})""",
             {"cid": company.company_id},
@@ -120,12 +122,13 @@ def lines(company: Company, side: str) -> list[Line]:
                 continue
             result.append(Line(partner, row["relationship"], row["transaction_type"], row["description"],
                                row["amount"], row["period_start"], row["period_end"], row["report_scope"],
-                               company.ticker or "", "own report"))
+                               company.ticker or "", "own report", row["document"]))
 
     org_filter = f"t.counterparty_org_id IN ({', '.join(str(i) for i in org_ids)})" if org_ids else "FALSE"
     for row in db.rows(
         f"""SELECT reporter.ticker, reporter.company_name, t.relationship, t.transaction_type, t.description,
-                   t.amount, t.period_start, t.period_end, t.report_scope
+                   t.amount, t.period_start, t.period_end, t.report_scope,
+                   COALESCE(t.document_storage_path, t.source_url) AS document
             FROM related_party_transactions AS t
             JOIN companies AS reporter ON reporter.company_id = t.company_id
             WHERE NOT (t.company_id <=> %(cid)s) AND t.transaction_type IN ({_in(reverse_types)})
@@ -135,7 +138,8 @@ def lines(company: Company, side: str) -> list[Line]:
         relationship = REVERSED.get(row["relationship"], row["relationship"])
         result.append(Line(directory.by_company(row["ticker"], row["company_name"]), relationship,
                            row["transaction_type"], row["description"], row["amount"], row["period_start"],
-                           row["period_end"], row["report_scope"], row["ticker"], "partner's report"))
+                           row["period_end"], row["report_scope"], row["ticker"], "partner's report",
+                           row["document"]))
 
     own, other = ("customer", "supplier") if side == "suppliers" else ("supplier", "customer")
     own_org_filter = f"r.{own}_org_id IN ({', '.join(str(i) for i in org_ids)})" if org_ids else "FALSE"
@@ -166,6 +170,26 @@ def _latest(group: list[Line]) -> tuple[list[Line], str | None]:
     return chosen, scope
 
 
+def trade_items(latest: list[Line], group: list[Line]) -> list[dict[str, Any]]:
+    """What is traded with a partner in its latest period, in the report's own wording, with each
+    item's share of the total traded in that direction. Items without an amount keep share None;
+    supply-chain rows (no period) list their product category without amounts."""
+    lines_used = latest or [line for line in group if line.transaction_type == "supply_chain"]
+    amounts: dict[str, Any] = {}
+    for line in lines_used:
+        item = line.description or line.transaction_type.replace("_", " ")
+        if line.amount is None:
+            amounts.setdefault(item, None)
+        else:
+            amounts[item] = (amounts.get(item) or 0) + line.amount
+    total = sum(value for value in amounts.values() if value is not None and value > 0)
+    items = [{"description": item, "amount": value,
+              "share": round(100 * value / total, 2) if value is not None and total > 0 else None}
+             for item, value in amounts.items()]
+    items.sort(key=lambda i: -(i["amount"] or 0))
+    return items
+
+
 def summary(company: Company, side: str) -> list[dict[str, Any]]:
     groups: dict[str, list[Line]] = defaultdict(list)
     for line in lines(company, side):
@@ -176,10 +200,7 @@ def summary(company: Company, side: str) -> list[dict[str, Any]]:
         partner = group[0].partner
         latest, scope = _latest(group)
         amount = sum((line.amount for line in latest if line.amount is not None), start=0) if latest else None
-        products: dict[str, Any] = defaultdict(int)
-        for line in latest or group:
-            if line.description:
-                products[line.description] += line.amount or 0
+        items = trade_items(latest, group)
         partners.append({
             "key": key,
             "ref": partner.ref,
@@ -190,7 +211,10 @@ def summary(company: Company, side: str) -> list[dict[str, Any]]:
             "kind": partner.kind,
             "legal_form": partner.legal_form,
             "relationships": sorted({line.relationship for line in group if line.relationship}),
-            "products": [p for p, _ in sorted(products.items(), key=lambda item: -item[1])][:3],
+            "products": [item["description"] for item in items][:3],
+            "items": items,
+            "latest_document": next((line.document for line in latest if line.document), None),
+            "latest_reported_by": sorted({line.reported_by for line in latest if line.reported_by}),
             "latest_amount": amount,
             "latest_period_start": latest[0].period_start if latest else None,
             "latest_period_end": latest[0].period_end if latest else None,

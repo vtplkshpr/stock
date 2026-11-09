@@ -5,9 +5,9 @@ import {
   type Edge, type NodeChange,
 } from "@xyflow/react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { money } from "./format";
 import { layout, type Box, type Size } from "./layout";
 import { companyOf, nodeTypes, type DiagramNode } from "./nodes/nodes";
+import { edgeTypes } from "./nodes/TradeEdge";
 import { store, useDiagram, type Dir, type TNode } from "./store";
 
 /** Imperative controls used by the toolbar and actions (set while the canvas is mounted). */
@@ -159,10 +159,9 @@ export function Diagram() {
       targetHandle,
       className: `edge edge-${t.side ?? (t.dir === "up" ? "info" : "plain")} ${t.kind === "loop" ? "edge-loop" : ""}`,
       style: partner ? { strokeWidth: edgeWidth(partner.latest_amount) } : undefined,
-      label: partner?.latest_amount ? money(partner.latest_amount) : undefined,
-      labelBgPadding: [4, 2] as [number, number],
-      labelBgBorderRadius: 4,
-      labelShowBg: true,
+      ...(partner && t.side
+        ? { type: "trade", data: { partner, side: t.side, owner: store.label(t.ticker) } }
+        : {}),
     };
   }), [visible]);
 
@@ -172,6 +171,7 @@ export function Diagram() {
       nodes={nodes}
       edges={edges}
       nodeTypes={nodeTypes}
+      edgeTypes={edgeTypes}
       onNodesChange={onNodesChange}
       onNodeDragStop={onNodeDragStop}
       nodesConnectable={false}

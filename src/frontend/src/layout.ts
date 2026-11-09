@@ -11,10 +11,13 @@ export interface Size { width: number; height: number }
 export interface Box { x: number; y: number; width: number; height: number }
 
 const DEPTH_GAP = { up: 64, side: 96 };
+/** Wider gap between a Suppliers/Customers group and its partners, holding the trade labels. */
+export const TRADE_GAP = 240;
+const LABEL_HALF_HEIGHT = 48;
 const SIBLING_GAP = 18;
 const COUSIN_GAP = 40;
 
-interface Item { id: string; width: number; height: number; children: Item[] }
+interface Item { id: string; width: number; height: number; gap: number; children: Item[] }
 
 export function layout(
   rootId: string,
@@ -32,14 +35,15 @@ export function layout(
   const item = (id: string): Item => {
     const node = byId.get(id)!;
     const size = sizes.get(id) ?? { width: 160, height: 40 };
-    return { id, ...size, children: childrenOf(node).filter((c) => byId.has(c)).map(item) };
+    const gap = node.kind === "side" ? TRADE_GAP : DEPTH_GAP.side;
+    return { id, ...size, gap, children: childrenOf(node).filter((c) => byId.has(c)).map(item) };
   };
 
   const placeTree = (dir: Dir): Box[] => {
     const tops = childrenOf(root).filter((c) => byId.get(c)?.dir === dir);
     if (!tops.length) return [];
     const vertical = dir === "up";
-    const rootItem: Item = { id: rootId, ...centre, children: tops.map(item) };
+    const rootItem: Item = { id: rootId, ...centre, gap: DEPTH_GAP.side, children: tops.map(item) };
     const tree = flextree<Item>({
       nodeSize: (n) => {
         if (n.data.id === rootId) {
@@ -47,7 +51,7 @@ export function layout(
                           : [centre.height, centre.width / 2 + DEPTH_GAP.side];
         }
         return vertical ? [n.data.width, n.data.height + DEPTH_GAP.up]
-                        : [n.data.height, n.data.width + DEPTH_GAP.side];
+                        : [n.data.height, n.data.width + n.data.gap];
       },
       spacing: (a, b) => (a.parent === b.parent ? SIBLING_GAP : COUSIN_GAP),
     });
@@ -65,6 +69,16 @@ export function layout(
       else box = { x: -n.y - width, y: breadth - height / 2, width, height };
       boxes.set(n.data.id, box);
       placed.push(box);
+      // A partner's trade label sits in the gap before it (see TradeEdge); reserve that area too,
+      // so the collision step below keeps the information tree clear of the labels.
+      const parent = n.parent ? byId.get(n.parent.data.id) : undefined;
+      if (parent?.kind === "side" && dir !== "up") {
+        const centre = box.y + box.height / 2;
+        placed.push({
+          x: dir === "right" ? box.x - TRADE_GAP + 10 : box.x + box.width + 10,
+          y: centre - LABEL_HALF_HEIGHT, width: TRADE_GAP - 20, height: 2 * LABEL_HALF_HEIGHT,
+        });
+      }
     });
     return placed;
   };

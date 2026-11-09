@@ -2,6 +2,7 @@ import { ReactFlowProvider } from "@xyflow/react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { api } from "./api";
 import { CompanySearch } from "./components/CompanySearch";
+import { Legend } from "./components/Legend";
 import { SidePanel } from "./components/SidePanel";
 import { Toolbar } from "./components/Toolbar";
 import { ActionsContext, type DiagramActions, type Panel } from "./context";
@@ -133,12 +134,7 @@ function Workspace() {
           {rootId ? (
             <>
               <Diagram />
-              <div className="legend" aria-label="Legend">
-                <span><i className="dot info" /> Information ▲</span>
-                <span><i className="dot customers" /> ◀ Customers</span>
-                <span><i className="dot suppliers" /> Suppliers ▶</span>
-                <span className="muted">Click a node to open it · drag to move · scroll to zoom</span>
-              </div>
+              <Legend />
             </>
           ) : (
             <Welcome loading={rootLoading} error={rootError} onSelect={openCompany} />
