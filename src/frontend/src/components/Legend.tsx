@@ -61,6 +61,11 @@ export function Legend() {
             </p>
           </section>
           <section>
+            <h4>Units</h4>
+            <p>Amounts are in VND: <b>m</b> = million (triệu) · <b>bn</b> = billion (tỷ) · <b>tn</b> = trillion (nghìn tỷ)</p>
+            <p>e.g. <b>64.79 bn</b> = 64,79 tỷ đồng – the total traded in that direction in the latest report</p>
+          </section>
+          <section>
             <h4>Use</h4>
             <p>Click a node to open or close it · drag to move · scroll to zoom · ⤢ opens a table full size</p>
           </section>
