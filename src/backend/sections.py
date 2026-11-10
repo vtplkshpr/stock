@@ -626,12 +626,54 @@ def fetch_news(company: Company, options: Options, page: int, page_size: int) ->
     )
 
 
+def fetch_signals(company: Company, options: Options, page: int, page_size: int) -> Payload:
+    from . import signals
+
+    signal = signals.compute(company.company_id)
+    if signal is None:
+        return {"title": "Dòng tiền lớn", "fields": [], "note": "Chưa có dữ liệu giao dịch."}
+    data = signal.as_dict()
+    rows = [{"group": c["label"], "recent": c["recent"], "usual": c["usual"], "z": c["z"],
+             "assessment": {None: "Thiếu dữ liệu", 2: "Mua mạnh bất thường", 1: "Mua bất thường", 0: "Bình thường",
+                            -1: "Bán bất thường", -2: "Bán mạnh bất thường"}[c["score"]],
+             "detail": c["detail"]} for c in data["components"]]
+    return {
+        "title": "Dòng tiền lớn",
+        "signal": {k: data[k] for k in ("level", "label", "message")},
+        "fields": [
+            {"label": "Cấp độ", "value": data["label"], "type": "text"},
+            {"label": "Tính đến phiên", "value": data["as_of"], "type": "date"},
+            {"label": "Kết luận", "value": data["message"], "type": "text"},
+        ],
+        "texts": [{"label": "Lý do", "text": "\n".join(data["reasons"])}],
+        "columns": [col("group", "Nhóm"), col("assessment", "Đánh giá"), col("recent", f"{data['window']} phiên gần nhất"),
+                    col("usual", f"Thói quen {data['history']} phiên trước"), col("z", "Độ lệch (z)", "number"),
+                    col("detail", "Chi tiết")],
+        "rows": rows, "total": len(rows), "page": 1, "page_size": len(rows),
+        "note": (f"Mỗi nhóm so {data['window']} phiên gần nhất với thói quen {data['history']} phiên trước đó của chính mã này: "
+                 "|z| ≥ 1 là bất thường, ≥ 2 là mạnh. Người nội bộ: đã giao dịch = mạnh, đang đăng ký = bất thường; "
+                 "giao dịch dưới 0,02% số cổ phiếu bị bỏ qua."),
+    }
+
+
+SIGNALS = Section(
+    "signals", "Dòng tiền lớn",
+    count=count_sql("""SELECT (EXISTS (SELECT 1 FROM foreign_trades WHERE company_id = %(cid)s))
+                            + (EXISTS (SELECT 1 FROM proprietary_trades WHERE company_id = %(cid)s))
+                            + (EXISTS (SELECT 1 FROM order_statistics WHERE company_id = %(cid)s))
+                            + (EXISTS (SELECT 1 FROM insider_trades WHERE company_id = %(cid)s))"""),
+    fetch=fetch_signals,
+    description="groups with data",
+)
+
+
 SECTIONS: list[Section] = [
     Section("profile", "Company profile", count=lambda c: 1, fetch=fetch_profile),
     LEADERS,
     HOLDERS,
     INVESTMENTS,
     PRICE,
+    SIGNALS,
     REPORTS,
     METRICS,
     TRADING,

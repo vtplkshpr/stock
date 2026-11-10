@@ -61,6 +61,15 @@ export function Legend() {
             </p>
           </section>
           <section>
+            <h4>Dòng tiền lớn (khối ngoại, tự doanh, lệnh đặt, người nội bộ)</h4>
+            <p><span className="signal lv-m2 is-compact"><span className="signal-label"><i className="signal-dot" />Cảnh báo cao</span></span> rút mạnh, đồng thuận: không mua mới, cân nhắc giảm tỷ trọng</p>
+            <p><span className="signal lv-m1 is-compact"><span className="signal-label"><i className="signal-dot" />Cảnh báo</span></span> nghiêng về bán: thận trọng, chờ cải thiện</p>
+            <p><span className="signal lv-p0 is-compact"><span className="signal-label"><i className="signal-dot" />Trung lập / Trái chiều</span></span> chưa rõ: theo dõi thêm</p>
+            <p><span className="signal lv-p1 is-compact"><span className="signal-label"><i className="signal-dot" />Tích cực</span></span> nghiêng về mua: đưa vào danh sách theo dõi</p>
+            <p><span className="signal lv-p2 is-compact"><span className="signal-label"><i className="signal-dot" />Tích cực mạnh</span></span> gom mạnh, đồng thuận: cân nhắc mua thăm dò</p>
+            <p>So 20 phiên gần nhất với thói quen 60 phiên trước của chính mã; chi tiết trong nhánh "Dòng tiền lớn".</p>
+          </section>
+          <section>
             <h4>Units</h4>
             <p>Amounts are in VND: <b>m</b> = million (triệu) · <b>bn</b> = billion (tỷ) · <b>tn</b> = trillion (nghìn tỷ)</p>
             <p>e.g. <b>64.79 bn</b> = 64,79 tỷ đồng – the total traded in that direction in the latest report</p>

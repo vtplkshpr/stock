@@ -10,6 +10,7 @@ const PATHS: Record<string, string> = {
   trading: "M4 8h14l-4-4M20 16H6l4 4",
   related: "M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1",
   news: "M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2M7 9h7M7 13h7M7 16h4",
+  signals: "M3 12h4l3-8 4 16 3-8h4",
 };
 
 export function SectionIcon({ category }: { category: string }) {

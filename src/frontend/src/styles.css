@@ -372,3 +372,21 @@ a { color: var(--accent); }
   border: 1px solid var(--border-strong); border-left: 3px solid var(--customers); text-shadow: none;
 }
 @media (max-width: 720px) { .legend-panel { max-width: calc(100% - 24px); } }
+
+/* Smart-money level ("Dòng tiền lớn") on company nodes and in the legend. */
+.signal { --sig: var(--muted); --sig-bg: var(--surface-2); margin-top: 8px; padding: 6px 8px; border-radius: 8px;
+  background: var(--sig-bg); border-left: 4px solid var(--sig); text-shadow: none; }
+.signal.is-compact { display: inline-block; margin-top: 4px; padding: 1px 7px 1px 5px; border-left-width: 3px; }
+.signal-label { display: inline-flex; align-items: center; gap: 5px; font-weight: 800; font-size: 12px; color: var(--sig); }
+.signal.is-compact .signal-label { font-size: 11px; font-weight: 700; }
+.signal-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--sig); display: inline-block; }
+.signal-message { display: block; margin-top: 2px; font-size: 12px; line-height: 1.35; color: var(--text); }
+.lv-m2 { --sig: #c62828; --sig-bg: color-mix(in srgb, #c62828 12%, var(--surface)); }
+.lv-m1 { --sig: #d97706; --sig-bg: color-mix(in srgb, #d97706 12%, var(--surface)); }
+.lv-p0 { --sig: #64748b; --sig-bg: color-mix(in srgb, #64748b 10%, var(--surface)); }
+.lv-p1 { --sig: #16a34a; --sig-bg: color-mix(in srgb, #16a34a 12%, var(--surface)); }
+.lv-p2 { --sig: #15803d; --sig-bg: color-mix(in srgb, #15803d 18%, var(--surface)); }
+@media (prefers-color-scheme: dark) {
+  .lv-m2 { --sig: #f87171; } .lv-m1 { --sig: #fbbf24; } .lv-p0 { --sig: #94a3b8; }
+  .lv-p1 { --sig: #4ade80; } .lv-p2 { --sig: #22c55e; }
+}

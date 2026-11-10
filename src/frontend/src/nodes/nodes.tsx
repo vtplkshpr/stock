@@ -6,6 +6,7 @@ import { ContentView } from "../components/ContentView";
 import { useActions } from "../context";
 import { date, money, relationship, trend } from "../format";
 import { store, type TNode } from "../store";
+import type { SmartMoneySignal } from "../types";
 import { SectionIcon } from "./icons";
 
 export type DiagramNode = Node<{ node: TNode }>;
@@ -78,6 +79,18 @@ function Toggle({ node, open, closed }: { node: TNode; open: string; closed: str
   return <span className="toggle-hint">{node.expanded ? open : closed}</span>;
 }
 
+/** Smart-money level: coloured label and, unless compact, the warning / recommendation sentence. */
+function SignalBlock({ signal, compact }: { signal: SmartMoneySignal; compact?: boolean }) {
+  const tip = [`Dòng tiền lớn – ${signal.label}`, signal.message, ...signal.reasons,
+    signal.as_of ? `Tính đến phiên ${date(signal.as_of)}` : ""].filter(Boolean).join("\n");
+  return (
+    <div className={`signal lv-${signal.level < 0 ? "m" : "p"}${Math.abs(signal.level)} ${compact ? "is-compact" : ""}`} title={tip}>
+      <span className="signal-label"><i className="signal-dot" />{signal.label}</span>
+      {!compact && <span className="signal-message">{signal.message}</span>}
+    </div>
+  );
+}
+
 export function CompanyNode({ data }: NodeProps<DiagramNode>) {
   const node = data.node;
   const summary = node.summary!;
@@ -102,6 +115,7 @@ export function CompanyNode({ data }: NodeProps<DiagramNode>) {
           <span className="muted">{date(price.price_date)}</span>
         </div>
       )}
+      {summary.signal && <SignalBlock signal={summary.signal} />}
       <span className="toggle-hint">{node.expanded ? "▾ Hide information" : `▴ Show information (${sections})`}</span>
     </Shell>
   );
@@ -166,6 +180,7 @@ export function PartnerNode({ data }: NodeProps<DiagramNode>) {
         {partner.relationships.slice(0, 2).map((r) => <span key={r} className="chip chip-soft">{relationship(r)}</span>)}
       </div>
       <div className="partner-name">{partner.name}</div>
+      {node.summary?.signal && <SignalBlock signal={node.summary.signal} compact />}
       {partner.latest_amount !== null && (
         <div className="partner-amount">
           <b>{money(partner.latest_amount)}</b> <span className="muted">{period}</span>

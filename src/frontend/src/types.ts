@@ -31,6 +31,16 @@ export interface CompanySummary {
   price: { price_date: string; close_price: number; change_percentage: number | null } | null;
   sections: SectionInfo[];
   partners: { suppliers: number; customers: number };
+  /** Smart-money signal ("Dòng tiền lớn"), listed companies only. */
+  signal: SmartMoneySignal | null;
+}
+
+export interface SmartMoneySignal {
+  level: -2 | -1 | 0 | 1 | 2;
+  label: string;
+  message: string;
+  as_of: string | null;
+  reasons: string[];
 }
 
 export type Side = "suppliers" | "customers";

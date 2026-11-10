@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
-from . import db, partners, sections
+from . import db, partners, sections, signals
 from .config import FRONTEND_DIST, Settings
 from .sections import Company
 
@@ -139,8 +139,10 @@ def create_app(settings: Settings) -> FastAPI:
         price = db.one("""SELECT price_date, close_price, change_percentage FROM stock_prices
                           WHERE company_id = %(cid)s ORDER BY price_date DESC LIMIT 1""",
                        {"cid": found.company_id})
+        signal = signals.compute(found.company_id) if found.listed else None
         return ok({
             "ref": found.ref, "entity": "company" if found.listed else "organization",
+            "signal": signal and {k: v for k, v in signal.as_dict().items() if k in ("level", "label", "message", "as_of", "reasons")},
             "ticker": found.ticker, "name": found.name, "exchange": row.get("exchange"),
             "industry": row.get("industry") or org.get("industry"), "price": price,
             "kind": org.get("kind"), "legal_form": org.get("legal_form"), "full_name": org.get("full_name"),
